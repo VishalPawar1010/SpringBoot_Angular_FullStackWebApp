@@ -1,0 +1,95 @@
+<div class="page-wrapper">
+  <div class="page-container">
+    <!-- <nav class="navbar navbar-dark bg-dark"> -->
+    <!-- Navbar content -->
+
+
+    <!-- <header class="header-desktop" *ngIf="isLoggedIn">
+      <aside class="menu-sidebar d-none d-lg-block">
+        <div class="logo">
+          <a href="#">
+            <img src="assets/images/argushop-logo.png" alt="ArguShop" class="img-responsive" />
+          </a>
+        </div>
+      </aside>
+      <div class="section-content section-content-p30">
+        <div class="container-fluid">
+          <div class="header-wrap">
+            <div class="btn-group" role="group" aria-label="Users and Roles Buttons">
+              <div class="mr-2">
+                <button class="btn btn-secondary " (click)="goToUsers()">Users</button>
+              </div>
+              <div class="ml-2">
+                <button class="btn btn-secondary ml-2" routerLink="/roles" routerLinkActive="active-link">Roles</button>
+              </div>
+              <div class="mr-2">
+                <button class="btn btn-success d-md-inline mt-0" (click)="goToAddUser()">
+                  Create New User
+                </button>
+              </div>
+            </div>
+
+
+            <div class="account-wrap">
+              <button class="btn btn-light ml-auto" color="accent" (click)="getUserByEmail()">
+                My Account
+              </button>
+              <button class="btn btn-danger ml-auto" color="accent" data-testid="logout" (click)="logout()">
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header> -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" *ngIf="isLoggedIn">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">ArguEMS</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <button class="btn btn-primary" (click)="goToUsers()">Users</button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-success" (click)="goToAddUser()">Create New User</button>
+            </li>
+          </ul>
+
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                My Account
+              </a>
+              <div class="dropdown-menu dropdown-menu-right " style="right: 0; left: auto;"
+                aria-labelledby="userDropdown">
+                <button class="dropdown-item" (click)="getUserByEmail()">My Account</button>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-item" (click)="logout()">Logout</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+</div>
+
+
+<footer *ngIf="isLoggedIn">
+  <ul>
+    <li><a href="#">Welcome to ArguEMS </a></li>
+
+  </ul>
+</footer>

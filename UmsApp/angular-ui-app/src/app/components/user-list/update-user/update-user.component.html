@@ -1,0 +1,73 @@
+<div class="modal-body">
+
+  <div>
+    <div class="card mb-8">
+      <div class="card-header">
+        <h4 class="card-title text-center">Update User Details</h4>
+      </div>
+      <div class="card-body">
+
+        <div>
+
+          <form class="col-8 updateForm" style="max-width: 350px; margin: 0 auto" #updateForm #updateUserForm="ngForm">
+
+
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input id="email" type="email" name="email" required [(ngModel)]="user.email" #name="ngModel"
+                class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label for="firstName">First Name:</label>
+              <input id="firstName" type="text" name="firstName" required [(ngModel)]="user.firstName"
+                class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name:</label>
+              <input id="lastName" type="text" name="lastName" required [(ngModel)]="user.lastName"
+                class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="gender">Gender :</label>
+              <select id="gender" type="text" name="gender" required [(ngModel)]="user.gender" class="form-control">
+                <option value="male" [selected]="user.gender === 'male'">Male</option>
+                <option value="female" [selected]="user.gender === 'female'">Female</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="enabled">Enabled? :</label>
+              <select id="enabled" type="text" name="enabled" required [(ngModel)]="user.enabled" class="form-control">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </div>
+
+
+            <div class="form-group" *ngIf="user.roles.length >= 0">
+              <label for="roles[0].id">Role Id:</label>
+              <select id="roles[0].id" type="text" name="roles[0].id" required [(ngModel)]="user.roles[0].id"
+                class="form-control">
+                <option value="1">1 - SuperAdmin</option>
+                <option value="2">2 - Admin</option>
+                <option value="3">3 - Employee</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="mt-3 text-center">
+          <button class="btn btn-success" type="submit" (click)="updateUser()">
+            Update User
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="close()">
+      Close
+    </button>
+  </div>
