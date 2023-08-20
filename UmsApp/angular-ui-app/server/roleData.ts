@@ -1,0 +1,68 @@
+export const rolesData = [
+  {
+    id: 1,
+    name: 'Admin',
+    description: 'manage everything',
+    _links: {
+      self: {
+        href: 'http://localhost:8080/api/roles/1',
+      },
+      role: {
+        href: 'http://localhost:8080/api/roles/1',
+      },
+    },
+  },
+  {
+    id: 2,
+    name: 'Salesperson',
+    description:
+      'manage product price, customers, shipping, orders and sales report',
+    _links: {
+      self: {
+        href: 'http://localhost:8080/api/roles/2',
+      },
+      role: {
+        href: 'http://localhost:8080/api/roles/2',
+      },
+    },
+  },
+  {
+    id: 3,
+    name: 'Editor',
+    description: 'manage categories, brands, products, articles and menus',
+    _links: {
+      self: {
+        href: 'http://localhost:8080/api/roles/3',
+      },
+      role: {
+        href: 'http://localhost:8080/api/roles/3',
+      },
+    },
+  },
+  {
+    id: 4,
+    name: 'Shipper',
+    description: 'view products, view orders and update order status',
+    _links: {
+      self: {
+        href: 'http://localhost:8080/api/roles/4',
+      },
+      role: {
+        href: 'http://localhost:8080/api/roles/4',
+      },
+    },
+  },
+  {
+    id: 5,
+    name: 'Assistant',
+    description: 'manage questions and reviews',
+    _links: {
+      self: {
+        href: 'http://localhost:8080/api/roles/5',
+      },
+      role: {
+        href: 'http://localhost:8080/api/roles/5',
+      },
+    },
+  },
+];

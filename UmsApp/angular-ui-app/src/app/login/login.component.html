@@ -1,0 +1,26 @@
+<div class="container d-flex flex-column align-items-center">
+  <form class="col-5" style="max-width: 350px; margin: 0 auto" (ngSubmit)="login()">
+    <div class="border border-secondary rounded p-3">
+      <p class="h5 mb-4 text-center">Please Login ...</p>
+      <div>
+        <label for="exampleFormControlInput1" class="form-label">Email</label>
+        <p>
+          <input type="text" name="email" [(ngModel)]="model.username" class="form-control" placeholder="email" />
+        </p>
+      </div>
+      <div>
+        <label for="exampleFormControlInput1" class="form-label">Password</label>
+        <p>
+          <input type="password" name="password" [(ngModel)]="model.password" class="form-control"
+            placeholder="Password" />
+        </p>
+      </div>
+      <div class="text-center">
+        <p>
+          <input type="submit" value="Login" class="btn btn-primary" />
+        </p>
+      </div>
+      <div class="error-message" *ngIf="loginError">{{ loginError }}</div>
+    </div>
+  </form>
+</div>

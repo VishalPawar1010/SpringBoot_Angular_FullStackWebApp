@@ -1,0 +1,11 @@
+{
+  "name": "04-k6-scripts",
+  "version": "1.0.0",
+  "description": "this is k6 script examples for poc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vishal Pawar Argusoft",
+  "license": "ISC"
+}

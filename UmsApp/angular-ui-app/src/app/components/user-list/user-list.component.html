@@ -1,0 +1,57 @@
+<div class="mt-0 container container-fluid">
+
+  <!-- datatable *ngIf="dtOptions && users" [dtOptions]="dtOptions" -->
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped"
+    style="background-color: white; border-collapse: collapse">
+    <thead>
+      <tr>
+
+        <th>Photos</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Roles</th>
+        <th>Enabled?</th>
+        <th>Actions</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tempUser of users">
+
+        <td>
+          <div *ngIf="tempUser.photos">
+            <img [src]="tempUser.photos" alt="User Photo" class="sm-auto rounded img-fluid"
+              style="width: 60px; height: 60px;" />
+          </div>
+        </td>
+        <td>{{ tempUser.email }}</td>
+        <td>{{ tempUser.firstName }}</td>
+        <td>{{ tempUser.lastName }}</td>
+        <td>{{ tempUser.gender }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let role of tempUser.roles">
+              {{ role.name }}
+            </li>
+          </ul>
+        </td>
+        <td>{{ tempUser.enabled }}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="User Actions">
+            <button class="btn btn-primary btn-sm mr-1" (click)="viewUser(tempUser)">
+              View
+            </button>
+            <button class="btn btn-secondary btn-sm mr-1" (click)="openUpdateUser(tempUser)">
+              Update
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="deleteUser(tempUser)">
+              Delete
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

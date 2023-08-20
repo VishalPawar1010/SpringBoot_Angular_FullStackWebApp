@@ -1,0 +1,14 @@
+.custom-checkbox {
+    border: 2px solid green;
+    padding: 4px;
+}
+
+/* Style for valid input */
+.is-valid {
+    border: 1px solid green;
+}
+
+/* Style for invalid input */
+.is-invalid {
+    border: 1px solid red;
+}
