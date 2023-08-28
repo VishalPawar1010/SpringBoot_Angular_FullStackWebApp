@@ -102,11 +102,7 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 <!--			<version>3.1.0</version>-->
 		</dependency>
-		<dependency>
-			<groupId>com.shopme</groupId>
-			<artifactId>ShopmeBackEnd</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
