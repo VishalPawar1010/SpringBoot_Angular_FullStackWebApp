@@ -1,7 +1,23 @@
 # SpringBoot_Angular_FullStackWebApp
  - Project: eCommerce EMS (Employee Management System)
 
-1. Add first time setup in machine
+1. Pre-requisites for local environment setup
+   1. Ubuntu : 22.04.2
+   2. MySql 8.0.33
+   3. MySQL Workbench
+   4. SpringBoot : 2.7.2
+   5. JDK - 1.8
+   6. Angular : 
+      1. Node : 14.1.1
+      2. npm : 9.6.7
+      3. Cypress : 12
+      4. ng CLI : 15.2.6
+   7. Maven : 3.6.6
+   8. Favorite IDE : STS / Eclipse / IntelliJ 
+   9. K6 (For load tests) : 
+   10. Code Coverage 
+       1.  Jacoco 
+       2.  SonarQube
 
 
 - To run springboot app 
