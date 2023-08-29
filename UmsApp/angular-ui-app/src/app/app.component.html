@@ -82,11 +82,11 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                My Account
+                {{loggedInUser.firstName}} {{loggedInUser.lastName}}
               </a>
               <div class="dropdown-menu dropdown-menu-right " style="right: 0; left: auto;"
                 aria-labelledby="userDropdown">
-                <button class="dropdown-item" (click)="getUserByEmail()">My Account</button>
+                <button class="dropdown-item" (click)="getToUserProfile()">My Account</button>
                 <div class="dropdown-divider"></div>
                 <button class="dropdown-item" (click)="logout()">Logout</button>
               </div>
@@ -105,8 +105,7 @@
 
 
 <footer *ngIf="isLoggedIn">
-  <ul>
+  <ul style="margin-bottom: 0px;">
     <li><a href="#">Welcome to ArguEMS </a></li>
-
   </ul>
 </footer>

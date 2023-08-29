@@ -5,7 +5,6 @@ import { UserService } from './services/user.service';
 import { Users } from './common/users';
 import { Location } from '@angular/common';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -23,23 +22,27 @@ export class AppComponent implements OnInit {
     photos: null,
     enabled: false,
     roles: []
-  }; 
-
+  };
 
   constructor(
-    private authService: AuthService, 
-    private router: Router,    
-    private userService:UserService,
-    ) {}
+    private authService: AuthService,
+    private router: Router,
+    private userService: UserService,
+  ) { }
 
   ngOnInit(): void {
     const loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
     this.isLoggedIn = !!loggedInUserEmail;
- 
-    this.authService.isLoggedIn.subscribe((isLoggedIn) => {
 
+    this.authService.isLoggedIn.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
     });
+
+    this.userService.getUserByEmail(loggedInUserEmail).subscribe((res) => {
+      this.loggedInUser.id = res.id;
+      this.loggedInUser.firstName = res.firstName;
+      this.loggedInUser.lastName = res.lastName;
+    })
   }
   goToAddUser() {
     this.router.navigate(['add-user']);
@@ -48,14 +51,11 @@ export class AppComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
-  getUserByEmail(){
-    const loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
-    this.userService.getUserByEmail(loggedInUserEmail).subscribe((res) =>{
-      this.loggedInUser.id = res.id;
-      this.router.navigate(['user', { id: this.loggedInUser.id }],);
-    })
+
+  getToUserProfile() {
+    this.router.navigate(['user', { id: this.loggedInUser.id }],);
   }
-  goToUsers(): void{
+  goToUsers(): void {
     this.router.navigate(['users']);
   }
   // export data 

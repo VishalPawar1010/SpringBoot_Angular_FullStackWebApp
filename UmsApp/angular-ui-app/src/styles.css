@@ -122,8 +122,8 @@ a:hover {
 } */
 
 .main-content {
-    padding-top: 10px;
-    min-height: 100vh
+    min-height: 84.7vh;
+    padding: 20px;
 }
 
 /* aside.menu-sidebar.d-none.d-lg-block.clr {
