@@ -3,6 +3,7 @@ package com.luv2code.ecommerce.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.luv2code.ecommerce.entity.User;
 import com.luv2code.ecommerce.service.UserService;
+import com.luv2code.ecommerce.util.UserCsvExporter;
+import com.opencsv.CSVWriter;
 
 @RestController
 @RequestMapping("/api")
@@ -113,5 +116,14 @@ public class UserController {
     public boolean checkEmail(@RequestParam("email") String email) {
     	System.out.println("email = " + email );
         return userService.existsByEmail(email);
+    }
+    
+    @GetMapping("/users/csv")
+    public void exportUsersToCSV(HttpServletResponse response) throws IOException{
+    	
+		List<User> listUsers = userService.getAllUsers();
+		UserCsvExporter exporter = new UserCsvExporter();
+		exporter.export(listUsers, response);
+        
     }
 }
