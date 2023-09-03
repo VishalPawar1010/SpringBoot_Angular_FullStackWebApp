@@ -58,4 +58,26 @@ export class AppComponent implements OnInit {
   goToUsers(): void{
     this.router.navigate(['users']);
   }
+  // export data 
+  exportToCSV(){
+    const timestamp = new Date().toISOString().replace(/[^0-9]/g, '-'); // Format: 'yyyyMMddHHmmss'
+    // Define the file name
+    const fileName = `users_${timestamp}.csv`;
+    this.userService.exportUsersToCSV().subscribe(
+      (data: Blob) => {
+        const blob = new Blob([data], { type: 'application/csv' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      (error) => {
+        console.error(error);
+        console.log("Some error in exportToCSV")
+      }
+    );
+  }
 }

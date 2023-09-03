@@ -55,6 +55,11 @@ export class UserService {
   deleteUser(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.baseUrl}/${id}`);
   }
+
+  exportUsersToCSV() {
+    console.log("calling exportUsersToCSV api");
+    return this.httpClient.get(`${this.baseUrl}/csv`, { responseType: 'blob' }); // Use responseType 'blob' to handle binary data
+  }
 }
 interface GetResponse {
   _embedded: {

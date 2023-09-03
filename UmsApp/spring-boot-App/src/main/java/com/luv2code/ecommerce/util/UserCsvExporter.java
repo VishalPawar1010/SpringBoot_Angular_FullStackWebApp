@@ -4,14 +4,11 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import javax.naming.Reference;
 import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import com.luv2code.ecommerce.entity.User;
 import com.opencsv.CSVWriter;
@@ -35,34 +32,35 @@ public class UserCsvExporter {
 
             // Get the list of field names from the User class
             Field[] userFields = User.class.getDeclaredFields();
-            header = new String[userFields.length];
-            fieldsToMap = new String[userFields.length];
+            header = Arrays.stream(userFields)
+                .map(Field::getName)
+                .filter(fieldName -> !fieldName.equals("password") && !fieldName.equals("photos") && !fieldName.equals("photoFile"))
+                .toArray(String[]::new);
 
-            for (int i = 0; i < userFields.length; i++) {
-                Field field = userFields[i];
-                header[i] = field.getName(); // Use field name as header
-                fieldsToMap[i] = field.getName(); // Map field name to field name
-            }
+            fieldsToMap = Arrays.stream(userFields)
+                .map(Field::getName)
+                // Use filter to exclude specific fields
+                .filter(fieldName -> !fieldName.equals("password") && !fieldName.equals("photos") && !fieldName.equals("photoFile"))
+                .toArray(String[]::new);
 
             csvWriter.writeNext(header);
 
             for (User user : listUsers) {
                 String[] data = new String[fieldsToMap.length];
                 for (int i = 0; i < fieldsToMap.length; i++) {
-                    try {
-                        Field field = user.getClass().getDeclaredField(fieldsToMap[i]);
-                        field.setAccessible(true);
-                        Object fieldValue = field.get(user);
-                        data[i] = fieldValue != null ? fieldValue.toString() : "";
+                	 String fieldName = fieldsToMap[i];
+                     try {
+                         Field field = user.getClass().getDeclaredField(fieldName);
+                         field.setAccessible(true);
+                         Object fieldValue = field.get(user);
+                         data[i] = fieldValue != null ? fieldValue.toString() : "";
                     } catch (NoSuchFieldException | IllegalAccessException e) {
                         data[i] = "";
                     }
                 }
                 csvWriter.writeNext(data);
             }
-
             csvWriter.close();
-		
 	}
 
 
