@@ -1,7 +1,7 @@
-package com.luv2code.ecommerce.exceptions;
+package com.growth10Mindset.admin.exceptions;
 import org.junit.jupiter.api.Test;
 
-import com.luv2code.ecommerce.exceptions.MissingParameterException;
+import com.growth10Mindset.admin.exceptions.MissingParameterException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.security;
+package com.growth10Mindset.admin.security;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -21,8 +21,11 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.luv2code.ecommerce.entity.User;
-import com.luv2code.ecommerce.security.service.JwtService;
+import com.growth10Mindset.admin.entity.User;
+import com.growth10Mindset.admin.security.JwtAuthenticationFilter;
+import com.growth10Mindset.admin.security.eComUserDetails;
+import com.growth10Mindset.admin.security.eComUserDetailsService;
+import com.growth10Mindset.admin.security.service.JwtService;
 
 public class JwtAuthenticationFilterTests {
 

@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.entity;
+package com.growth10Mindset.admin.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

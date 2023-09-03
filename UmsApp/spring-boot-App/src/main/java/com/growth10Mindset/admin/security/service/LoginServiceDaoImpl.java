@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.security.service;
+package com.growth10Mindset.admin.security.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -6,12 +6,12 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
 
-import com.luv2code.ecommerce.entity.User;
-import com.luv2code.ecommerce.exceptions.MissingParameterException;
-import com.luv2code.ecommerce.security.dao.AuthenticationResponse;
-import com.luv2code.ecommerce.security.dao.LoginDetail;
-import com.luv2code.ecommerce.security.dao.UserDetailForToken;
-import com.luv2code.ecommerce.service.UserService;
+import com.growth10Mindset.admin.entity.User;
+import com.growth10Mindset.admin.exceptions.MissingParameterException;
+import com.growth10Mindset.admin.security.dao.AuthenticationResponse;
+import com.growth10Mindset.admin.security.dao.LoginDetail;
+import com.growth10Mindset.admin.security.dao.UserDetailForToken;
+import com.growth10Mindset.admin.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 

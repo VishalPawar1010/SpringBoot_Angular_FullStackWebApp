@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce;
+package com.growth10Mindset.admin;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

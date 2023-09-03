@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.dao;
+package com.growth10Mindset.admin.dao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
-import com.luv2code.ecommerce.entity.Role;
-import com.luv2code.ecommerce.entity.User;
-import com.luv2code.ecommerce.repo.UserRepository;
+import com.growth10Mindset.admin.entity.Role;
+import com.growth10Mindset.admin.entity.User;
+import com.growth10Mindset.admin.repo.UserRepository;
 
 
 //@DataJpaTest

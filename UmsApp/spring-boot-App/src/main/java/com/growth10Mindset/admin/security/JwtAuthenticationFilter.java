@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.security;
+package com.growth10Mindset.admin.security;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.luv2code.ecommerce.security.service.JwtService;
+import com.growth10Mindset.admin.security.service.JwtService;
 
 //import jakarta.servlet.FilterChain;
 //import jakarta.servlet.ServletException;

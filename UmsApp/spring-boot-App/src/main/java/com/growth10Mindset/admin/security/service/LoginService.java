@@ -1,9 +1,9 @@
-package com.luv2code.ecommerce.security.service;
+package com.growth10Mindset.admin.security.service;
 
 
-import com.luv2code.ecommerce.exceptions.MissingParameterException;
-import com.luv2code.ecommerce.security.dao.AuthenticationResponse;
-import com.luv2code.ecommerce.security.dao.LoginDetail;
+import com.growth10Mindset.admin.exceptions.MissingParameterException;
+import com.growth10Mindset.admin.security.dao.AuthenticationResponse;
+import com.growth10Mindset.admin.security.dao.LoginDetail;
 
 public interface LoginService {
 

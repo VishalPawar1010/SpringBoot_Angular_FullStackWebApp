@@ -1,9 +1,9 @@
-package com.luv2code.ecommerce.security.dao;
+package com.growth10Mindset.admin.security.dao;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import com.luv2code.ecommerce.entity.Role;
+import com.growth10Mindset.admin.entity.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.service;
+package com.growth10Mindset.admin.service;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,9 +9,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.luv2code.ecommerce.entity.User;
-import com.luv2code.ecommerce.repo.UserRepository;
-import com.luv2code.ecommerce.util.ImageUtil;
+import com.growth10Mindset.admin.entity.User;
+import com.growth10Mindset.admin.repo.UserRepository;
+import com.growth10Mindset.admin.util.ImageUtil;
 
 
 @Service

@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.exceptions;
+package com.growth10Mindset.admin.exceptions;
 
 import java.util.HashMap;
 import java.util.Map;

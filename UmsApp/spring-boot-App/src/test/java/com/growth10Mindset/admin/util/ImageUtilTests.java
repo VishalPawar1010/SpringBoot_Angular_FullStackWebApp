@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.util;
+package com.growth10Mindset.admin.util;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -8,6 +8,8 @@ import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
 import org.junit.jupiter.api.Test;
+
+import com.growth10Mindset.admin.util.ImageUtil;
 
 public class ImageUtilTests {
 

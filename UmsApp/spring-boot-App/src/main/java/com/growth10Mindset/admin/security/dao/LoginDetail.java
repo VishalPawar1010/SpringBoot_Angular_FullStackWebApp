@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.security.dao;
+package com.growth10Mindset.admin.security.dao;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.security;
+package com.growth10Mindset.admin.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -6,10 +6,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.luv2code.ecommerce.entity.User;
-import com.luv2code.ecommerce.repo.UserRepository;
-import com.luv2code.ecommerce.security.service.JwtService;
-import com.luv2code.ecommerce.service.UserService;
+import com.growth10Mindset.admin.entity.User;
+import com.growth10Mindset.admin.repo.UserRepository;
+import com.growth10Mindset.admin.security.service.JwtService;
+import com.growth10Mindset.admin.service.UserService;
 
 @Service
 public class eComUserDetailsService implements UserDetailsService {

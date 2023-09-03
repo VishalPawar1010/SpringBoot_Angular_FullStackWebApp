@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.util;
+package com.growth10Mindset.admin.util;
 
 import java.util.ArrayList;
 import java.util.List;

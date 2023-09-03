@@ -1,11 +1,12 @@
-package com.luv2code.ecommerce.security;
+package com.growth10Mindset.admin.security;
 
-import com.luv2code.ecommerce.entity.Role;
-import com.luv2code.ecommerce.entity.User;
-import com.luv2code.ecommerce.security.eComUserDetails;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import com.growth10Mindset.admin.entity.Role;
+import com.growth10Mindset.admin.entity.User;
+import com.growth10Mindset.admin.security.eComUserDetails;
 
 import java.util.Collections;
 import java.util.Set;

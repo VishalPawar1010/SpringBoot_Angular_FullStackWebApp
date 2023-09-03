@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.security.config;
+package com.growth10Mindset.admin.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,9 +11,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.luv2code.ecommerce.repo.UserRepository;
-import com.luv2code.ecommerce.security.eComUserDetailsService;
-import com.luv2code.ecommerce.service.UserService;
+import com.growth10Mindset.admin.repo.UserRepository;
+import com.growth10Mindset.admin.security.eComUserDetailsService;
+import com.growth10Mindset.admin.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 

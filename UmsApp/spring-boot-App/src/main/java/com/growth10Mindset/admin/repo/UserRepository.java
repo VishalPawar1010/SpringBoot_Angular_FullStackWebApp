@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.repo;
+package com.growth10Mindset.admin.repo;
 
 import java.util.Optional;
 
@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.luv2code.ecommerce.entity.User;
+import com.growth10Mindset.admin.entity.User;
 
 @Repository
 @CrossOrigin("http://localhost:4200")

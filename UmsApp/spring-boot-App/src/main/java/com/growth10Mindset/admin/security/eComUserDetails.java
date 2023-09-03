@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.security;
+package com.growth10Mindset.admin.security;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,8 +9,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.luv2code.ecommerce.entity.Role;
-import com.luv2code.ecommerce.entity.User;
+import com.growth10Mindset.admin.entity.Role;
+import com.growth10Mindset.admin.entity.User;
 
 public class eComUserDetails implements UserDetails {
 

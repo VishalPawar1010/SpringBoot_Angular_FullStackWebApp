@@ -1,10 +1,10 @@
-package com.luv2code.ecommerce.security.config;
+package com.growth10Mindset.admin.security.config;
 
 import aj.org.objectweb.asm.TypeReference;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.luv2code.ecommerce.security.JwtAuthenticationFilter;
+import com.growth10Mindset.admin.security.JwtAuthenticationFilter;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

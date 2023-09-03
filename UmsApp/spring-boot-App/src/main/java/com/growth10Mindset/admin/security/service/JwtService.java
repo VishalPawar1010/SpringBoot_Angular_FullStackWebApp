@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.security.service;
+package com.growth10Mindset.admin.security.service;
 
 import java.security.Key;
 import java.util.Date;
@@ -8,8 +8,8 @@ import java.util.function.Function;
 
 import org.springframework.stereotype.Service;
 
-import com.luv2code.ecommerce.security.eComUserDetails;
-import com.luv2code.ecommerce.security.dao.UserDetailForToken;
+import com.growth10Mindset.admin.security.eComUserDetails;
+import com.growth10Mindset.admin.security.dao.UserDetailForToken;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

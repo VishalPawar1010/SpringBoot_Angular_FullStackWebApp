@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.security.service;
+package com.growth10Mindset.admin.security.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -17,12 +17,14 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
-import com.luv2code.ecommerce.entity.User;
-import com.luv2code.ecommerce.exceptions.MissingParameterException;
-import com.luv2code.ecommerce.security.dao.AuthenticationResponse;
-import com.luv2code.ecommerce.security.dao.LoginDetail;
-import com.luv2code.ecommerce.security.dao.UserDetailForToken;
-import com.luv2code.ecommerce.service.UserService;
+import com.growth10Mindset.admin.entity.User;
+import com.growth10Mindset.admin.exceptions.MissingParameterException;
+import com.growth10Mindset.admin.security.dao.AuthenticationResponse;
+import com.growth10Mindset.admin.security.dao.LoginDetail;
+import com.growth10Mindset.admin.security.dao.UserDetailForToken;
+import com.growth10Mindset.admin.security.service.JwtService;
+import com.growth10Mindset.admin.security.service.LoginServiceDaoImpl;
+import com.growth10Mindset.admin.service.UserService;
 
 public class LoginServiceDaoImplTests {
 

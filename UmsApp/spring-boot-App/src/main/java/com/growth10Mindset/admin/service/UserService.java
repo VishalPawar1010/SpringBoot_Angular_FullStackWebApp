@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.service;
+package com.growth10Mindset.admin.service;
 
 
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.luv2code.ecommerce.entity.User;
+import com.growth10Mindset.admin.entity.User;
 
 public interface UserService {
 	

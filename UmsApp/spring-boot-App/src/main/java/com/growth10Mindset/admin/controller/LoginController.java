@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.controller;
+package com.growth10Mindset.admin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.luv2code.ecommerce.exceptions.MissingParameterException;
-import com.luv2code.ecommerce.security.dao.AuthenticationResponse;
-import com.luv2code.ecommerce.security.dao.LoginDetail;
-import com.luv2code.ecommerce.security.service.LoginService;
+import com.growth10Mindset.admin.exceptions.MissingParameterException;
+import com.growth10Mindset.admin.security.dao.AuthenticationResponse;
+import com.growth10Mindset.admin.security.dao.LoginDetail;
+import com.growth10Mindset.admin.security.service.LoginService;
 
 @RestController
 @RequestMapping("/api")

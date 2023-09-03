@@ -1,8 +1,8 @@
-package com.luv2code.ecommerce.security.dao;
+package com.growth10Mindset.admin.security.dao;
 
 import org.junit.jupiter.api.Test;
 
-import com.luv2code.ecommerce.security.dao.LoginDetail;
+import com.growth10Mindset.admin.security.dao.LoginDetail;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

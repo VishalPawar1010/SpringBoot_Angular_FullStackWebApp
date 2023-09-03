@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.controller;
+package com.growth10Mindset.admin.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.luv2code.ecommerce.entity.User;
-import com.luv2code.ecommerce.service.UserService;
-import com.luv2code.ecommerce.util.UserCsvExporter;
+import com.growth10Mindset.admin.entity.User;
+import com.growth10Mindset.admin.service.UserService;
+import com.growth10Mindset.admin.util.UserCsvExporter;
 import com.opencsv.CSVWriter;
 
 @RestController

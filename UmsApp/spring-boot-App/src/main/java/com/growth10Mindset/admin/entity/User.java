@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.entity;
+package com.growth10Mindset.admin.entity;
 
 import java.util.HashSet;
 import java.util.Set;

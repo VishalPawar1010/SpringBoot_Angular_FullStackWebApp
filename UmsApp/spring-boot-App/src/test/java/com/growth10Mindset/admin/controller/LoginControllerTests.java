@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.controller;
+package com.growth10Mindset.admin.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
@@ -15,10 +15,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.luv2code.ecommerce.exceptions.MissingParameterException;
-import com.luv2code.ecommerce.security.dao.AuthenticationResponse;
-import com.luv2code.ecommerce.security.dao.LoginDetail;
-import com.luv2code.ecommerce.security.service.LoginService;
+import com.growth10Mindset.admin.controller.LoginController;
+import com.growth10Mindset.admin.exceptions.MissingParameterException;
+import com.growth10Mindset.admin.security.dao.AuthenticationResponse;
+import com.growth10Mindset.admin.security.dao.LoginDetail;
+import com.growth10Mindset.admin.security.service.LoginService;
 
 public class LoginControllerTests {
 

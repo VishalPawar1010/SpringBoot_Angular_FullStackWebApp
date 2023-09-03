@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.security.dao;
+package com.growth10Mindset.admin.security.dao;
 
 
 import io.jsonwebtoken.lang.Objects;

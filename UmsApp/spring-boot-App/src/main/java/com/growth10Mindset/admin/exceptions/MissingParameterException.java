@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.exceptions;
+package com.growth10Mindset.admin.exceptions;
 
 public class MissingParameterException extends Exception{
     public MissingParameterException() {

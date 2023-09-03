@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.controller;
+package com.growth10Mindset.admin.controller;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -23,8 +23,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.luv2code.ecommerce.entity.User;
-import com.luv2code.ecommerce.service.UserService;
+import com.growth10Mindset.admin.controller.UserController;
+import com.growth10Mindset.admin.entity.User;
+import com.growth10Mindset.admin.service.UserService;
 
 public class UserControllerTests {
 

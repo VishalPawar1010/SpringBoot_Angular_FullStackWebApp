@@ -7,11 +7,11 @@
 		<version>2.7.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.luv2code</groupId>
-	<artifactId>spring-boot-ecommerce</artifactId>
+	<groupId>com.growth10Mindset</groupId>
+	<artifactId>spring-boot-adminApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-ecommerce</name>
-	<description>Spring Boot Ecommerce Project</description>
+	<name>spring-boot-adminApp</name>
+	<description>Spring Boot Ecommerce Project - for Admin</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>

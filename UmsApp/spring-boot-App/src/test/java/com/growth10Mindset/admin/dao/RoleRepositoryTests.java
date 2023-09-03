@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.dao;
+package com.growth10Mindset.admin.dao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.luv2code.ecommerce.entity.Role;
+import com.growth10Mindset.admin.entity.Role;
 
 public class RoleRepositoryTests {
 	private Role role1;

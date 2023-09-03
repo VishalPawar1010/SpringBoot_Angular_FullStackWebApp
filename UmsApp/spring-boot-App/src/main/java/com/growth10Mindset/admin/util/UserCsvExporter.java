@@ -1,4 +1,4 @@
-package com.luv2code.ecommerce.util;
+package com.growth10Mindset.admin.util;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.luv2code.ecommerce.entity.User;
+import com.growth10Mindset.admin.entity.User;
 import com.opencsv.CSVWriter;
 
 public class UserCsvExporter {
