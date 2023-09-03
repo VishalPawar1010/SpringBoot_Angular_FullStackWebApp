@@ -13,18 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.growth10Mindset.admin.entity.User;
 import com.opencsv.CSVWriter;
 
-public class UserCsvExporter {
+public class UserCsvExporter extends AbstractExporter {
 	
 	public void export(List<User> listUsers, HttpServletResponse response) throws IOException  {
+		super.setResponseHeader(response, "text/csv", ".csv");
 		
-			DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-			String timestamp = formatter.format(new Date());
-			String fileName = "users_" + timestamp + ".csv";
-			
-            response.setContentType("text/csv");
-            String headerValue = "attachment; filename=" + fileName;
-            response.setHeader("Content-Disposition", headerValue);
-
             CSVWriter csvWriter = new CSVWriter(response.getWriter());
 
             String[] header;

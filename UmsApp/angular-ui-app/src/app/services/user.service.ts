@@ -57,8 +57,13 @@ export class UserService {
   }
 
   exportUsersToCSV() {
-    console.log("calling exportUsersToCSV api");
-    return this.httpClient.get(`${this.baseUrl}/csv`, { responseType: 'blob' }); // Use responseType 'blob' to handle binary data
+    return this.httpClient.get(`${this.baseUrl}/csv`, { responseType: 'blob' }); 
+  }
+  exportUsersToExcel() {
+    return this.httpClient.get(`${this.baseUrl}/excel`, { responseType: 'blob' }); 
+  }
+  exportUsersToPDF() {
+    return this.httpClient.get(`${this.baseUrl}/pdf`, { responseType: 'blob' }); 
   }
 }
 interface GetResponse {

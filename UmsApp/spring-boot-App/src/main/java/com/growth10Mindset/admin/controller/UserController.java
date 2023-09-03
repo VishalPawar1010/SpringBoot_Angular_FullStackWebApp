@@ -26,10 +26,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.growth10Mindset.admin.entity.User;
 import com.growth10Mindset.admin.service.UserService;
 import com.growth10Mindset.admin.util.UserCsvExporter;
+import com.growth10Mindset.admin.util.UserExcelExporter;
+import com.growth10Mindset.admin.util.UserJsonExporter;
+import com.growth10Mindset.admin.util.UserPdfExporter;
 import com.opencsv.CSVWriter;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 @CrossOrigin("http://localhost:4200")
 public class UserController {
 
@@ -40,14 +43,14 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@GetMapping("/users")
+	@GetMapping("")
 	public ResponseEntity<List<User>> getAllUsers() {
 
 		List<User> users = userService.getAllUsers();
 		return ResponseEntity.ok(users);
 	}
 
-	@GetMapping("/users/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<User> getUserById(@PathVariable Integer id) {
 		User user = userService.getUserById(id);
 		if (user != null) {
@@ -56,9 +59,8 @@ public class UserController {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	
-	
-	@GetMapping("/users/email/{email}")
+
+	@GetMapping("/email/{email}")
 	public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
 		User user = userService.findByEmail(email);
 		if (user != null) {
@@ -67,29 +69,29 @@ public class UserController {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	
-    @ResponseStatus(value= HttpStatus.OK)
-    @PostMapping("/users/updateImage/{email}")
-    public ResponseEntity<byte[]> updateImage(@RequestParam("profilePic") MultipartFile file, @PathVariable String email) throws IOException{
-    	userService.updateImage(file, email);
-        byte[] image = userService.viewImage(email);
-        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
-    }
 
-    @GetMapping("/users/viewImage/{email}")
-    public ResponseEntity<byte[]> viewImage(@PathVariable String email) {
-        byte[] image = userService.viewImage(email);
-        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
-    }
+	@ResponseStatus(value = HttpStatus.OK)
+	@PostMapping("/updateImage/{email}")
+	public ResponseEntity<byte[]> updateImage(@RequestParam("profilePic") MultipartFile file,
+			@PathVariable String email) throws IOException {
+		userService.updateImage(file, email);
+		byte[] image = userService.viewImage(email);
+		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
+	}
 
-    @PostMapping("/users")
-    public ResponseEntity<User> addUser(@Valid @RequestBody User newUser) {
-        User createdUser = userService.addUser(newUser);
+	@GetMapping("/viewImage/{email}")
+	public ResponseEntity<byte[]> viewImage(@PathVariable String email) {
+		byte[] image = userService.viewImage(email);
+		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
+	}
+
+	@PostMapping("")
+	public ResponseEntity<User> addUser(@Valid @RequestBody User newUser) {
+		User createdUser = userService.addUser(newUser);
 		return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
-    }
+	}
 
-
-	@PutMapping("/users/{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<User> updateUserById(@PathVariable Integer id, @RequestBody User updatedUser) {
 		User savedUser = userService.updateUserById(id, updatedUser);
 		if (savedUser != null) {
@@ -99,30 +101,43 @@ public class UserController {
 		}
 	}
 
-	@DeleteMapping("/users/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteUserById(@PathVariable Integer id) {
 		userService.deleteUserById(id);
 		return ResponseEntity.noContent().build();
 	}
-	
-	@DeleteMapping("/users/deleteImage/{email}")
+
+	@DeleteMapping("/deleteImage/{email}")
 	public ResponseEntity<Void> deleteImage(@PathVariable String email) {
-	    userService.deleteImageByEmail(email);
-	    return ResponseEntity.noContent().build();
+		userService.deleteImageByEmail(email);
+		return ResponseEntity.noContent().build();
 	}
 
+	@GetMapping("/check-email")
+	public boolean checkEmail(@RequestParam("email") String email) {
+		System.out.println("email = " + email);
+		return userService.existsByEmail(email);
+	}
 
-    @GetMapping("/users/check-email")
-    public boolean checkEmail(@RequestParam("email") String email) {
-    	System.out.println("email = " + email );
-        return userService.existsByEmail(email);
-    }
-    
-    @GetMapping("/users/csv")
-    public void exportUsersToCSV(HttpServletResponse response) throws IOException{
+	@GetMapping("/csv")
+	public void exportUsersToCSV(HttpServletResponse response) throws IOException {
 		List<User> listUsers = userService.getAllUsers();
 		UserCsvExporter exporter = new UserCsvExporter();
 		exporter.export(listUsers, response);
-        
-    }
+
+	}
+
+	@GetMapping("/excel")
+	public void exportUsersToExcel(HttpServletResponse response) throws IOException {
+		List<User> listUsers = userService.getAllUsers();
+		UserExcelExporter exporter = new UserExcelExporter();
+		exporter.export(listUsers, response);
+	}
+	@GetMapping("/pdf")
+	public void exportUsersToPdf(HttpServletResponse response) throws IOException {
+		List<User> listUsers = userService.getAllUsers();
+		UserPdfExporter exporter = new UserPdfExporter();
+		exporter.export(listUsers, response);
+	}
+
 }
