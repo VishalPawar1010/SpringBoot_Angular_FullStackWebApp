@@ -41,13 +41,12 @@
         <td>
           <div class="btn-group" role="group" aria-label="User Actions">
             <button class="btn btn-primary btn-sm mr-1" (click)="viewUser(tempUser)">
-              View
+              <i class="fa-solid fa-eye fa-lg"></i>
             </button>
             <button class="btn btn-secondary btn-sm mr-1" (click)="openUpdateUser(tempUser)">
-              Update
-            </button>
-            <button class="btn btn-danger btn-sm" (click)="deleteUser(tempUser)">
-              Delete
+              <i class="fa-solid fa-square-pen fa-lg"></i>            </button>
+            <button class="btn btn-danger btn-sm" (click)="deleteUser(tempUser)" >
+              <i class="fa-solid fa-trash fa-lg"></i>              
             </button>
           </div>
         </td>

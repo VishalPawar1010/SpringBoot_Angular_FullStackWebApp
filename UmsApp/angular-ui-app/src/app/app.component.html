@@ -56,17 +56,25 @@
               <button class="btn btn-primary" (click)="goToUsers()">Users</button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-success" (click)="goToAddUser()">Create New User</button>
+              <button class="btn btn-success" (click)="goToAddUser()">
+                <i class="fa-solid fa-user-plus fa-lg"></i></button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-secondary" (click)="exportToCSV()">CSV</button>
+              <button class="btn btn-secondary" (click)="exportToCSV()" >
+                <i class="fa-solid fa-file-csv fa-xl"></i>
+              </button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-primary" (click)="exportToExcel()">Excel</button>
+              <button class="btn btn-primary" (click)="exportToExcel()">
+                <i class="fa-solid fa-file-excel fa-xl"></i>
+              </button>
             </li>
+            
             <li class="nav-item">
-              <button class="btn btn-primary" (click)="exportToPDF()">PDF</button>
+              <button class="btn btn-secondary" (click)="exportToPDF()">
+                <i class="fa-solid fa-file-pdf fa-xl"></i></button>
             </li>
+
           </ul>
 
 
