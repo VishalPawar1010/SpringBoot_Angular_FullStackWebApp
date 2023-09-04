@@ -27,9 +27,7 @@ import com.growth10Mindset.admin.entity.User;
 import com.growth10Mindset.admin.service.UserService;
 import com.growth10Mindset.admin.util.UserCsvExporter;
 import com.growth10Mindset.admin.util.UserExcelExporter;
-import com.growth10Mindset.admin.util.UserJsonExporter;
 import com.growth10Mindset.admin.util.UserPdfExporter;
-import com.opencsv.CSVWriter;
 
 @RestController
 @RequestMapping("/api/users")
