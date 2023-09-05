@@ -1,4 +1,4 @@
-<div class="mt-0 container container-fluid">
+<div class="mt-3 container container-fluid">
 
   <!-- datatable *ngIf="dtOptions && users" [dtOptions]="dtOptions" -->
   <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped"
@@ -12,7 +12,7 @@
         <th>Last Name</th>
         <th>Gender</th>
         <th>Roles</th>
-        <th>Enabled?</th>
+        <th>isActive?</th>
         <th>Actions</th>
 
       </tr>
@@ -37,7 +37,11 @@
             </li>
           </ul>
         </td>
-        <td>{{ tempUser.enabled }}</td>
+        <td>
+          <i *ngIf="tempUser.enabled == true"  class="fas fa-check-circle fa-lg" style="color: green"></i>
+          <!-- <i  class="fas fa-check-circle fa-lg" style="color: grey"></i> -->
+          <i *ngIf="tempUser.enabled == false" class="fa-solid fa-circle-xmark fa-lg" style="color:#ff0000"></i>
+        </td>
         <td>
           <div class="btn-group" role="group" aria-label="User Actions">
             <button class="btn btn-primary btn-sm mr-1" (click)="viewUser(tempUser)">

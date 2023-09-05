@@ -1,14 +1,10 @@
+.container {
+  min-height: 87.5vh;
+}
+
 ::ng-deep .modal-dialog {
     max-width: 800px !important;
     width: 700px;
-}
-
-.sticky-header {
-    position: sticky;
-    top: 400;
-    z-index: 1;
-    background-color: #faf8f9;
-    /* Change to the desired background color */
 }
 
 /* Styling the pagination buttons */

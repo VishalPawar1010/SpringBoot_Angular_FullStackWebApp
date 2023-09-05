@@ -42,59 +42,9 @@
         </div>
       </div>
     </header> -->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" *ngIf="isLoggedIn">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">ArguEMS</a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <button class="btn btn-primary" (click)="goToUsers()">Users</button>
-            </li>
-            <li class="nav-item">
-              <button class="btn btn-success" (click)="goToAddUser()">
-                <i class="fa-solid fa-user-plus fa-lg"></i></button>
-            </li>
-            <li class="nav-item">
-              <button class="btn btn-secondary" (click)="exportToCSV()" >
-                <i class="fa-solid fa-file-csv fa-xl"></i>
-              </button>
-            </li>
-            <li class="nav-item">
-              <button class="btn btn-primary" (click)="exportToExcel()">
-                <i class="fa-solid fa-file-excel fa-xl"></i>
-              </button>
-            </li>
-            
-            <li class="nav-item">
-              <button class="btn btn-secondary" (click)="exportToPDF()">
-                <i class="fa-solid fa-file-pdf fa-xl"></i></button>
-            </li>
-
-          </ul>
-
-
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                My Account
-              </a>
-              <div class="dropdown-menu dropdown-menu-right " style="right: 0; left: auto;"
-                aria-labelledby="userDropdown">
-                <button class="dropdown-item" (click)="getUserByEmail()">My Account</button>
-                <div class="dropdown-divider"></div>
-                <button class="dropdown-item" (click)="logout()">Logout</button>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <div class="header" *ngIf="isLoggedIn">
+      <app-header></app-header>
+    </div>   
 
     <div class="main-content">
       <router-outlet></router-outlet>
@@ -102,11 +52,10 @@
 
   </div>
 </div>
-
+<!-- 
 
 <footer *ngIf="isLoggedIn">
-  <ul>
+  <ul style="margin-bottom: 0px;">
     <li><a href="#">Welcome to ArguEMS </a></li>
-
   </ul>
-</footer>
+</footer> -->

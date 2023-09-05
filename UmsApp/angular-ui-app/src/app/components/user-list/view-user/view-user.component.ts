@@ -16,6 +16,7 @@ export class ViewUserComponent implements OnInit {
   tempProfilePic: any;
   showAlert: boolean = false;
   showMessage: boolean = false;
+  isEnabled: boolean = false;
   file: File | undefined;
 
   @ViewChild('fileInput') fileInput: ElementRef;
@@ -38,6 +39,9 @@ export class ViewUserComponent implements OnInit {
       this.userService.getUserById(userId).subscribe(
         (res) => {
           this.userEmail = res.email;
+          if(res.enabled == true) {
+            this.isEnabled = true;
+          }
           // console.log(res);
           this.loadProfilePic();
           this.user = res;
@@ -76,8 +80,14 @@ export class ViewUserComponent implements OnInit {
   deleteImage() {
     // console.log('test delete');
     this.userService.deleteProfilePic(this.userEmail).subscribe((res) => {
-      this.profilePic =
+      if(this.user.gender == 'male') {
+        this.profilePic =
         'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp';
+      } else {
+        this.profilePic =
+        'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2.webp';
+      }
+      
       // this.profilePic = this.userService.getImage(this.userEmail).subscribe((imageData: Blob) => {
       //   console.log(this.userEmail);
       //   const reader = new FileReader();

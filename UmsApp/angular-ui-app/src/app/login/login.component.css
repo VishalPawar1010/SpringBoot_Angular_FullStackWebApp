@@ -1,8 +1,9 @@
 .error-message{
     color: red;
 }
+
 .container {
+    min-height: 100vh;
     justify-content: center;
-    margin-top: 20vh;
-  }
+}
   
