@@ -16,11 +16,12 @@ import { AddUserComponent } from './components/user-list/add-user/add-user.compo
 import { UpdateUserComponent } from './components/user-list/update-user/update-user.component';
 import { ViewUserComponent } from './components/user-list/view-user/view-user.component';
 import { DataTablesModule } from 'angular-datatables';
+import { HeaderComponent } from './components/header/header.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/users',
+    redirectTo: '/login',
     pathMatch: 'full',
   },
   {
@@ -71,6 +72,7 @@ const routes: Routes = [
     LoginComponent,
     UpdateUserComponent,
     ViewUserComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

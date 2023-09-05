@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <form class="col-10" style="max-width: 500px; margin: 0 auto" #addUserForm="ngForm">
     <div class="border border-secondary rounded p-3 d-flex flex-column">
       <div class="my-auto">
@@ -136,11 +136,11 @@
       </div>
     </div>
   </form>
-  <div class="container text-center">
-    <span *ngIf="message" class="mb-4 text-center font-weight-bold text-success">
+  <div class="mb-4 text-center font-weight-bold">
+    <span *ngIf="message" style="color: green;">
       {{ message }}
     </span>
 
-    <span *ngIf="errorMessage" class="mb-4text-center font-weight-bold text-alert">{{ errorMessage }}</span>
+    <span *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</span>
   </div>
 </div>

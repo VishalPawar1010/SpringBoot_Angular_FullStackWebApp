@@ -1,3 +1,7 @@
+.container {
+    min-height: 90vh;
+}
+
 .custom-checkbox {
     border: 2px solid green;
     padding: 4px;
