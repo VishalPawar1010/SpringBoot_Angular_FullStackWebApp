@@ -9,6 +9,7 @@ body {
 .container {
     display: grid;
     place-items: center;
+    min-height: 90vh;
 }
 
 .card {
