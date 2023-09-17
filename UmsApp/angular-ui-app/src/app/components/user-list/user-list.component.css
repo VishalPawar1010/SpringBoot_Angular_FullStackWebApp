@@ -67,3 +67,27 @@
     font-size: 14px; /* Adjust the font size as per your preference */
   }
   
+  /* CSS for hiding columns on mobile devices */
+@media screen and (max-width: 768px) {
+  /* small screen */
+
+  /* div.full-details { display: none;} */
+  /* div.less-details { display: block;} */
+  .hide-on-mobile {
+    display: none;
+  }
+}
+
+@media screen and  (min-width: 768px) and (max-width: 1024px) {
+  /* median screen */
+
+  div.full-details { display: block;}
+  div.less-details { display: none;}
+
+}
+@media screen and  (min-width: 1024px) {
+  /* big screen */
+
+  div.less-details { display: none;}
+
+}
