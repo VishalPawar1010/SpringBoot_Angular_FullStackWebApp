@@ -1,47 +1,5 @@
 <div class="page-wrapper">
   <div class="page-container">
-    <!-- <nav class="navbar navbar-dark bg-dark"> -->
-    <!-- Navbar content -->
-
-
-    <!-- <header class="header-desktop" *ngIf="isLoggedIn">
-      <aside class="menu-sidebar d-none d-lg-block">
-        <div class="logo">
-          <a href="#">
-            <img src="assets/images/argushop-logo.png" alt="ArguShop" class="img-responsive" />
-          </a>
-        </div>
-      </aside>
-      <div class="section-content section-content-p30">
-        <div class="container-fluid">
-          <div class="header-wrap">
-            <div class="btn-group" role="group" aria-label="Users and Roles Buttons">
-              <div class="mr-2">
-                <button class="btn btn-secondary " (click)="goToUsers()">Users</button>
-              </div>
-              <div class="ml-2">
-                <button class="btn btn-secondary ml-2" routerLink="/roles" routerLinkActive="active-link">Roles</button>
-              </div>
-              <div class="mr-2">
-                <button class="btn btn-success d-md-inline mt-0" (click)="goToAddUser()">
-                  Create New User
-                </button>
-              </div>
-            </div>
-
-
-            <div class="account-wrap">
-              <button class="btn btn-light ml-auto" color="accent" (click)="getUserByEmail()">
-                My Account
-              </button>
-              <button class="btn btn-danger ml-auto" color="accent" data-testid="logout" (click)="logout()">
-                Logout
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header> -->
     <div class="header" *ngIf="isLoggedIn">
       <app-header></app-header>
     </div>   
