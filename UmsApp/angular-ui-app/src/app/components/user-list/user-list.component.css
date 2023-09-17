@@ -7,36 +7,6 @@
     width: 700px;
 }
 
-/* Styling the pagination buttons */
-/* .dataTables_wrapper .dataTables_paginate .paginate_button {
-    padding: 0.5rem 0.75rem;
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
-    border-radius: 0.25rem;
-    background-color: #e9ecef;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    background-color: #adb5bd;
-  }
-  
-  .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
-  .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-  .pagination-icon {
-    font-size: 4px;
-  }
-   */
-
    .dataTables_wrapper .dataTables_paginate .paginate_button {
     padding: 0.01rem 0.01rem;  
     margin-left: 0rem;
@@ -71,8 +41,6 @@
 @media screen and (max-width: 768px) {
   /* small screen */
 
-  /* div.full-details { display: none;} */
-  /* div.less-details { display: block;} */
   .hide-on-mobile {
     display: none;
   }
@@ -81,13 +49,8 @@
 @media screen and  (min-width: 768px) and (max-width: 1024px) {
   /* median screen */
 
-  div.full-details { display: block;}
-  div.less-details { display: none;}
-
 }
 @media screen and  (min-width: 1024px) {
   /* big screen */
-
-  div.less-details { display: none;}
 
 }
