@@ -1,4 +1,4 @@
-<div class="mt-3 container container-fluid table-responsive" >
+<div class="mt-3 container container-fluid  table-responsive" >
 
   <!-- datatable *ngIf="dtOptions && users" [dtOptions]="dtOptions" -->
   <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped"
@@ -9,7 +9,7 @@
         <th class="hide-on-mobile">Email</th>
         <th >Full Name</th>
         <!-- <th class="hide-on-mobile">Last Name</th> -->
-        <th class="hide-on-mobile">Gender</th>
+        <th class="hide-on-mobile hide-on-tab">Gender</th>
         <th class="hide-on-mobile">Roles</th>
         <th class="hide-on-mobile">Enabled?</th>
         <th>isActive?</th>
@@ -27,7 +27,7 @@
         <td class="hide-on-mobile">{{ tempUser.email }}</td>
         <td>{{ tempUser.firstName }} {{ tempUser.lastName }}</td>
         <!-- <td class="hide-on-mobile">{{ tempUser.lastName }}</td> -->
-        <td class="hide-on-mobile">{{ tempUser.gender }}</td>
+        <td class="hide-on-mobile hide-on-tab">{{ tempUser.gender }}</td>
         <td class="hide-on-mobile">
           <!-- <ul> -->
             <li *ngFor="let role of tempUser.roles">

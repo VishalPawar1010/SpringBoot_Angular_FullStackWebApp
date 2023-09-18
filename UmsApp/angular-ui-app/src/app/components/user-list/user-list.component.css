@@ -1,5 +1,7 @@
 .container {
   min-height: 87.5vh;
+  /* margin: auto; */
+  /* background-color: #007bff; */
 }
 
 ::ng-deep .modal-dialog {
@@ -49,8 +51,16 @@
 @media screen and  (min-width: 768px) and (max-width: 1024px) {
   /* median screen */
 
+.hide-on-tab{
+  display: none;
+
+}
+
 }
 @media screen and  (min-width: 1024px) {
   /* big screen */
-
+  .container {
+    margin: auto;
+    /* background-color: #007bff; */
+  }
 }
