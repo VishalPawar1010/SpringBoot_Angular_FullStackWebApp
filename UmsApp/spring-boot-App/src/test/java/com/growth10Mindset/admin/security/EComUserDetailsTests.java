@@ -6,7 +6,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import com.growth10Mindset.admin.entity.Role;
 import com.growth10Mindset.admin.entity.User;
-import com.growth10Mindset.admin.security.eComUserDetails;
 
 import java.util.Collections;
 import java.util.Set;
@@ -87,7 +86,7 @@ class EComUserDetailsTests {
         user.setLastName("Doe");
 
         eComUserDetails userDetails = new eComUserDetails(user);
-        assertEquals("John Doe", userDetails.getFullname());
+        assertEquals("John Doe", userDetails.getFullName());
     }
 
     @Test

@@ -15,10 +15,8 @@ import com.growth10Mindset.admin.entity.User;
 @Repository
 @CrossOrigin("http://localhost:4200")
 public interface UserRepository extends JpaRepository<User, Integer> {
-	
-	Optional<User> findByEmail(String email);
-	
+
+    Optional<User> findByEmail(String email);
+
     boolean existsByEmail(String email);
-
-
 }

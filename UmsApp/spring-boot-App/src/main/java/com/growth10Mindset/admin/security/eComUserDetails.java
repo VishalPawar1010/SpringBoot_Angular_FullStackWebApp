@@ -14,63 +14,62 @@ import com.growth10Mindset.admin.entity.User;
 
 public class eComUserDetails implements UserDetails {
 
-	private User user;
+    private final User user;
 
-	public eComUserDetails(User user) {
+    public eComUserDetails(User user) {
 //		super();
-		this.user = user;
-	}
+        this.user = user;
+    }
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Set<Role> roles = user.getRoles();
-		List<SimpleGrantedAuthority> authories = new ArrayList<>();
-		for (Role role : roles) {
-			authories.add(new SimpleGrantedAuthority( role.getName()));
-		}
-		return authories;
-	}
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Set<Role> roles = user.getRoles();
+        List<SimpleGrantedAuthority> authorizes = new ArrayList<>();
+        for (Role role : roles) {
+            authorizes.add(new SimpleGrantedAuthority(role.getName()));
+        }
+        return authorizes;
+    }
 
-	@Override
-	public String getPassword() {
-		return user.getPassword();
-	}
+    @Override
+    public String getPassword() {
+        return user.getPassword();
+    }
 
-	@Override
-	public String getUsername() {
-		return user.getEmail();
-	}
+    @Override
+    public String getUsername() {
+        return user.getEmail();
+    }
 
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
 
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
 
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
 
-	@Override
-	public boolean isEnabled() {
-		return user.isEnabled();
-	}
+    @Override
+    public boolean isEnabled() {
+        return user.isEnabled();
+    }
 
-	public String getFullname() {
-		return this.user.getFirstName() + " " + this.user.getLastName();
-	}
+    public String getFullName() {
+        return this.user.getFirstName() + " " + this.user.getLastName();
+    }
 
-	public void setFirstName(String firstName) {
-		this.user.setFirstName(firstName);
-	}
+    public void setFirstName(String firstName) {
+        this.user.setFirstName(firstName);
+    }
 
-	public void setLastName(String lastName) {
-		this.user.setLastName(lastName);
-	}
-
+    public void setLastName(String lastName) {
+        this.user.setLastName(lastName);
+    }
 }

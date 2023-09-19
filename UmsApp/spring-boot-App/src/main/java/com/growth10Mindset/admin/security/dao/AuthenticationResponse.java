@@ -35,28 +35,28 @@ public class AuthenticationResponse {
         }
     }
 
-	public String getToken() {
-		return token;
-	}
+    public String getToken() {
+        return token;
+    }
 
-	public void setToken(String token) {
-		this.token = token;
-	}
-	
+    public void setToken(String token) {
+        this.token = token;
+    }
 
-	public AuthenticationResponse() {
+
+    public AuthenticationResponse() {
 //		super();
-	}
+    }
 
-	public AuthenticationResponse(String token) {
-		super();
-		this.token = token;
-	}
+    public AuthenticationResponse(String token) {
+        super();
+        this.token = token;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.nullSafeHashCode(token);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.nullSafeHashCode(token);
+    }
 
 //	@Override
 //	public boolean equals(Object obj) {
@@ -77,5 +77,4 @@ public class AuthenticationResponse {
 //	}
 
 
-    
 }

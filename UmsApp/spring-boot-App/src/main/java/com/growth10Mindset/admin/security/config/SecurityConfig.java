@@ -27,38 +27,42 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-	@Autowired
-	private JwtAuthenticationFilter jwtAuthenticationFilter;
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
 
-	@Autowired
-	private AuthenticationProvider authenticationProvider;
+    private AuthenticationProvider authenticationProvider;
 
-	@Bean
-	protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    @Autowired
+    public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter, AuthenticationProvider authenticationProvider) {
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+        this.authenticationProvider = authenticationProvider;
+    }
 
-		http.cors().and().csrf().disable();
+    @Bean
+    protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests()
-		
-		.antMatchers("/api/login","/api/logout").permitAll()
-		.antMatchers("/api/roles").hasAnyAuthority("SuperAdmin","Admin")
-		.antMatchers("/api/**").hasAuthority("SuperAdmin")
-		.antMatchers("/home").authenticated()
-		;
+        http.cors().and().csrf().disable();
 
-		
-		 http
-         .logout()
-             .logoutUrl("/logout") 
-             .logoutSuccessUrl("/api/login?logout") 
-             .invalidateHttpSession(true) 
-             .deleteCookies("Token"); 
-	
-		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-				.authenticationProvider(authenticationProvider)
-				.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-		return http.build();
-	}
+        http.authorizeRequests()
+
+                .antMatchers("/api/login", "/api/logout").permitAll()
+                .antMatchers("/api/roles").hasAnyAuthority("SuperAdmin", "Admin")
+                .antMatchers("/api/**").hasAuthority("SuperAdmin")
+                .antMatchers("/home").authenticated()
+        ;
+
+
+        http
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/api/login?logout")
+                .invalidateHttpSession(true)
+                .deleteCookies("Token");
+
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .authenticationProvider(authenticationProvider)
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        return http.build();
+    }
 
 //	private String[] getServices(String location) {
 //		InputStream fileStream = TypeReference.class.getResourceAsStream(location);

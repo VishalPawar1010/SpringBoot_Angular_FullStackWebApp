@@ -27,11 +27,16 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-     JwtService jwtService = new JwtService();
-    
-    @Autowired eComUserDetailsService userDetailsService;
+    JwtService jwtService = new JwtService();
 
-	@Override
+    eComUserDetailsService userDetailsService;
+
+    @Autowired
+    public JwtAuthenticationFilter(eComUserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
+
+    @Override
     protected void doFilterInternal(
             @NonNull HttpServletRequest request,
             @NonNull HttpServletResponse response,
@@ -41,7 +46,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String jwt;
         final String userEmail;
 
-        if(authHeader == null || !authHeader.startsWith("Bearer ")){
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -49,20 +54,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         // To Extract Email from JWT token need jwtService class
         userEmail = jwtService.extractUsername(jwt);
-        if(userEmail != null || SecurityContextHolder.getContext().getAuthentication() == null){
-        	eComUserDetails userDetails = (eComUserDetails) this.userDetailsService.loadUserByUsername(userEmail);
-            if(jwtService.isTokenValid(jwt, userDetails)){
+        if (userEmail != null || SecurityContextHolder.getContext().getAuthentication() == null) {
+            eComUserDetails userDetails = (eComUserDetails) this.userDetailsService.loadUserByUsername(userEmail);
+            if (jwtService.isTokenValid(jwt, userDetails)) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                         userDetails,
                         null,
                         userDetails.getAuthorities()
                 );
-             authToken.setDetails(
-                       new WebAuthenticationDetailsSource().buildDetails(request));
+                authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }
         filterChain.doFilter(request, response);
-
     }
 }

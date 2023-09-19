@@ -1,4 +1,4 @@
-<div class="mt-3 container container-fluid  table-responsive" >
+<div class="mt-3 container container-fluid table-responsive" >
 
   <!-- datatable *ngIf="dtOptions && users" [dtOptions]="dtOptions" -->
   <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped"
@@ -32,6 +32,7 @@
           <!-- <ul> -->
             <li *ngFor="let role of tempUser.roles">
               {{ role.name }}
+              <span *ngIf="role !== tempUser.roles[tempUser.roles.length - 1]">, </span>
             </li>
           <!-- </ul> -->
         </td>

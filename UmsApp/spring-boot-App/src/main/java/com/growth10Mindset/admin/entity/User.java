@@ -29,157 +29,153 @@ import org.springframework.web.multipart.MultipartFile;
 @Entity
 @Table(name = "users")
 public class User {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-	@Column(length = 128, nullable = false, unique = true)
-	@NotEmpty(message = "Email is required")
-	@NotNull(message = "Email should not be null")
+    @Column(length = 128, nullable = false, unique = true)
+    @NotEmpty(message = "Email is required")
+    @NotNull(message = "Email should not be null")
     @Email(message = "Invalid email format")
-	private String email;
+    private String email;
 
-	@Column(length = 64, nullable = false)
-	@NotBlank(message = "Password is required")
+    @Column(length = 64, nullable = false)
+    @NotBlank(message = "Password is required")
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$",
             message = "Password must contain at least one alphabetical character, one digit, one special character, and be at least 8 characters long.")
-	private String password;
+    private String password;
 
-	@Column(name = "first_name", length = 45, nullable = false)
-	@Size(min=2, message= "firstName must be at least 2 characters long")
-	@NotBlank(message = "First Name is required")
+    @Column(name = "first_name", length = 45, nullable = false)
+    @Size(min = 2, message = "firstName must be at least 2 characters long")
+    @NotBlank(message = "First Name is required")
     @Pattern(regexp = "^[A-Z][a-zA-Z]*$", message = "First Name should start with a capital letter and contain only alphabets.")
-	private String firstName;
+    private String firstName;
 
-	@Column(name = "last_name", length = 45, nullable = false)
-	@Size(min=2, message= "Lenth must be greater than 1")
-	@NotBlank(message = "Last Name is required")
+    @Column(name = "last_name", length = 45, nullable = false)
+    @Size(min = 2, message = "Lenth must be greater than 1")
+    @NotBlank(message = "Last Name is required")
     @Pattern(regexp = "^[A-Z][a-zA-Z]*$", message = "Last Name should start with a capital letter and contain only alphabets.")
-	private String lastName;
-	
-    @Column(name="gender", length = 45, nullable = false)
+    private String lastName;
+
+    @Column(name = "gender", length = 45, nullable = false)
     @NotBlank(message = "Gender is required")
     private String gender;
 
+    @Lob
+    @Column(name = "photos", columnDefinition = "LONGBLOB")
+    private byte[] photos;
 
-	@Lob
-	@Column(name = "photos", columnDefinition = "LONGBLOB")
-	private byte[] photos;
+    @Transient
+    private MultipartFile photoFile;
 
-	@Transient
-	private MultipartFile photoFile;
+    private boolean enabled;
 
-	private boolean enabled;
-
-	@ManyToMany
-	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	@Fetch(FetchMode.JOIN)
+    @ManyToMany
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @Fetch(FetchMode.JOIN)
     @NotEmpty(message = "At least one role is required")
     @Size(min = 1, message = "At least one role is required")
-	private Set<Role> roles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	
-	public String getGender() {
-		return gender;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+    public String getGender() {
+        return gender;
+    }
 
-	public byte[] getPhotos() {
-		return photos;
-	}
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
-	public void setPhotos(byte[] photos) {
-		this.photos = photos;
-	}
+    public byte[] getPhotos() {
+        return photos;
+    }
 
-	public MultipartFile getPhotoFile() {
-		return photoFile;
-	}
+    public void setPhotos(byte[] photos) {
+        this.photos = photos;
+    }
 
-	public void setPhotoFile(MultipartFile photoFile) {
-		this.photoFile = photoFile;
-	}
+    public MultipartFile getPhotoFile() {
+        return photoFile;
+    }
 
-	public boolean isEnabled() {
-		return enabled;
-	}
+    public void setPhotoFile(MultipartFile photoFile) {
+        this.photoFile = photoFile;
+    }
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
+    public boolean isEnabled() {
+        return enabled;
+    }
 
-	public Set<Role> getRoles() {
-		return roles;
-	}
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
+    public Set<Role> getRoles() {
+        return roles;
+    }
 
-	public void addRole(Role role) {
-		this.roles.add(role);
-	}
-	
-	public User() {
-	}
-	
-	public User(Integer id, String email, String password, String firstName, String lastName, String gender,
-			boolean enabled, Set<Role> roles) {
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public void addRole(Role role) {
+        this.roles.add(role);
+    }
+
+    public User() {
+    }
+
+    public User(Integer id, String email, String password, String firstName, String lastName, String gender,
+                boolean enabled, Set<Role> roles) {
 //		super();
-		this.id = id;
-		this.email = email;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.gender = gender;
-		this.enabled = enabled;
-		this.roles = roles;
-	}
-
-
-
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.enabled = enabled;
+        this.roles = roles;
+    }
 
 //	public User(
 //			String email,
@@ -191,11 +187,9 @@ public class User {
 //		this.roles = roles;
 //	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", gender=" + gender + ", enabled=" + enabled + ", roles=" + roles + "]";
-	}
-
-	
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
+                + ", lastName=" + lastName + ", gender=" + gender + ", enabled=" + enabled + ", roles=" + roles + "]";
+    }
 }

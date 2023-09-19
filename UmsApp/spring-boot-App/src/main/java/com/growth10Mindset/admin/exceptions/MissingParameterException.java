@@ -1,6 +1,6 @@
 package com.growth10Mindset.admin.exceptions;
 
-public class MissingParameterException extends Exception{
+public class MissingParameterException extends Exception {
     public MissingParameterException() {
         super();
     }

@@ -13,12 +13,10 @@ import com.growth10Mindset.admin.entity.User;
 import com.growth10Mindset.admin.repo.UserRepository;
 import com.growth10Mindset.admin.util.ImageUtil;
 
-
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-	private final String defaultPassword = "Admin@123";
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
@@ -37,99 +35,90 @@ public class UserServiceImpl implements UserService {
         }
         return users;
     }
-    
+
     @Override
     public User getUserById(Integer id) {
         Optional<User> userOptional = userRepository.findById(id);
         return userOptional.orElse(null);
     }
-    
+
     public User findByEmail(String email) {
         return userRepository.findByEmail(email).get();
     }
-    
+
     private String encode(String password) {
-    	BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-    	String ecodedPassword = bcrypt.encode(password);
-    	return ecodedPassword;
+        BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+        return bcrypt.encode(password);
     }
-    
+
     @Override
     public User addUser(User newUser) {
-
-    	
-    	if(newUser.getPassword() != null) {
-    		newUser.setPassword(encode(newUser.getPassword()));
-    	}
-    	else {
-    		newUser.setPassword(encode(defaultPassword));
-    	}
-    	
+        if (newUser.getPassword() != null) {
+            newUser.setPassword(encode(newUser.getPassword()));
+        } else {
+            String defaultPassword = "Admin@123";
+            newUser.setPassword(encode(defaultPassword));
+        }
         return userRepository.save(newUser);
     }
-    
-	
-	@Override
-	public User updateUserById(Integer id, User updatedUser) {
-	    Optional<User> userOptional = userRepository.findById(id);
-	    if (userOptional.isPresent()) {
-	        User user = userOptional.get();
-	        user.setEmail(updatedUser.getEmail());
-	    	updatedUser.setPassword(encode(updatedUser.getPassword()));
-	        user.setFirstName(updatedUser.getFirstName());
-	        user.setLastName(updatedUser.getLastName());
-	        user.setGender(updatedUser.getGender());
+
+    @Override
+    public User updateUserById(Integer id, User updatedUser) {
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setEmail(updatedUser.getEmail());
+            updatedUser.setPassword(encode(updatedUser.getPassword()));
+            user.setFirstName(updatedUser.getFirstName());
+            user.setLastName(updatedUser.getLastName());
+            user.setGender(updatedUser.getGender());
 //	        user.setPhotos(updatedUser.getPhotos());
-	        user.setEnabled(updatedUser.isEnabled());
-	        user.setRoles(updatedUser.getRoles());
+            user.setEnabled(updatedUser.isEnabled());
+            user.setRoles(updatedUser.getRoles());
 
-	        return userRepository.save(user);
-	    } else {
-	        return null;
-	    }
-	}
-	
-	@Override
-	public void deleteUserById(Integer id) {
-	    Optional<User> userOptional = userRepository.findById(id);
-	    if (userOptional.isPresent()) {
-	        User user = userOptional.get();
-	        userRepository.delete(user);
-	    }
-	}
+            return userRepository.save(user);
+        } else {
+            return null;
+        }
+    }
 
-	@Override
-	public User updateImage(MultipartFile file, String email) throws IOException {
-		 Optional<User> user = userRepository.findByEmail(email);
-		 user.get().setPhotos(ImageUtil.compressImage(file.getBytes()));
-	        return userRepository.save(user.get());
-	}
+    @Override
+    public void deleteUserById(Integer id) {
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            userRepository.delete(user);
+        }
+    }
 
-	@Override
-	public byte[] viewImage(String email) {
-		 Optional<User> user = userRepository.findByEmail(email);
-		
-	        return ImageUtil.decompressImage(user.get().getPhotos());
-	}
+    @Override
+    public User updateImage(MultipartFile file, String email) throws IOException {
+        Optional<User> user = userRepository.findByEmail(email);
+        if (user.isPresent()) {
+            user.get().setPhotos(ImageUtil.compressImage(file.getBytes()));
+            return userRepository.save(user.get());
+        }
+        return null;
+    }
 
-	@Override
-	public void deleteImageByEmail(String email) {
-		Optional<User> userOptional = userRepository.findByEmail(email);
-	    if (userOptional.isPresent()) {
-	        if (userOptional != null) {
-	        	User user = userOptional.get();
-	            user.setPhotos(null); 
-	            userRepository.save(user);
-	        }
-	    }		
-	}
+    @Override
+    public byte[] viewImage(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        return user.map(value -> ImageUtil.decompressImage(value.getPhotos())).orElseGet(() -> new byte[0]);
+    }
 
-	@Override
-	public boolean existsByEmail(String email) {
+    @Override
+    public void deleteImageByEmail(String email) {
+        Optional<User> userOptional = userRepository.findByEmail(email);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setPhotos(null);
+            userRepository.save(user);
+        }
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
-	}
-
-
-
-
+    }
 }

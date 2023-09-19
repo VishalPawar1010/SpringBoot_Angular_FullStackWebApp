@@ -30,7 +30,6 @@ public class LoginDetail {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
 
 	public LoginDetail() {
 //		super();
@@ -41,8 +40,4 @@ public class LoginDetail {
 		this.email = email;
 		this.password = password;
 	}
-
-
-
-
 }

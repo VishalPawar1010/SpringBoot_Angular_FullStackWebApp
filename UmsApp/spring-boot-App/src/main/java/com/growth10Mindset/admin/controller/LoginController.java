@@ -22,31 +22,26 @@ import com.growth10Mindset.admin.security.service.LoginService;
 //@CrossOrigin("*")
 public class LoginController {
 
-	@GetMapping("/home")
-	public String home() {
-		return "Welcome to home";
-	}
-	
-	private LoginService loginService;
+    @GetMapping("/home")
+    public String home() {
+        return "Welcome to home";
+    }
+
+    private final LoginService loginService;
 
     @Autowired
-    public LoginController(
-    		@Qualifier("loginServiceImpl") 
-    		LoginService loginService) {
+    public LoginController(@Qualifier("loginServiceImpl") LoginService loginService) {
         this.loginService = loginService;
     }
 
-	
-	@PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> loginRequest(@RequestBody LoginDetail loginDetail) throws MissingParameterException 
-    		 {
+    @PostMapping("/login")
+    public ResponseEntity<AuthenticationResponse> loginRequest(@RequestBody LoginDetail loginDetail) throws MissingParameterException {
         return ResponseEntity.ok(loginService.loginRequest(loginDetail));
     }
-	
-	@PostMapping("/logout")
-	  public ResponseEntity<AuthenticationResponse> logout(@RequestBody LoginDetail loginDetail) {
 
-	    return ResponseEntity.ok().build();
-	  }
-
+    @PostMapping("/logout")
+    public ResponseEntity<AuthenticationResponse> logout(@RequestBody LoginDetail loginDetail) {
+		System.out.println(loginDetail.getEmail() + " successfully logged out.");
+        return ResponseEntity.ok().build();
+    }
 }

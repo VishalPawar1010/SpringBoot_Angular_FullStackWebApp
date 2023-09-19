@@ -34,108 +34,106 @@ import com.growth10Mindset.admin.util.UserPdfExporter;
 @CrossOrigin("http://localhost:4200")
 public class UserController {
 
-	private final UserService userService;
+    private final UserService userService;
 
-	@Autowired
-	public UserController(UserService userService) {
-		this.userService = userService;
-	}
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
-	@GetMapping("")
-	public ResponseEntity<List<User>> getAllUsers() {
+    @GetMapping("")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);
+    }
 
-		List<User> users = userService.getAllUsers();
-		return ResponseEntity.ok(users);
-	}
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Integer id) {
+        User user = userService.getUserById(id);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
-	@GetMapping("/{id}")
-	public ResponseEntity<User> getUserById(@PathVariable Integer id) {
-		User user = userService.getUserById(id);
-		if (user != null) {
-			return ResponseEntity.ok(user);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
+    @GetMapping("/email/{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+        User user = userService.findByEmail(email);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
-	@GetMapping("/email/{email}")
-	public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
-		User user = userService.findByEmail(email);
-		if (user != null) {
-			return ResponseEntity.ok(user);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
+    @ResponseStatus(value = HttpStatus.OK)
+    @PostMapping("/updateImage/{email}")
+    public ResponseEntity<byte[]> updateImage(@RequestParam("profilePic") MultipartFile file,
+                                              @PathVariable String email) throws IOException {
+        userService.updateImage(file, email);
+        byte[] image = userService.viewImage(email);
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
+    }
 
-	@ResponseStatus(value = HttpStatus.OK)
-	@PostMapping("/updateImage/{email}")
-	public ResponseEntity<byte[]> updateImage(@RequestParam("profilePic") MultipartFile file,
-			@PathVariable String email) throws IOException {
-		userService.updateImage(file, email);
-		byte[] image = userService.viewImage(email);
-		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
-	}
+    @GetMapping("/viewImage/{email}")
+    public ResponseEntity<byte[]> viewImage(@PathVariable String email) {
+        byte[] image = userService.viewImage(email);
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
+    }
 
-	@GetMapping("/viewImage/{email}")
-	public ResponseEntity<byte[]> viewImage(@PathVariable String email) {
-		byte[] image = userService.viewImage(email);
-		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
-	}
+    @PostMapping("")
+    public ResponseEntity<User> addUser(@Valid @RequestBody User newUser) {
+        User createdUser = userService.addUser(newUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+    }
 
-	@PostMapping("")
-	public ResponseEntity<User> addUser(@Valid @RequestBody User newUser) {
-		User createdUser = userService.addUser(newUser);
-		return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
-	}
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUserById(@PathVariable Integer id, @RequestBody User updatedUser) {
+        User savedUser = userService.updateUserById(id, updatedUser);
+        if (savedUser != null) {
+            return ResponseEntity.ok(savedUser);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
-	@PutMapping("/{id}")
-	public ResponseEntity<User> updateUserById(@PathVariable Integer id, @RequestBody User updatedUser) {
-		User savedUser = userService.updateUserById(id, updatedUser);
-		if (savedUser != null) {
-			return ResponseEntity.ok(savedUser);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUserById(@PathVariable Integer id) {
+        userService.deleteUserById(id);
+        return ResponseEntity.noContent().build();
+    }
 
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteUserById(@PathVariable Integer id) {
-		userService.deleteUserById(id);
-		return ResponseEntity.noContent().build();
-	}
+    @DeleteMapping("/deleteImage/{email}")
+    public ResponseEntity<Void> deleteImage(@PathVariable String email) {
+        userService.deleteImageByEmail(email);
+        return ResponseEntity.noContent().build();
+    }
 
-	@DeleteMapping("/deleteImage/{email}")
-	public ResponseEntity<Void> deleteImage(@PathVariable String email) {
-		userService.deleteImageByEmail(email);
-		return ResponseEntity.noContent().build();
-	}
+    @GetMapping("/check-email")
+    public boolean checkEmail(@RequestParam("email") String email) {
+        System.out.println("email = " + email);
+        return userService.existsByEmail(email);
+    }
 
-	@GetMapping("/check-email")
-	public boolean checkEmail(@RequestParam("email") String email) {
-		System.out.println("email = " + email);
-		return userService.existsByEmail(email);
-	}
+    @GetMapping("/csv")
+    public void exportUsersToCSV(HttpServletResponse response) throws IOException {
+        List<User> listUsers = userService.getAllUsers();
+        UserCsvExporter exporter = new UserCsvExporter();
+        exporter.export(listUsers, response);
+    }
 
-	@GetMapping("/csv")
-	public void exportUsersToCSV(HttpServletResponse response) throws IOException {
-		List<User> listUsers = userService.getAllUsers();
-		UserCsvExporter exporter = new UserCsvExporter();
-		exporter.export(listUsers, response);
+    @GetMapping("/excel")
+    public void exportUsersToExcel(HttpServletResponse response) throws IOException {
+        List<User> listUsers = userService.getAllUsers();
+        UserExcelExporter exporter = new UserExcelExporter();
+        exporter.export(listUsers, response);
+    }
 
-	}
-
-	@GetMapping("/excel")
-	public void exportUsersToExcel(HttpServletResponse response) throws IOException {
-		List<User> listUsers = userService.getAllUsers();
-		UserExcelExporter exporter = new UserExcelExporter();
-		exporter.export(listUsers, response);
-	}
-	@GetMapping("/pdf")
-	public void exportUsersToPdf(HttpServletResponse response) throws IOException {
-		List<User> listUsers = userService.getAllUsers();
-		UserPdfExporter exporter = new UserPdfExporter();
-		exporter.export(listUsers, response);
-	}
-
+    @GetMapping("/pdf")
+    public void exportUsersToPdf(HttpServletResponse response) throws IOException {
+        List<User> listUsers = userService.getAllUsers();
+        UserPdfExporter exporter = new UserPdfExporter();
+        exporter.export(listUsers, response);
+    }
 }
