@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', this.token);
           localStorage.setItem('loggedInUserEmail', this.model.username);
           this.authService.setLoginStatus(true);
-          this.router.navigate(['users']);
+          this.router.navigate(['home-page']);
         },
         error: (err) => {
           this.loginError = 'Invalid user email or password';

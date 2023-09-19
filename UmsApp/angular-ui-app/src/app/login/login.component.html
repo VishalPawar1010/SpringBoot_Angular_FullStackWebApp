@@ -1,4 +1,4 @@
-<div class="container d-flex flex-column align-items-center">
+<!-- <div class="container d-flex flex-column align-items-center">
   <form class="col-5" style="margin: 0" (ngSubmit)="login()">
     <div class="border border-secondary rounded p-3">
       <p class="h5 mb-4 text-center">Please Login ...</p>
@@ -23,4 +23,26 @@
       <div class="error-message" *ngIf="loginError">{{ loginError }}</div>
     </div>
   </form>
+</div> -->
+
+<div class="login-container">
+  <form class="login-form" (ngSubmit)="login()">
+    <div class="login-card">
+      <h2 class="text-center mb-4">Please Login ...</h2>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" name="email" [(ngModel)]="model.username" class="form-control" id="email" placeholder="email" />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" [(ngModel)]="model.password" class="form-control" id="password" placeholder="Password" />
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+      <div class="error-message" *ngIf="loginError">{{ loginError }}</div>
+    </div>
+  </form>
 </div>
+
+

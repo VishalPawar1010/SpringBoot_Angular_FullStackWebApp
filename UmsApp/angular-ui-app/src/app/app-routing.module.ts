@@ -8,6 +8,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { RolesListComponent } from './components/roles-list/roles-list.component';
 import { AddUserComponent } from './components/user-list/add-user/add-user.component';
 import { UpdateUserComponent } from './components/user-list/update-user/update-user.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,11 @@ const routes: Routes = [
     path: 'user',
     canActivate: [AuthenticateGuard],
     component: ViewUserComponent,
+  },
+  {
+    path: 'home-page',
+    canActivate: [AuthenticateGuard],
+    component: HomePageComponent,
   },
   {
     path: 'users',
