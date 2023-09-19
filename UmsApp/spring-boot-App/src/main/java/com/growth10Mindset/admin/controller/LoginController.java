@@ -41,7 +41,7 @@ public class LoginController {
 
     @PostMapping("/logout")
     public ResponseEntity<AuthenticationResponse> logout(@RequestBody LoginDetail loginDetail) {
-		System.out.println(loginDetail.getEmail() + " successfully logged out.");
+		System.out.println(" User successfully logged out.");
         return ResponseEntity.ok().build();
     }
 }
