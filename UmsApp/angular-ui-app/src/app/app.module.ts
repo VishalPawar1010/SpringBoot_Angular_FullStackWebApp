@@ -16,6 +16,7 @@ import { ViewUserComponent } from './components/user-list/view-user/view-user.co
 import { DataTablesModule } from 'angular-datatables';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { HeaderComponent } from './components/header/header.component';
     LoginComponent,
     UpdateUserComponent,
     ViewUserComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
