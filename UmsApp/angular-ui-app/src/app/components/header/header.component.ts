@@ -58,6 +58,9 @@ export class HeaderComponent implements OnInit {
   goToUsers(): void {
     this.router.navigate(['users']);
   }
+  goToHome(): void {
+    this.router.navigate(['home-page']);
+  }
   // export data 
   exportToCSV(){
     const timestamp = new Date().toISOString().replace(/[^0-9]/g, '-'); // Format: 'yyyyMMddHHmmss'
