@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
@@ -9,6 +9,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+
   model: any = {};
   token: any = {};
   loginError = '';
@@ -16,10 +17,14 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private renderer: Renderer2, 
+    private elementRef: ElementRef
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+ 
 
   login() {
     let url = '/api/login';
