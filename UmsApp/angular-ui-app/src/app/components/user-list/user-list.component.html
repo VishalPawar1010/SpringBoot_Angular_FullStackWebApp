@@ -53,15 +53,12 @@
         </td>
         <td class="hide-on-mobile">{{ tempUser.email }}</td>
         <td>{{ tempUser.firstName }} {{ tempUser.lastName }}</td>
-        <!-- <td class="hide-on-mobile">{{ tempUser.lastName }}</td> -->
         <td class="hide-on-mobile hide-on-tab">{{ tempUser.gender }}</td>
         <td class="hide-on-mobile">
-          <!-- <ul> -->
             <li *ngFor="let role of tempUser.roles">
               {{ role.name }}
               <span *ngIf="role !== tempUser.roles[tempUser.roles.length - 1]">, </span>
             </li>
-          <!-- </ul> -->
         </td>
         <td class="hide-on-mobile">
           <i *ngIf="tempUser.enabled == true"  class="fas fa-check-circle fa-lg" style="color: green"></i>
