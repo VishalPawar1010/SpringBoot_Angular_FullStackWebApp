@@ -44,9 +44,7 @@ export class HeaderComponent implements OnInit {
       this.loggedInUser.lastName = res.lastName;
     })
   }
-  goToAddUser() {
-    this.router.navigate(['add-user']);
-  }
+
 
   logout() {
     this.authService.logout();
@@ -61,69 +59,6 @@ export class HeaderComponent implements OnInit {
   goToHome(): void {
     this.router.navigate(['home-page']);
   }
-  // export data 
-  exportToCSV(){
-    const timestamp = new Date().toISOString().replace(/[^0-9]/g, '-'); // Format: 'yyyyMMddHHmmss'
-    // Define the file name
-    const fileName = `users_${timestamp}.csv`;
-    this.userService.exportUsersToCSV().subscribe(
-      (data: Blob) => {
-        const blob = new Blob([data], { type: 'application/csv' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = fileName;
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-      },
-      (error) => {
-        console.error(error);
-        console.log("Some error in exportToCSV")
-      }
-    );
-  }
-  exportToExcel(){
-    const timestamp = new Date().toISOString().replace(/[^0-9]/g, '-'); // Format: 'yyyyMMddHHmmss'
-    // Define the file name
-    const fileName = `users_${timestamp}.xslx`;
-    this.userService.exportUsersToExcel().subscribe(
-      (data: Blob) => {
-        const blob = new Blob([data], { type: 'application/octet-stream' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = fileName;
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-      },
-      (error) => {
-        console.error(error);
-        console.log("Some error in exportToExcel")
-      }
-    );
-  }
-  exportToPDF(){
-    const timestamp = new Date().toISOString().replace(/[^0-9]/g, '-'); // Format: 'yyyyMMddHHmmss'
-    // Define the file name
-    const fileName = `users_${timestamp}.pdf`;
-    this.userService.exportUsersToPDF().subscribe(
-      (data: Blob) => {
-        const blob = new Blob([data], { type: 'application/pdf' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = fileName;
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-      },
-      (error) => {
-        console.error(error);
-        console.log("Some error in exportToPDF")
-      }
-    );
-  }
+  
 
 }
