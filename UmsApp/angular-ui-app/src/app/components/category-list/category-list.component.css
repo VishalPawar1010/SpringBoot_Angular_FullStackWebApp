@@ -1,0 +1,56 @@
+.container {
+  min-height: 87.5vh;
+}
+
+::ng-deep .modal-dialog {
+  max-width: 800px !important;
+  width: 700px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 0.01rem 0.01rem;
+  margin-left: 0rem;
+  margin-right: 0rem;
+  border-radius: 0.25rem;
+  background-color: #e9ecef;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background-color: #adb5bd;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.pagination-icon {
+  font-size: 14px;
+  /* Adjust the font size as per your preference */
+}
+
+/* CSS for hiding columns on mobile devices */
+@media screen and (max-width: 768px) {
+  /* small screen */
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /* median screen */
+}
+
+@media screen and (min-width: 1024px) {
+
+  /* big screen */
+  .container {
+    margin: auto;
+    /* background-color: #007bff; */
+  }
+}

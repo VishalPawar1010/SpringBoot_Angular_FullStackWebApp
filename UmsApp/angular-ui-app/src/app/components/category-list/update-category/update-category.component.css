@@ -1,0 +1,10 @@
+.custom-content {
+    max-width: 800px;
+    /* Set the desired width */
+    margin: 0 auto;
+    /* Center the modal horizontally */
+}
+
+:root {
+    --bs-modal-width: 1000px !important;
+}

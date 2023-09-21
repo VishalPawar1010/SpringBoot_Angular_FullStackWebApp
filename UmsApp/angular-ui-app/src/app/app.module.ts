@@ -17,6 +17,10 @@ import { DataTablesModule } from 'angular-datatables';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { ViewCategoryComponent } from './components/category-list/view-category/view-category.component';
+import { CategoryListComponent } from './components/category-list/category-list.component';
+import { AddCategoryComponent } from './components/category-list/add-category/add-category.component';
+import { UpdateCategoryComponent } from './components/category-list/update-category/update-category.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -33,7 +37,11 @@ import { ToastrModule } from 'ngx-toastr';
     ViewUserComponent,
     HeaderComponent,
     HomePageComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ViewCategoryComponent,
+    CategoryListComponent,
+    AddCategoryComponent,
+    UpdateCategoryComponent
   ],
   imports: [
     BrowserModule,

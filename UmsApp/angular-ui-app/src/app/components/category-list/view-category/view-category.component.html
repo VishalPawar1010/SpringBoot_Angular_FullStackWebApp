@@ -1,0 +1,26 @@
+<div class="container d-flex justify-content-center">  
+  <div class="card p-4" *ngIf="category">
+    <div class=" image d-flex flex-column justify-content-center align-items-center">
+      <button class="btn" style="border: none;">
+        <img *ngIf="profilePic" [src]="profilePic" alt="Category Photo" class="img-thumbnail" height="100" width="100"/>
+        <img *ngIf="!profilePic" [src]="defaultImage[category.imageUrl]" alt="Default Avatar" class="img-thumbnail" height="150" width="150"/>
+      </button>
+      <span>
+        <button type="button" class="btn2 btn-outline-warning" (click)="updateImage()">Update Image</button>
+        <button type="button" class="btn2 btn-outline-danger" (click)="deleteImage()" style="margin-left: 10px; float: right;">Delete Image</button>
+      </span>
+      <div class="file-input" *ngIf="showAlert" role="alert">
+        <div class="form-inline" style="padding: 15px;">
+          <input class="form-control" type="file" (change)="onChange($event)">
+        </div>
+        <p *ngIf="showMessage">Showing preview image</p>
+        <div class="form-inline" style="margin-top: 15px; justify-content: center; text-align: center;">
+          <button (click)="onUpload()" class="btn2 btn-outline-success">Upload</button>
+          <button (click)="closeAlert()" class="btn2 btn-outline-success">Close</button>
+        </div>
+      </div>
+      <span class="name mt-3">{{category.categoryName}}</span>
+      <span class="idd">{{ category.description }}</span>
+    </div>
+  </div>
+</div>

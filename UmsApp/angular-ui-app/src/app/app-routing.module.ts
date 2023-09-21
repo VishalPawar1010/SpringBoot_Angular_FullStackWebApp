@@ -9,6 +9,10 @@ import { RolesListComponent } from './components/roles-list/roles-list.component
 import { AddUserComponent } from './components/user-list/add-user/add-user.component';
 import { UpdateUserComponent } from './components/user-list/update-user/update-user.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { ViewCategoryComponent } from './components/category-list/view-category/view-category.component';
+import { AddCategoryComponent } from './components/category-list/add-category/add-category.component';
+import { UpdateCategoryComponent } from './components/category-list/update-category/update-category.component';
+import { CategoryListComponent } from './components/category-list/category-list.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
@@ -29,6 +33,11 @@ const routes: Routes = [
     component: ViewUserComponent,
   },
   {
+    path: 'category',
+    canActivate: [AuthenticateGuard],
+    component: ViewCategoryComponent,
+  },
+  {
     path: 'home-page',
     canActivate: [AuthenticateGuard],
     component: HomePageComponent,
@@ -39,15 +48,24 @@ const routes: Routes = [
     component: UserListComponent,
   },
   {
+    path: 'categories',
+    canActivate: [AuthenticateGuard],
+    component: CategoryListComponent,
+  },
+  {
     path: 'roles',
     canActivate: [AuthenticateGuard],
     component: RolesListComponent,
   },
-
   {
     path: 'add-user',
     canActivate: [AuthenticateGuard],
     component: AddUserComponent,
+  },
+  {
+    path: 'add-category',
+    canActivate: [AuthenticateGuard],
+    component: AddCategoryComponent,
   },
   {
     path: 'update-user',
@@ -60,11 +78,15 @@ const routes: Routes = [
     path: 'forgotpassword',
     component: ForgotPasswordComponent
   },
-
+  // {
+  //   path: '**',
+  //   redirectTo: '/users',
+  //   pathMatch: 'full',
+  // },
   {
-    path: '**',
-    redirectTo: '/users',
-    pathMatch: 'full',
+    path: 'update-category',
+    canActivate: [AuthenticateGuard],
+    component: UpdateCategoryComponent,
   },
 ];
 
