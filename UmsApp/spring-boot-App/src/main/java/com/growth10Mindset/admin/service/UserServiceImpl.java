@@ -98,19 +98,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Override
-    public void deleteUserById(Integer id) {
-        Optional<User> userOptional = userRepository.findById(id);
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            userRepository.delete(user);
-        }
-    }
-            return userRepository.save(user);
-        } else {
-            return null;
-        }
-    }
+
 
     @Override
     public void deleteUserById(Integer id) {
@@ -149,8 +137,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean existsByEmail(String email) {
-    @Override
-    public boolean existsByEmail(String email) {
+
         return userRepository.existsByEmail(email);
     }
 
