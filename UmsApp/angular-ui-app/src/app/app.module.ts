@@ -17,6 +17,11 @@ import { DataTablesModule } from 'angular-datatables';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +32,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     UpdateUserComponent,
     ViewUserComponent,
     HeaderComponent,
-    HomePageComponent
+    HomePageComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +42,14 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     FormsModule,
     DataTablesModule,
     AppRoutingModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    
+    ToastrModule.forRoot({
+      positionClass:"toast-top-right",
+      preventDuplicates:true,
+      timeOut:3000,
+    })
   ],
   providers: [
     UserService,

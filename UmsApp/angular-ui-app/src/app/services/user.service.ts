@@ -65,6 +65,24 @@ export class UserService {
   exportUsersToPDF() {
     return this.httpClient.get(`${this.baseUrl}/pdf`, { responseType: 'blob' }); 
   }
+  sendEmailForForgotPassword(email){
+    return this.httpClient.post(`${this.baseUrl}/forgotpassword`, {
+      email: email,
+      password: "",
+    });
+  }
+  updatePassword(email,otp,password){
+    return this.httpClient.post(`${this.baseUrl}/updatepassword/${otp}`, {
+      email: email,
+      password: password,
+    });
+  }
+  verifyOTP(email,otp){
+    return this.httpClient.post(`${this.baseUrl}/verify_otp/${otp}`, {
+      email: email,
+      password:""
+    });
+  }
 }
 interface GetResponse {
   _embedded: {

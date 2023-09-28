@@ -1,11 +1,6 @@
 package com.growth10Mindset.admin.security.config;
 
-import aj.org.objectweb.asm.TypeReference;
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.growth10Mindset.admin.security.JwtAuthenticationFilter;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,11 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 @EnableWebSecurity
 @Configuration
@@ -42,13 +32,13 @@ public class SecurityConfig {
 
         http.cors().and().csrf().disable();
 
-        http.authorizeRequests()
-
-                .antMatchers("/api/login", "/api/logout").permitAll()
-                .antMatchers("/api/roles").hasAnyAuthority("SuperAdmin", "Admin")
-                .antMatchers("/api/**").hasAuthority("SuperAdmin")
-                .antMatchers("/home").authenticated()
-        ;
+		http.authorizeRequests()
+		
+		.antMatchers("/api/login","/api/logout","/api/users/forgotpassword","/api/users/updatepassword/**","/api/users/verify_otp/**").permitAll()
+		.antMatchers("/api/roles").hasAnyAuthority("SuperAdmin","Admin")
+		.antMatchers("/api/**").hasAuthority("SuperAdmin")
+		.antMatchers("/home").authenticated()
+		;
 
 
         http

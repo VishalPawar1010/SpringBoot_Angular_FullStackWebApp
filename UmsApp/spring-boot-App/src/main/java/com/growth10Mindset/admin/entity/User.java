@@ -1,30 +1,13 @@
 package com.growth10Mindset.admin.entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
-//
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-//import javax.validation.constraints.Email;
-//import javax.validation.constraints.NotBlank;
-//import javax.validation.constraints.NotNull;
-//import javax.validation.constraints.Pattern;
-
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -65,8 +48,19 @@ public class User {
     @Column(name = "photos", columnDefinition = "LONGBLOB")
     private byte[] photos;
 
-    @Transient
-    private MultipartFile photoFile;
+	@Transient
+	private MultipartFile photoFile;
+
+	@Column(name="reset_password_token")
+	private String resetPasswordToken;
+
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
+	}
 
     private boolean enabled;
 

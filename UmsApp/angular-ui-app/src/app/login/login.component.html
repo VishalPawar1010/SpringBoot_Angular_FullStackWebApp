@@ -10,6 +10,10 @@
         <label for="password" class="form-label">Password</label>
         <input type="password" name="password" [(ngModel)]="model.password" class="form-control" id="password" placeholder="Password" />
       </div>
+      <div id="register-link" class="text-right">
+        <a [routerLink]="['/forgotpassword']"  class="text-secondary text-decoration-none">Forgot Password?</a>
+    </div>
+
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Login</button>
       </div>
@@ -17,5 +21,3 @@
     </div>
   </form>
 </div>
-
-

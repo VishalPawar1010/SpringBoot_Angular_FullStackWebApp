@@ -9,6 +9,8 @@ import { RolesListComponent } from './components/roles-list/roles-list.component
 import { AddUserComponent } from './components/user-list/add-user/add-user.component';
 import { UpdateUserComponent } from './components/user-list/update-user/update-user.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
 
 const routes: Routes = [
   {
@@ -51,6 +53,12 @@ const routes: Routes = [
     path: 'update-user',
     canActivate: [AuthenticateGuard],
     component: UpdateUserComponent,
+  },
+
+  
+  {
+    path: 'forgotpassword',
+    component: ForgotPasswordComponent
   },
 
   {
