@@ -14,6 +14,8 @@ export class ForgotPasswordComponent {
   isValidOTP: boolean = false;
   showError: boolean = false;
   isLoading: boolean = false;
+ 
+
 
   constructor(private userService: UserService, private toaster : ToastrService, private router : Router) {}
 
@@ -65,10 +67,12 @@ export class ForgotPasswordComponent {
       next: () => {
         this.isLoading = false;
         this.isValidOTP = true;
+        
       },
       error: () => {
         this.isLoading = false,
         this.isValidOTP = false;
+       
       },
     });
   }

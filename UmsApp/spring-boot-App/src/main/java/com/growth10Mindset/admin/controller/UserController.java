@@ -139,7 +139,7 @@ public class UserController {
             userService.updateResetPassword(token, email);
 
             String resetPasswordLink = "Your OTP for reset password is " + token;
-            userService.sendEmail(email, "Forgot password Redirect Link", resetPasswordLink);
+            userService.sendEmail(email, "OTP verification for forgot password", resetPasswordLink);
         } catch (UsernameNotFoundException e) {
             return ResponseEntity.badRequest().build();
         }
