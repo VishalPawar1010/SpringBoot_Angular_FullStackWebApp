@@ -35,10 +35,9 @@ export class CategoryListComponent implements OnInit, AfterViewInit, OnDestroy {
   datatableElement!: DataTableDirective;
 
   defaultImage = {
-    male: 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp',
-    female:
-      'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2.webp',
-  };
+    category: 'https://www.shutterstock.com/image-vector/grunge-green-category-word-round-260nw-1794170542.jpg',
+    
+   };
   constructor(
     private categoryService: CategoryService,
     private route: ActivatedRoute,
@@ -85,16 +84,17 @@ export class CategoryListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   listCategories() {
-    // console.log('categories list component = list-category method');
 
     this.categoryService.getCategoriesList().subscribe((data) => {
       this.categories = data;
-
-      // console.log('categories list', this.categories);
+      console.log(this.categories);
       this.categories = data.map((category) => {
-        this.getImage = category.imageUrl;
-        this.base64Image = 'data:image/png;base64,' + this.getImage;
-        return { ...category, phimageUrlotos: this.base64Image };
+        if (category.image)
+          this.base64Image = 'data:image/png;base64,' + category.image;
+        else 
+          this.base64Image = this.defaultImage.category;
+          // this.base64Image = 'data:image/png;base64,' + this.getImage;
+          return { ...category, image: this.base64Image };
       });
       if (this.datatableElement) {
         this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
@@ -127,7 +127,9 @@ export class CategoryListComponent implements OnInit, AfterViewInit, OnDestroy {
       this.categoryService.updateCategory(res.id, res).subscribe((updatedCategory) => {
         const index = this.categories.findIndex((u) => u.id === updatedCategory.id);
         if (index !== -1) {
-          this.categories[index] = updatedCategory;
+          this.categories[index].description = updatedCategory.description;
+          this.categories[index].categoryName = updatedCategory.categoryName;
+          
           console.log('Category updated successfully');
         }
       });

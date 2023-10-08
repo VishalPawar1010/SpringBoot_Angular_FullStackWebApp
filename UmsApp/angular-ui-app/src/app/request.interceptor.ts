@@ -25,14 +25,19 @@ export class RequestInterceptor implements HttpInterceptor {
       });
     }
     return next.handle(request).pipe(
-      catchError((error: HttpErrorResponse) => {
+      catchError((response: HttpErrorResponse) => {
 
-        if (error.status === 500 && error.error === 'Internal Server Error') {
-          localStorage.removeItem('token');
+        console.log(" STATUS == ", response.error.status);
+        console.log(" MESSAGE == ", response.error.message );
+        console.log(" MESSAGE == ", response );
+
+        if (response.error.status === 500 && response.error.message == 'JWT token has expired') {
+          localStorage.clear();
           this.authService.setLoginStatus(false);
           this.router.navigate(['/login']);
+          
         }
-        return throwError(error);
+        return throwError(response);
       })
     );
   }

@@ -17,6 +17,6 @@ describe('Category', () => {
     expect(category.id).toEqual(1);
     expect(category.categoryName).toEqual('Category Name');
     expect(category.description).toEqual('description');
-    expect(category.imageUrl).toEqual('photo.jpg');
+    expect(category.image).toEqual('photo.jpg');
   });
 });

@@ -3,7 +3,7 @@
     <ul class="navbar-nav">
       <li class="nav-item">
         <button class="btn btn-success" (click)="goToAddCategory()" data-toggle="tooltip" data-placement="bottom" title="Add new Category">
-          <i class="fa-solid fa-user-plus fa-lg"></i></button>
+          <i class="fa-solid fa-file-circle-plus"></i></button>
       </li>
     </ul>
   </div>
@@ -17,13 +17,18 @@
         <th>Photo</th>
         <th>Name</th>
         <th>Description</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let tempCategory of categories">
         <td>
-          <div *ngIf="tempCategory.imageUrl">
-            <img [src]="tempCategory.imageUrl" alt="Category Photo" class="sm-auto rounded img-fluid"
+          <div *ngIf="tempCategory.image">
+            <img [src]="tempCategory.image" alt="User Photo" class="sm-auto rounded img-fluid"
+              style="width: 60px; height: 60px;" />
+          </div>
+          <div *ngIf="!tempCategory.image">
+            <img [src]="defaultImage['category']" alt="User Photo" class="sm-auto rounded img-fluid"
               style="width: 60px; height: 60px;" />
           </div>
         </td>

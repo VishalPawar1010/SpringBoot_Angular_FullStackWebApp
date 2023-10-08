@@ -9,7 +9,7 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./add-category.component.css'],
 })
 export class AddCategoryComponent implements OnInit {
-  newCategoryForm: Category = new Category(0, '', '', '');
+  newCategoryForm: Category = new Category(0, '', '', null);
   errorMessage: String = '';
   message: string = '';
   newlyAddedCategory: any;
@@ -24,7 +24,6 @@ export class AddCategoryComponent implements OnInit {
   ngOnInit(): void {}
 
   createCategory(category: Category): void {
-    category.imageUrl = this.selectedPhotoURL;
 
     console.log('REQUEST for new category = ', category);
     this.categoryService.createCategory(category).subscribe(
@@ -32,6 +31,7 @@ export class AddCategoryComponent implements OnInit {
         this.message = 'Category created successfully';
         this.newlyAddedCategory = res;
         this.router.navigate(['categories', this.newlyAddedCategory.id]);
+        
       },
       (error) => {
         this.errorMessage = 'Something went wrong or duplicate entry';

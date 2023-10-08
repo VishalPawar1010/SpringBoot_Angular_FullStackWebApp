@@ -36,7 +36,8 @@ export class UpdateCategoryComponent implements OnInit {
   }
 
   updateCategory(): void {
-    delete this.category.imageUrl;
+    delete this.category.image;
+    
     this.activeModal.close(this.category);
   }
 }

@@ -13,13 +13,18 @@ public class Category {
     @Column(name = "category_name", length = 45, nullable = false, unique = true)
     @NotEmpty(message = "Name is required")
     @NotNull(message = "Name should not be null")
+    @Pattern(regexp = "^[A-Z][a-zA-Z]*$", message = "Category Name should start with a capital letter and contain only alphabets.")
+
     private String categoryName;
 
-    @Column(length = 128)
+    @Column(name = "description",length = 128)
+    @NotBlank(message = "Description should not be not blank")
+    @Size(min = 5, max = 128)
     private String description;
 
-    @Column(length = 512)
-    private String imageUrl;
+    @Lob
+    @Column(name = "image", columnDefinition = "LONGBLOB")
+    private byte[] image;
 
     public Category() {
     }
@@ -29,10 +34,10 @@ public class Category {
         this.description = description;
     }
 
-    public Category(@NotBlank String categoryName, @NotBlank String description, @NotBlank String imageUrl) {
+    public Category(@NotBlank String categoryName, @NotBlank String description, @NotBlank byte[] image) {
         this.categoryName = categoryName;
         this.description = description;
-        this.imageUrl = imageUrl;
+        this.image = image;
     }
 
     public Integer getId() {
@@ -59,16 +64,18 @@ public class Category {
         this.description = description;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
 
     @Override
     public String toString() {
         return "Category{" + "id=" + id + ", category name='" + categoryName + '\'' + ", description='" + description + '\'' + '}';
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

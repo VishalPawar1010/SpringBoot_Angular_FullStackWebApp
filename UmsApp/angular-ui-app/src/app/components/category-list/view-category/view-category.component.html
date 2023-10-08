@@ -3,7 +3,7 @@
     <div class=" image d-flex flex-column justify-content-center align-items-center">
       <button class="btn" style="border: none;">
         <img *ngIf="profilePic" [src]="profilePic" alt="Category Photo" class="img-thumbnail" height="100" width="100"/>
-        <img *ngIf="!profilePic" [src]="defaultImage[category.imageUrl]" alt="Default Avatar" class="img-thumbnail" height="150" width="150"/>
+        <img *ngIf="!profilePic" [src]="defaultImage['category']" alt="Default Avatar" class="img-thumbnail" height="150" width="150"/>
       </button>
       <span>
         <button type="button" class="btn2 btn-outline-warning" (click)="updateImage()">Update Image</button>

@@ -35,6 +35,20 @@ export class CategoryService {
   deleteCategory(categoryId: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.baseUrl}/${categoryId}`);
   }
+  updateProfilePic(formData: FormData, id: number): Observable<any> {
+    return this.httpClient.post(
+      `${this.baseUrl}/updateImage/${id}`,
+      formData
+    );
+  }
+  deleteProfilePic(id: number): Observable<any> {
+    return this.httpClient.delete(`${this.baseUrl}/deleteImage/${id}`);
+  }
+  getImage(id : number): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}/viewImage/${id}`, {
+      responseType: 'blob',
+    });
+  }
 }
 interface GetResponse {
   _embedded: {

@@ -22,9 +22,8 @@ export class ViewCategoryComponent implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef;
 
   defaultImage = {
-    male: 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp',
-    female:
-      'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2.webp',
+   category: 'https://www.shutterstock.com/image-vector/grunge-green-category-word-round-260nw-1794170542.jpg',
+   
   };
 
   constructor(
@@ -38,8 +37,9 @@ export class ViewCategoryComponent implements OnInit {
       const categoryId = +params.get('id');
       this.categoryService.getCategoryById(categoryId).subscribe(
         (res) => {
-          // this.loadProfilePic();
           this.category = res;
+          console.log(res);
+          if (this.category.image) this.loadProfilePic();
         },
         (error) => {
           console.log('ERROR:', error);
@@ -48,15 +48,17 @@ export class ViewCategoryComponent implements OnInit {
     });
   }
 
-  // loadProfilePic() {
-  //   this.categoryService.getImage(this.userEmail).subscribe((imageData: Blob) => {
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => {
-  //       this.profilePic = reader.result;
-  //     };
-  //     reader.readAsDataURL(imageData);
-  //   });
-  // }
+  loadProfilePic() {
+    this.categoryService
+      .getImage(this.category.id)
+      .subscribe((imageData: Blob) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          this.profilePic = reader.result;
+        };
+        reader.readAsDataURL(imageData);
+      });
+  }
 
   onChange(event: any) {
     this.file = event.target.files[0];
@@ -75,16 +77,11 @@ export class ViewCategoryComponent implements OnInit {
   }
 
   deleteImage() {
-    // console.log('test delete');
-    // this.categoryService.deleteProfilePic(this.userEmail).subscribe((res) => {
-    //   if(this.user.gender == 'male') {
-    //     this.profilePic =
-    //     'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp';
-    //   } else {
-    //     this.profilePic =
-    //     'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2.webp';
-    //   }
-    // });
+    console.log('test delete');
+    this.categoryService.deleteProfilePic(this.category.id).subscribe((res) => {
+      this.profilePic =
+        'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp';
+    });
   }
 
   closeAlert() {
@@ -94,24 +91,26 @@ export class ViewCategoryComponent implements OnInit {
   }
 
   onUpload() {
-    // try {
-    //   if (this.file) {
-    //     const formData = new FormData();
-    //     formData.append('profilePic', this.file);
-    //     this.userService.updateProfilePic(formData, this.userEmail).subscribe(
-    //       (res: any) => {
-    //         this.profilePic = res;
-    //       },
-    //       (error: any) => {
-    //         // Handle the error here
-    //         console.error('Error handled ');
-    //       }
-    //     );
-    //   }
-    //   this.showAlert = false;
-    //   this.showMessage = false;
-    // } catch (error) {
-    //   console.error('An error occurred:', error);
-    // }
+    try {
+      if (this.file) {
+        const formData = new FormData();
+        formData.append('profilePic', this.file);
+        this.categoryService
+          .updateProfilePic(formData, this.category.id)
+          .subscribe(
+            (res: any) => {
+              this.profilePic = res;
+            },
+            (error: any) => {
+              // Handle the error here
+              console.error('Error handled ');
+            }
+          );
+      }
+      this.showAlert = false;
+      this.showMessage = false;
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
   }
 }
