@@ -17,6 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.growth10Mindset.admin.security.service.JwtService;
 
+import io.jsonwebtoken.ExpiredJwtException;
 //import jakarta.servlet.FilterChain;
 //import jakarta.servlet.ServletException;
 //import jakarta.servlet.http.HttpServletRequest;
@@ -53,7 +54,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         jwt = authHeader.substring(7);
 
         // To Extract Email from JWT token need jwtService class
-        userEmail = jwtService.extractUsername(jwt);
+        try {
+            userEmail = jwtService.extractUsername(jwt);
+        } catch (ExpiredJwtException ex) {
+            throw ex;
+        }
+        
+//        userEmail = jwtService.extractUsername(jwt);
+
+        
         if (userEmail != null || SecurityContextHolder.getContext().getAuthentication() == null) {
             eComUserDetails userDetails = (eComUserDetails) this.userDetailsService.loadUserByUsername(userEmail);
             if (jwtService.isTokenValid(jwt, userDetails)) {
