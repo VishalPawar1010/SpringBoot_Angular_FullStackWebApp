@@ -10,6 +10,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import io.jsonwebtoken.ExpiredJwtException;
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -24,4 +26,15 @@ public class GlobalExceptionHandler {
         });
         return new ResponseEntity<Map<String, String>>(resp, HttpStatus.BAD_REQUEST);
     }
+
+    
+//    TODO : Add here to handle exception for expired token : 500 - Internal Server error
+//    @ExceptionHandler(ExpiredJwtException.class)
+//    public ResponseEntity<Map<String, String>> handleExpiredJwtException(ExpiredJwtException ex) {
+//        Map<String, String> errorResponse = new HashMap<>();
+//        errorResponse.put("error", "JWT token has expired");
+//        errorResponse.put("message", ex.getMessage()); // Include the original exception message if needed
+//        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+//    }
+    
 }
