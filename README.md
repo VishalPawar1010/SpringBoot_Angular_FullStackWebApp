@@ -14,7 +14,7 @@
       4. ng CLI : 15.2.6
    7. Maven : 3.6.6
    8. Favorite IDE : STS / Eclipse / IntelliJ 
-   9. K6 (For load tests) : 
+   9. K6 (For load tests) : Html report resource- https://github.com/benc-uk/k6-reporter
    10. Code Coverage 
        1.  Jacoco 
        2.  SonarQube
