@@ -70,7 +70,14 @@ public class UserController {
 
     @GetMapping("/viewImage/{email}")
     public ResponseEntity<byte[]> viewImage(@PathVariable String email) {
-        byte[] image = userService.viewImage(email);
+        byte[] image;
+        try{
+       image = userService.viewImage(email);}
+     catch (NullPointerException e){
+       throw new NullPointerException("Image not found");
+
+     }
+
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
     }
 
