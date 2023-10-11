@@ -27,7 +27,7 @@ export class RequestInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
 
-        if (error.status === 500 && error.error === 'Internal Server Error') {
+        if (error.status === 500 && error.message === 'JWT token has expired') {
           localStorage.removeItem('token');
           this.authService.setLoginStatus(false);
           this.router.navigate(['/login']);
