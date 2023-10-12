@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
+import { BrandsListComponent } from './components/brands-list/brands-list/brands-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { ToastrModule } from 'ngx-toastr';
     ViewCategoryComponent,
     CategoryListComponent,
     AddCategoryComponent,
-    UpdateCategoryComponent
+    UpdateCategoryComponent,
+    BrandsListComponent
   ],
   imports: [
     BrowserModule,
