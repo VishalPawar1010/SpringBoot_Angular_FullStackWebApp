@@ -15,6 +15,7 @@ import { UpdateCategoryComponent } from './components/category-list/update-categ
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { BrandsListComponent } from './components/brands-list/brands-list/brands-list.component';
+import { ProductListComponent } from './components/products/product-list/product-list.component';
 
 
 const routes: Routes = [
@@ -57,6 +58,11 @@ const routes: Routes = [
     path: 'brands',
     canActivate: [AuthenticateGuard],
     component: BrandsListComponent,
+  },
+  {
+    path: 'products',
+    canActivate: [AuthenticateGuard],
+    component: ProductListComponent,
   },
   {
     path: 'roles',
