@@ -4,7 +4,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { UserService } from './user.service';
-import { Users } from '../common/users';
+import { Users } from '../../Models/users';
 
 describe('UserService', () => {
   let userService: UserService;

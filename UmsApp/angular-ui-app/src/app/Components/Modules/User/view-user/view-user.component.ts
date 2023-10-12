@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Users } from 'src/app/common/users';
-import { UserService } from 'src/app/services/user.service';
+import { Users } from 'src/app/Models/users';
+import { UserService } from 'src/app/services/ModuleServices/user.service';
 
 @Component({
   selector: 'app-view-user',

@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Category } from 'src/app/common/category';
-import { CategoryService } from 'src/app/services/category.service';
+import { Category } from 'src/app/Models/category';
+import { CategoryService } from 'src/app/services/ModuleServices/category.service';
 
 @Component({
   selector: 'app-view-category',

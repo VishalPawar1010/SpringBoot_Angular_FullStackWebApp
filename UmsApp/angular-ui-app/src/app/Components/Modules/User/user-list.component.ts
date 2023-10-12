@@ -6,14 +6,14 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Users } from 'src/app/common/users';
-import { UserService } from 'src/app/services/user.service';
+import { Users } from 'src/app/Models/users';
 import { HttpClient } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateUserComponent } from './update-user/update-user.component';
-import { AuthService } from 'src/app/auth.service';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
+import { UserService } from 'src/app/services/ModuleServices/user.service';
+import { AuthService } from 'src/app/services/SecurityServices/auth.service';
 
 @Component({
   selector: 'app-user-list',

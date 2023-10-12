@@ -1,18 +1,21 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Users } from 'src/app/Models/users';
 import { HttpClient } from '@angular/common/http';
+import { Roles } from 'src/app/Models/roles';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { CategoryService } from 'src/app/services/category.service';
+import { UserService } from 'src/app/services/ModuleServices/user.service';
 
 @Component({
-  selector: 'app-update-category',
-  templateUrl: './update-category.component.html',
-  styleUrls: ['./update-category.component.css'],
+  selector: 'app-update-user',
+  templateUrl: './update-user.component.html',
+  styleUrls: ['./update-user.component.css'],
 })
-export class UpdateCategoryComponent implements OnInit {
+export class UpdateUserComponent implements OnInit {
   @Input() props: any;
 
-  category: any;
+  user: any;
+  role: any;
   errorMessage: String = '';
   message: string = '';
   selectedPhoto: File;
@@ -20,7 +23,7 @@ export class UpdateCategoryComponent implements OnInit {
   profilePics: any;
 
   constructor(
-    private categoryService: CategoryService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
@@ -28,16 +31,15 @@ export class UpdateCategoryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.category = this.props.category;
+    this.user = this.props.user;
   }
 
   close() {
     this.activeModal.close();
   }
 
-  updateCategory(): void {
-    delete this.category.image;
-    
-    this.activeModal.close(this.category);
+  updateUser(): void {
+    delete this.user.photos;
+    this.activeModal.close(this.user);
   }
 }

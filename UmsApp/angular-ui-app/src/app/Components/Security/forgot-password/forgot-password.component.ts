@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { UserService } from '../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/ModuleServices/user.service';
 
 @Component({
   selector: 'app-forgot-password',

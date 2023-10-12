@@ -6,14 +6,14 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Category } from 'src/app/common/category';
-import { CategoryService } from 'src/app/services/category.service';
+import { Category } from 'src/app/Models/category';
 import { HttpClient } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
-import { AuthService } from 'src/app/auth.service';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
+import { AuthService } from 'src/app/services/SecurityServices/auth.service';
+import { CategoryService } from 'src/app/services/ModuleServices/category.service';
 
 @Component({
   selector: 'app-category-list',
