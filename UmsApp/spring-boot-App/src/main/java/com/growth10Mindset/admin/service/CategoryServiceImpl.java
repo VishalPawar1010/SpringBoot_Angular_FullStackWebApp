@@ -25,17 +25,11 @@ public class CategoryServiceImpl implements CategoryService {
             if (image != null) {
                 byte[] decompressedData = ImageUtil.decompressImage(image);
                 category.setImage(decompressedData);
+                
             }
             return category;
         }).collect(Collectors.toList());
-        //return list.stream().map(n -> solve(n, x)).collect(Collectors.toList());
-//        for (User user : users) {
-//            byte[] photos = user.getPhotos();
-//            if (photos != null) {
-//                byte[] decompressedData = ImageUtil.decompressImage(photos);
-//                user.setPhotos(decompressedData);
-//            }
-//        }
+
     }
 
     @Override

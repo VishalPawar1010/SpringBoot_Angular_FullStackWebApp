@@ -24,7 +24,7 @@ export class AddCategoryComponent implements OnInit {
   ngOnInit(): void {}
 
   createCategory(category: Category): void {
-    category.imageUrl = this.selectedPhotoURL;
+    category.image = this.selectedPhotoURL;
 
     console.log('REQUEST for new category = ', category);
     this.categoryService.createCategory(category).subscribe(

@@ -23,10 +23,10 @@
     <tbody>
       <tr *ngFor="let tempCategory of categories">
         <td>
-          <div *ngIf="tempCategory.imageUrl">
-            <img [src]="tempCategory.imageUrl" alt="Category Photo" class="sm-auto rounded img-fluid"
+         
+            <img [src]="tempCategory.image?tempCategory.image:defaultImage['category']" alt="Category Photo" class="sm-auto rounded img-fluid"
               style="width: 60px; height: 60px;" />
-          </div>
+          
         </td>
         <td>{{ tempCategory.categoryName }}</td>
         <td>{{ tempCategory.description }}</td>

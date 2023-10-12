@@ -35,10 +35,9 @@ export class CategoryListComponent implements OnInit, AfterViewInit, OnDestroy {
   datatableElement!: DataTableDirective;
 
   defaultImage = {
-    male: 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp',
-    female:
-      'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2.webp',
-  };
+    category: 'https://www.shutterstock.com/image-vector/grunge-green-category-word-round-260nw-1794170542.jpg',
+    
+   };
   constructor(
     private categoryService: CategoryService,
     private route: ActivatedRoute,
@@ -89,10 +88,10 @@ export class CategoryListComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.categoryService.getCategoriesList().subscribe((data) => {
       this.categories = data;
-
+     console.log(typeof this.categories[0].image)
       // console.log('categories list', this.categories);
       this.categories = data.map((category) => {
-        this.getImage = category.imageUrl;
+        this.getImage = category.image;
         this.base64Image = 'data:image/png;base64,' + this.getImage;
         return { ...category, phimageUrlotos: this.base64Image };
       });
