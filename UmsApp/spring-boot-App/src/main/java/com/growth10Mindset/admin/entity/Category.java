@@ -18,8 +18,9 @@ public class Category {
     @Column(length = 128)
     private String description;
 
-    @Column(length = 512)
-    private String imageUrl;
+    @Lob
+    @Column(name = "image", columnDefinition = "LONGBLOB")
+    private byte[] image;
 
     public Category() {
     }
@@ -29,10 +30,10 @@ public class Category {
         this.description = description;
     }
 
-    public Category(@NotBlank String categoryName, @NotBlank String description, @NotBlank String imageUrl) {
+    public Category(@NotBlank String categoryName, @NotBlank String description, @NotBlank byte[] image) {
         this.categoryName = categoryName;
         this.description = description;
-        this.imageUrl = imageUrl;
+        this.image = image;
     }
 
     public Integer getId() {
@@ -59,16 +60,18 @@ public class Category {
         this.description = description;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
 
     @Override
     public String toString() {
         return "Category{" + "id=" + id + ", category name='" + categoryName + '\'' + ", description='" + description + '\'' + '}';
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

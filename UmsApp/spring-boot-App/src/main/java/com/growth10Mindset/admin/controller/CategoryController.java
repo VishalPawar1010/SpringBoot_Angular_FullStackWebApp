@@ -4,10 +4,13 @@ import com.growth10Mindset.admin.entity.Category;
 import com.growth10Mindset.admin.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
@@ -68,4 +71,32 @@ public class CategoryController {
         categoryService.deleteCategoryById(categoryId);
         return ResponseEntity.noContent().build();
     }
+    @ResponseStatus(value = HttpStatus.OK)
+    @PostMapping("/updateImage/{id}")
+    public ResponseEntity<byte[]> updateImage(@RequestParam("profilePic") MultipartFile file,
+                                              @PathVariable int id) throws IOException {
+        categoryService.updateImage(file, id);
+        byte[] image = categoryService.viewImage(id);
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
+    }
+
+    @GetMapping("/viewImage/{id}")
+    public ResponseEntity<byte[]> viewImage(@PathVariable int id) {
+        byte[] image;
+        try{
+            image = categoryService.viewImage(id);}
+        catch (NullPointerException e){
+            throw new NullPointerException("Image not found");
+
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
+    }
+    @DeleteMapping("/deleteImage/{id}")
+    public ResponseEntity<Void> deleteImage(@PathVariable int id) {
+        categoryService.deleteImageById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 }
