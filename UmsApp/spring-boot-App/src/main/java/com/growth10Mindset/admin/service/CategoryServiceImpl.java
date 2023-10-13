@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -20,15 +19,25 @@ public class CategoryServiceImpl implements CategoryService {
 
     public List<Category> listCategories() {
 
-        return categoryrepository.findAll().stream().map( category ->{
+//        return categoryrepository.findAll().stream().map( category ->{
+//            byte[] image = category.getImage();
+//            if (image != null) {
+//                byte[] decompressedData = ImageUtil.decompressImage(image);
+//                category.setImage(decompressedData);
+//
+//            }
+//            return category;
+//        }).collect(Collectors.toList());
+        List<Category> categories = categoryrepository.findAll();
+        for (Category category : categories) {
+
             byte[] image = category.getImage();
             if (image != null) {
                 byte[] decompressedData = ImageUtil.decompressImage(image);
                 category.setImage(decompressedData);
-                
             }
-            return category;
-        }).collect(Collectors.toList());
+        }
+        return categories;
 
     }
 
@@ -50,7 +59,6 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = categoryrepository.findById(categoryID).get();
         category.setCategoryName(newCategory.getCategoryName());
         category.setDescription(newCategory.getDescription());
-        category.setImage(newCategory.getImage());
         categoryrepository.save(category);
     }
 
