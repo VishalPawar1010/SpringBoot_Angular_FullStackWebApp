@@ -56,6 +56,9 @@ export class HeaderComponent implements OnInit {
   goToUsers(): void {
     this.router.navigate(['users']);
   }
+  goToRoles(): void {
+    this.router.navigate(['roles']);
+  }
   goToCatagories(): void {
     this.router.navigate(['categories']);
   }
