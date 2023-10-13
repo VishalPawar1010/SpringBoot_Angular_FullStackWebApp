@@ -30,10 +30,10 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BehaviorSubject, of } from 'rxjs';
 import { AppComponent } from './app.component';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/SecurityServices/auth.service';
 import { Router } from '@angular/router';
-import { UserService } from './services/user.service';
-import { Users } from './common/users';
+import { UserService } from './services/ModuleServices/user.service';
+import { Users } from './Models/users';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {

@@ -3,29 +3,31 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { UserListComponent } from './components/user-list/user-list.component';
-import { RolesListComponent } from './components/roles-list/roles-list.component';
-import { UserService } from './services/user.service';
-import { RolesService } from './services/roles.service';
-import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { RequestInterceptor } from './request.interceptor';
-import { AddUserComponent } from './components/user-list/add-user/add-user.component';
-import { UpdateUserComponent } from './components/user-list/update-user/update-user.component';
-import { ViewUserComponent } from './components/user-list/view-user/view-user.component';
 import { DataTablesModule } from 'angular-datatables';
 import { AppRoutingModule } from './app-routing.module';
-import { HeaderComponent } from './components/header/header.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { ViewCategoryComponent } from './components/category-list/view-category/view-category.component';
-import { CategoryListComponent } from './components/category-list/category-list.component';
-import { AddCategoryComponent } from './components/category-list/add-category/add-category.component';
-import { UpdateCategoryComponent } from './components/category-list/update-category/update-category.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
+import { UserListComponent } from './Components/Modules/User/user-list.component';
+import { HeaderComponent } from './Components/Dashboard/header/header.component';
+import { HomePageComponent } from './Components/Dashboard/home-page/home-page.component';
+import { BrandsListComponent } from './Components/Modules/Brand/brands-list/brands-list.component';
+import { AddCategoryComponent } from './Components/Modules/Category/add-category/add-category.component';
+import { CategoryListComponent } from './Components/Modules/Category/category-list.component';
+import { UpdateCategoryComponent } from './Components/Modules/Category/update-category/update-category.component';
+import { ViewCategoryComponent } from './Components/Modules/Category/view-category/view-category.component';
+import { ProductListComponent } from './Components/Modules/Product/product-list/product-list.component';
+import { RolesListComponent } from './Components/Modules/Role/roles-list.component';
+import { UpdateUserComponent } from './Components/Modules/User/update-user/update-user.component';
+import { ViewUserComponent } from './Components/Modules/User/view-user/view-user.component';
+import { ForgotPasswordComponent } from './Components/Security/forgot-password/forgot-password.component';
+import { LoginComponent } from './Components/Security/login/login.component';
+import { RolesService } from './services/ModuleServices/roles.service';
+import { UserService } from './services/ModuleServices/user.service';
+import { RequestInterceptor } from './services/SecurityServices/request.interceptor';
+import { AddUserComponent } from './Components/Modules/User/add-user/add-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,9 @@ import { ToastrModule } from 'ngx-toastr';
     ViewCategoryComponent,
     CategoryListComponent,
     AddCategoryComponent,
-    UpdateCategoryComponent
+    UpdateCategoryComponent,
+    BrandsListComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
