@@ -23,7 +23,7 @@ public class Brand {
 
     @Lob
     @Column(name = "brandLogo", columnDefinition = "LONGBLOB")
-    private String brandLogo;
+    private byte[] brandLogo;
     
     @ManyToMany
     @JoinTable(name = "brand_categories", joinColumns = @JoinColumn(name = "brand_id"), inverseJoinColumns = @JoinColumn(name = "categories_id"))
@@ -32,8 +32,6 @@ public class Brand {
     @Size(min = 1, message = "At least one category is required")
     private Set<Category> categories = new HashSet<>();
 
-    public Brand() {
-    }
 
 	public Integer getId() {
 		return id;
@@ -51,11 +49,11 @@ public class Brand {
 		this.brandName = brandName;
 	}
 
-	public String getBrandLogo() {
+	public byte[] getBrandLogo() {
 		return brandLogo;
 	}
 
-	public void setBrandLogo(String brandLogo) {
+	public void setBrandLogo(byte[] brandLogo) {
 		this.brandLogo = brandLogo;
 	}
 
@@ -67,6 +65,28 @@ public class Brand {
 		this.categories = categories;
 	}
 
+    public Brand() {
+    }
+
+
+
+	public Brand(Integer id,
+			@NotEmpty(message = "brandName is required") @NotNull(message = "brandName should not be null") String brandName,
+			@NotEmpty(message = "At least one category is required") @Size(min = 1, message = "At least one category is required") Set<Category> categories) {
+		super();
+		this.id = id;
+		this.brandName = brandName;
+		this.categories = categories;
+	}
+
+	@Override
+	public String toString() {
+		return "Brand [id=" + id + ", brandName=" + brandName + ", categories=" + categories + "]";
+	}
+
+
+
+	
 	
     
 
