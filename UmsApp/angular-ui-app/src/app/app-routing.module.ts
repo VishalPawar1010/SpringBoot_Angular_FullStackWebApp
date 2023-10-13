@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticateGuard } from './authenticate.guard';
-import { LoginComponent } from './login/login.component';
-import { ViewUserComponent } from './components/user-list/view-user/view-user.component';
-import { UserListComponent } from './components/user-list/user-list.component';
-import { RolesListComponent } from './components/roles-list/roles-list.component';
-import { AddUserComponent } from './components/user-list/add-user/add-user.component';
-import { UpdateUserComponent } from './components/user-list/update-user/update-user.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { ViewCategoryComponent } from './components/category-list/view-category/view-category.component';
-import { AddCategoryComponent } from './components/category-list/add-category/add-category.component';
-import { UpdateCategoryComponent } from './components/category-list/update-category/update-category.component';
-import { CategoryListComponent } from './components/category-list/category-list.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AuthenticateGuard } from './services/SecurityServices/authenticate.guard';
+import { ViewUserComponent } from './Components/Modules/User/view-user/view-user.component';
+import { UserListComponent } from './Components/Modules/User/user-list.component';
+import { RolesListComponent } from './Components/Modules/Role/roles-list.component';
+import { AddUserComponent } from './Components/Modules/User/add-user/add-user.component';
+import { UpdateUserComponent } from './Components/Modules/User/update-user/update-user.component';
+import { HomePageComponent } from './Components/Dashboard/home-page/home-page.component';
+import { ViewCategoryComponent } from './Components/Modules/Category/view-category/view-category.component';
+import { AddCategoryComponent } from './Components/Modules/Category/add-category/add-category.component';
+import { UpdateCategoryComponent } from './Components/Modules/Category/update-category/update-category.component';
+import { CategoryListComponent } from './Components/Modules/Category/category-list.component';
+import { BrandsListComponent } from './Components/Modules/Brand/brands-list/brands-list.component';
+import { ProductListComponent } from './Components/Modules/Product/product-list/product-list.component';
+import { LoginComponent } from './Components/Security/login/login.component';
+import { ForgotPasswordComponent } from './Components/Security/forgot-password/forgot-password.component';
 
 
 const routes: Routes = [
@@ -51,6 +53,16 @@ const routes: Routes = [
     path: 'categories',
     canActivate: [AuthenticateGuard],
     component: CategoryListComponent,
+  },
+  {
+    path: 'brands',
+    canActivate: [AuthenticateGuard],
+    component: BrandsListComponent,
+  },
+  {
+    path: 'products',
+    canActivate: [AuthenticateGuard],
+    component: ProductListComponent,
   },
   {
     path: 'roles',
