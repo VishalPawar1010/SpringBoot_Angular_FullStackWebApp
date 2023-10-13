@@ -9,7 +9,7 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./add-category.component.css'],
 })
 export class AddCategoryComponent implements OnInit {
-  newCategoryForm: Category = new Category(0, '', '', '');
+  newCategoryForm: Category = new Category(0, '', '', null);
   errorMessage: String = '';
   message: string = '';
   newlyAddedCategory: any;

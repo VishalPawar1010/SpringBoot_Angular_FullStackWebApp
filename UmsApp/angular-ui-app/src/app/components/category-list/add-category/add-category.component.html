@@ -32,13 +32,25 @@
         <label for="categoryDescription" class="col-sm-3 col-form-label">Category Description:</label>
         <div class="col-sm-9">
           <input id="categoryDescription" type="text" name="categoryDescription" [(ngModel)]="newCategoryForm.description"
-            #categoryDescription="ngModel" class="form-control" pattern="^(.|\s)*[a-zA-Z]+(.|\s)*$" [ngClass]="{
+            #categoryDescription="ngModel" class="form-control" pattern="^(.|\s)*[a-zA-Z]+(.|\s)*$"  required 
+            minlength="5"
+            maxlength="128"
+            [ngClass]="{
               'is-valid': categoryDescription.valid,
               'is-invalid': categoryDescription.invalid
             }" />
           <div *ngIf="categoryDescription.invalid && (categoryDescription.dirty || categoryDescription.touched)" class="text-danger">
             <div *ngIf="categoryDescription.errors?.['pattern']">
               *categoryDescription should start with a capital letter and contain only alphabets.
+            </div>
+            <div *ngIf="categoryDescription.errors?.['required'] && categoryDescription.touched">
+              *categoryDescription not be blank
+            </div>
+            <div *ngIf="categoryDescription.errors?.['minlength'] && categoryDescription.touched">
+              *Category Description must be at least 5 characters long.
+            </div>
+            <div *ngIf="categoryDescription.errors?.['maxlength'] && categoryDescription.touched">
+              *Category Description must be atmost 128 characters long.
             </div>
           </div>
         </div>

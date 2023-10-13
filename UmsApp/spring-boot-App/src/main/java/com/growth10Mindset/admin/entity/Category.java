@@ -13,9 +13,13 @@ public class Category {
     @Column(name = "category_name", length = 45, nullable = false, unique = true)
     @NotEmpty(message = "Name is required")
     @NotNull(message = "Name should not be null")
+    @Pattern(regexp = "^[A-Z][a-zA-Z]*$", message = "Category Name should start with a capital letter and contain only alphabets.")
+
     private String categoryName;
 
-    @Column(length = 128)
+    @Column(name = "description",length = 128)
+    @NotBlank(message = "Description should not be not blank")
+    @Size(min = 5, max = 128)
     private String description;
 
     @Lob
