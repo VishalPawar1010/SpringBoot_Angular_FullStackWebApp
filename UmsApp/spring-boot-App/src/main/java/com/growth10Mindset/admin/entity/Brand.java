@@ -26,12 +26,11 @@ public class Brand {
     private byte[] brandLogo;
     
     @ManyToMany
-    @JoinTable(name = "brand_categories", joinColumns = @JoinColumn(name = "brand_id"), inverseJoinColumns = @JoinColumn(name = "categories_id"))
+    @JoinTable(name = "brand_categories", joinColumns = @JoinColumn(name = "brands_id"), inverseJoinColumns = @JoinColumn(name = "categories_id"))
     @Fetch(FetchMode.JOIN)
     @NotEmpty(message = "At least one category is required")
     @Size(min = 1, message = "At least one category is required")
     private Set<Category> categories = new HashSet<>();
-
 
 	public Integer getId() {
 		return id;
@@ -71,12 +70,15 @@ public class Brand {
 
 
 	public Brand(Integer id,
-			@NotEmpty(message = "brandName is required") @NotNull(message = "brandName should not be null") String brandName,
-			@NotEmpty(message = "At least one category is required") @Size(min = 1, message = "At least one category is required") Set<Category> categories) {
-		super();
+			 String brandName,
+			 Set<Category> categories) {
 		this.id = id;
 		this.brandName = brandName;
 		this.categories = categories;
+	}
+
+	public Brand(Integer id) {
+		this.id = id;
 	}
 
 	@Override

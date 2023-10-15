@@ -203,7 +203,7 @@ public class Product {
 	}
 
 	public Product(Integer id,
-			@NotEmpty(message = "productName is required") @NotNull(message = "productName should not be null") String productName,
+			String productName,
 			Category category, Brand brand) {
 		this.id = id;
 		this.productName = productName;

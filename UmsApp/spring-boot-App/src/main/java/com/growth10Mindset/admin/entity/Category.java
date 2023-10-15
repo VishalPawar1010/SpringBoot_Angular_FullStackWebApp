@@ -29,7 +29,13 @@ public class Category {
     public Category() {
     }
 
-    public Category(@NotBlank String categoryName, @NotBlank String description) {
+    
+    public Category(Integer id) {
+		this.id = id;
+	}
+
+
+	public Category(@NotBlank String categoryName, @NotBlank String description) {
         this.categoryName = categoryName;
         this.description = description;
     }

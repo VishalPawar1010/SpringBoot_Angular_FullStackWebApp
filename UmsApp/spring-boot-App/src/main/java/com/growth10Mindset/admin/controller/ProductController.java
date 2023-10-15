@@ -27,7 +27,7 @@ import com.growth10Mindset.admin.entity.Product;
 import com.growth10Mindset.admin.service.ProductService;
 
 @RestController
-@RequestMapping("/api/product")
+@RequestMapping("/api/products")
 @CrossOrigin("http://localhost:4200")
 public class ProductController {
 
@@ -62,9 +62,9 @@ public class ProductController {
 
     @PostMapping("/")
     public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
-        if (Objects.nonNull(productService.readProductByName(product.getProductName()))) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(product);
-        }
+//        if (Objects.nonNull(productService.readProductByName(product.getProductName()))) {
+//            return ResponseEntity.status(HttpStatus.CONFLICT).body(product);
+//        }
         Product createdProduct = productService.createProduct(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
     }

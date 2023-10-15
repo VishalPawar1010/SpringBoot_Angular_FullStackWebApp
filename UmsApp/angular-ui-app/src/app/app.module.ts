@@ -13,7 +13,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { UserListComponent } from './Components/Modules/User/user-list.component';
 import { HeaderComponent } from './Components/Dashboard/header/header.component';
 import { HomePageComponent } from './Components/Dashboard/home-page/home-page.component';
-import { BrandsListComponent } from './Components/Modules/Brand/brands-list/brands-list.component';
 import { AddCategoryComponent } from './Components/Modules/Category/add-category/add-category.component';
 import { CategoryListComponent } from './Components/Modules/Category/category-list.component';
 import { UpdateCategoryComponent } from './Components/Modules/Category/update-category/update-category.component';
@@ -30,6 +29,7 @@ import { RequestInterceptor } from './services/SecurityServices/request.intercep
 import { AddUserComponent } from './Components/Modules/User/add-user/add-user.component';
 import { RegisterComponent } from './Components/Security/register/register.component';
 
+import { BrandsListComponent } from './Components/Modules/Brand/brands-list/brands-list.component';
 @NgModule({
   declarations: [
     AppComponent,

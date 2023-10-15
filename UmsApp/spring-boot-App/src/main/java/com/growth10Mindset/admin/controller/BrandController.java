@@ -27,7 +27,7 @@ import com.growth10Mindset.admin.entity.Brand;
 import com.growth10Mindset.admin.service.BrandService;
 
 @RestController
-@RequestMapping("/api/brand")
+@RequestMapping("/api/brands")
 @CrossOrigin("http://localhost:4200")
 public class BrandController {
 
