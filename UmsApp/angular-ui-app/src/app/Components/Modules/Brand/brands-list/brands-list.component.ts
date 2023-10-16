@@ -34,7 +34,7 @@ export class BrandsListComponent implements OnInit, AfterViewInit, OnDestroy {
   datatableElement!: DataTableDirective;
 
   defaultImage = {
-    Brand: 'https://www.shutterstock.com/image-vector/grunge-green-Brand-word-round-260nw-1794170542.jpg',
+    Brand: 'https://image.shutterstock.com/image-vector/twitter-x-new-logo-vcetor-260nw-2359795891.jpg',
     
    };
   constructor(
