@@ -65,7 +65,12 @@ public class ProductController {
 //        if (Objects.nonNull(productService.readProductByName(product.getProductName()))) {
 //            return ResponseEntity.status(HttpStatus.CONFLICT).body(product);
 //        }
-        Product createdProduct = productService.createProduct(product);
+    	System.out.println("NEW PRODUCT details ===" + product.getBrand().getId());
+    	System.out.println("NEW PRODUCT details ===" + product.getBrand().toString());
+
+//    	System.out.println("NEW PRODUCT details ===" + product.getCategory().getId().toString());
+
+    	Product createdProduct = productService.createProduct(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
     }
 

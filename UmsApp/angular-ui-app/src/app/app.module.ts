@@ -28,6 +28,7 @@ import { UserService } from './services/ModuleServices/user.service';
 import { RequestInterceptor } from './services/SecurityServices/request.interceptor';
 import { AddUserComponent } from './Components/Modules/User/add-user/add-user.component';
 import { BrandsListComponent } from './Components/Modules/Brand/brands-list/brands-list.component';
+import { AddProductComponent } from './Components/Modules/Product/product-list/add-product/add-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { BrandsListComponent } from './Components/Modules/Brand/brands-list/bran
     AddCategoryComponent,
     UpdateCategoryComponent,
     BrandsListComponent,
-    ProductListComponent
+    ProductListComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
