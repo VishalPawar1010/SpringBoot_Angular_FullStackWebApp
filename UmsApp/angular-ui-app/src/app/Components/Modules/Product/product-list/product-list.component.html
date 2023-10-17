@@ -35,7 +35,12 @@
           </td>
           <td>{{ tempProduct.productName }}</td>
           <td>{{ tempProduct.brand.brandName }}</td>
-          <td>{{ tempProduct.category.categoryName }}</td>
+          <td >
+            <li *ngFor="let category of tempProduct.brand.categories">
+              <td>{{ category.categoryName }}</td>
+              <span *ngIf="category !== tempProduct.brand.categories[tempProduct.brand.categories.length - 1]">, </span>
+            </li>
+        </td>
              <td>
             <div class="btn-group" role="group" aria-label="product Actions">
               <button class="btn btn-primary btn-sm mr-1" (click)="viewProduct(tempProduct)">

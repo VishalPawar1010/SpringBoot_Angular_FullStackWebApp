@@ -31,6 +31,8 @@ public class Brand {
     @NotEmpty(message = "At least one category is required")
     @Size(min = 1, message = "At least one category is required")
     private Set<Category> categories = new HashSet<>();
+    
+    
 
 	public Integer getId() {
 		return id;

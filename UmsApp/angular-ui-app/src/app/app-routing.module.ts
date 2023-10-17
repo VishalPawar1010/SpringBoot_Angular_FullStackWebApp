@@ -16,6 +16,7 @@ import { BrandsListComponent } from './Components/Modules/Brand/brands-list/bran
 import { ProductListComponent } from './Components/Modules/Product/product-list/product-list.component';
 import { LoginComponent } from './Components/Security/login/login.component';
 import { ForgotPasswordComponent } from './Components/Security/forgot-password/forgot-password.component';
+import { AddProductComponent } from './Components/Modules/Product/product-list/add-product/add-product.component';
 import { RegisterComponent } from './Components/Security/register/register.component';
 
 
@@ -79,6 +80,11 @@ const routes: Routes = [
     path: 'add-user',
     canActivate: [AuthenticateGuard],
     component: AddUserComponent,
+  },
+  {
+    path: 'add-product',
+    canActivate: [AuthenticateGuard],
+    component: AddProductComponent,
   },
   {
     path: 'add-category',

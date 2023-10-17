@@ -30,6 +30,7 @@ import { AddUserComponent } from './Components/Modules/User/add-user/add-user.co
 import { RegisterComponent } from './Components/Security/register/register.component';
 
 import { BrandsListComponent } from './Components/Modules/Brand/brands-list/brands-list.component';
+import { AddProductComponent } from './Components/Modules/Product/product-list/add-product/add-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { BrandsListComponent } from './Components/Modules/Brand/brands-list/bran
     UpdateCategoryComponent,
     BrandsListComponent,
     ProductListComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

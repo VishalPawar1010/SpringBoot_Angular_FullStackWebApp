@@ -15,7 +15,7 @@ import { AuthService } from 'src/app/services/SecurityServices/auth.service';
 })
 export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   products: Product[] = [];
-  selectedProduct: Product = new Product(0, '',null,null,null);
+  selectedProduct: Product = new Product(0, '','','',null,null,null);
   getImage: any;
   base64Image: any;
   profilePics: Map<String, String> = new Map<String, String>();
@@ -103,7 +103,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   goToAddProduct() {
-    this.router.navigate(['add-Product']);
+    this.router.navigate(['add-product']);
   }
 
   viewProduct(Product: Product): void {

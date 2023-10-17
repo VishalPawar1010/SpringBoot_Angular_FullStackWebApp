@@ -1,12 +1,12 @@
 package com.growth10Mindset.admin.service;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.growth10Mindset.admin.entity.Brand;
 import com.growth10Mindset.admin.entity.Product;
 import com.growth10Mindset.admin.repo.ProductRepository;
 
@@ -15,6 +15,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productrepository;
+    
+    @Autowired
+    private BrandService brandService;
 
     public List<Product> listProducts() {
 
@@ -25,6 +28,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product createProduct(Product product) {
+//    	Brand brand = brandService.readBrandById(1);
+//    	product.setBrand(brand);
         return productrepository.save(product);
     }
 

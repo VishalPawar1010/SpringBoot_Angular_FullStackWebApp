@@ -53,10 +53,7 @@ public class Product {
     private float width;
     private float height;
     private float weight;
-    
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+   
     
     @ManyToOne
     @JoinColumn(name = "brand_id")
@@ -182,13 +179,6 @@ public class Product {
 		this.weight = weight;
 	}
 
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
 
 	public Brand getBrand() {
 		return brand;
@@ -201,19 +191,28 @@ public class Product {
 	public Product() {
 
 	}
+	
 
 	public Product(Integer id,
 			String productName,
-			Category category, Brand brand) {
+			String shortDescription, String fullDescription, Brand brand) {
 		this.id = id;
 		this.productName = productName;
-		this.category = category;
+		this.shortDescription = shortDescription;
+		this.fullDescription = fullDescription;
+		this.brand = brand;
+	}
+
+	public Product(Integer id,
+			String productName, Brand brand) {
+		this.id = id;
+		this.productName = productName;
 		this.brand = brand;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", productName=" + productName + ", category=" + category + ", brand=" + brand
+		return "Product [id=" + id + ", productName=" + productName + ", brand=" + brand
 				+ "]";
 	}
 
