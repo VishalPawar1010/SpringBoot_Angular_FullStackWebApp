@@ -107,7 +107,7 @@ export class BrandsListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   goToAddBrand() {
-    this.router.navigate(['add-Brand']);
+    this.router.navigate(['add-brand']);
   }
 
   viewBrand(Brand: Brand): void {

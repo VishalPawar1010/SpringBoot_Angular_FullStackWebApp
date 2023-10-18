@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Brand } from 'src/app/Models/brand';
+import { CategoryService } from './category.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { Brand } from 'src/app/Models/brand';
 export class BrandService {
   private baseUrl = 'http://localhost:8080/api/brands';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,private CategoryService : CategoryService) { }
 
   getBrandsList(): Observable<Brand[]> {
     return this.httpClient.get<Brand[]>(`${this.baseUrl}/`).pipe(map((response) => response));
@@ -48,6 +49,9 @@ export class BrandService {
     return this.httpClient.get(`${this.baseUrl}/viewImage/${id}`, {
       responseType: 'blob',
     });
+  }
+  getAllCategories(): Observable<any>{
+    return this.CategoryService.getCategoriesList();
   }
 }
 interface GetResponse {

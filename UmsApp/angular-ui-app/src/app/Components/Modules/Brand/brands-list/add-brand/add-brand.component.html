@@ -1,66 +1,77 @@
 <div class="container">
-  <form class="col-10" style="max-width: 500px; margin: 0 auto" #addCategoryForm="ngForm">
+  <form class="col-10" style="max-width: 500px; margin: 0 auto" #addBrandForm="ngForm" (ngSubmit)="createBrand(newBrandForm)">
     <div class="border border-secondary rounded p-3 d-flex flex-column">
       <div class="my-auto">
-        <p class="h5 mb-4 text-center">Add new category</p>
+        <p class="h5 mb-4 text-center">Add new brand</p>
       </div>
 
       <div class="form-group row">
-        <label for="categoryName" class="col-sm-3 col-form-label">Category Name:</label>
+        <label for="brandName" class="col-sm-3 col-form-label">Brand Name:</label>
         <div class="col-sm-9">
-          <input id="categoryName" type="text" name="categoryName" required minlength="3" [(ngModel)]="newCategoryForm.categoryName"
-            #categoryName="ngModel" class="form-control" pattern="^[A-Z][a-zA-Z]*$" [ngClass]="{
-              'is-valid': categoryName.valid,
-              'is-invalid': categoryName.invalid
+          <input id="brandName" type="text" name="brandName" required minlength="3" [(ngModel)]="newBrandForm.brandName"
+            #brandName="ngModel" class="form-control" pattern="^[A-Z][a-zA-Z]*$" [ngClass]="{
+              'is-valid': brandName.valid,
+              'is-invalid': brandName.invalid
             }" />
 
-          <div *ngIf="categoryName.invalid && (categoryName.dirty || categoryName.touched)" class="text-danger">
-            <div *ngIf="categoryName.errors?.['pattern']">
-              *Category Name should start with a capital letter and contain only alphabets.
+          <div *ngIf="brandName.invalid && (brandName.dirty || brandName.touched)" class="text-danger">
+            <div *ngIf="brandName.errors?.['pattern']">
+              *Brand Name should start with a capital letter and contain only alphabets.
             </div>
-            <div *ngIf="categoryName.errors?.['required'] && categoryName.touched">
-              *Category Name is required.
+            <div *ngIf="brandName.errors?.['required'] && brandName.touched">
+              *Brand Name is required.
             </div>
-            <div *ngIf="categoryName.errors?.['minlength'] && categoryName.touched">
-              *Category Name must be at least 3 characters long.
+            <div *ngIf="brandName.errors?.['minlength'] && brandName.touched">
+              *Brand Name must be at least 3 characters long.
             </div>
           </div>
         </div>
       </div>
-
-      <div class="form-group row">
-        <label for="categoryDescription" class="col-sm-3 col-form-label">Category Description:</label>
-        <div class="col-sm-9">
-          <input id="categoryDescription" type="text" name="categoryDescription" [(ngModel)]="newCategoryForm.description"
-            #categoryDescription="ngModel" class="form-control" pattern="^(.|\s)*[a-zA-Z]+(.|\s)*$"  required 
-            minlength="5"
-            maxlength="128"
-            [ngClass]="{
-              'is-valid': categoryDescription.valid,
-              'is-invalid': categoryDescription.invalid
-            }" />
-          <div *ngIf="categoryDescription.invalid && (categoryDescription.dirty || categoryDescription.touched)" class="text-danger">
-            <div *ngIf="categoryDescription.errors?.['pattern']">
-              *categoryDescription should start with a capital letter and contain only alphabets.
-            </div>
-            <div *ngIf="categoryDescription.errors?.['required'] && categoryDescription.touched">
-              *categoryDescription not be blank
-            </div>
-            <div *ngIf="categoryDescription.errors?.['minlength'] && categoryDescription.touched">
-              *Category Description must be at least 5 characters long.
-            </div>
-            <div *ngIf="categoryDescription.errors?.['maxlength'] && categoryDescription.touched">
-              *Category Description must be atmost 128 characters long.
-            </div>
+      <div class="form-group mt-3 row">
+        <label for="brandLogo" class="col-sm-3 col-form-label">Brand Logo:</label>
+        <div class="col-sm-9 file-input"  role="alert">
+          <div class="form-inline" style="padding: 15px;">
+            <input id="brandLogo" class="form-control" type="file" (change)="onChange($event)" required>
           </div>
+         
+        
         </div>
       </div>
+
+      <div class="form-group mt-3 row">
+      <label for="brandCategory" class="col-sm-3 col-form-label">Brand Categories:</label>
+      <div class="col-sm-9">
+        <select  (change)="showListOfCategory($event)" [(ngModel)]="selectedItem"   data-live-search="true" id="brandCategory" class="form-select selectpicker " name="categories" >
+          <option  required *ngFor="let category of allCategories" [value]="category.id">{{ category.categoryName }}</option>
+        </select>
+      </div>
+
+      </div>
+      <div class="form-group mt-3 row ">
+        <label   class="col-sm-3 col-form-label">Selected Categories : </label>
+        <ul name="categories" class="col-sm-9 list-group" >
+          <li class="list-group-item d-flex justify-content-between align-items-center" [value]="category.id" *ngFor="let category of categories;let i = index;">
+            {{category.categoryName}}
+            <div>
+              <button
+              type="button" 
+              class="btn btn-danger"
+              (click)="deleteCategory(i)"
+              >X</button>
+            </div>
+          </li>
+         
+        </ul>
+      </div>
+
+
+
 
       <div class="mt-3 text-center d-flex justify-content-between">
-        <button class="btn btn-success" [disabled]="addCategoryForm.invalid" (click)="createCategory(newCategoryForm)">
-          Create Category
+        <button class="btn btn-success" type="submit" [disabled]="addBrandForm.invalid || !this.categories.length" >
+          Create Brand
         </button>
-        <button class="btn btn-primary" routerLink="/categories">Cancel</button>
+        <button class="btn btn-primary" type="button" routerLink="/brands">Cancel</button>
       </div>
     </div>
   </form>

@@ -1,30 +1,20 @@
 package com.growth10Mindset.admin.controller;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
-
-import javax.validation.Valid;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.growth10Mindset.admin.entity.Brand;
+import com.growth10Mindset.admin.entity.Category;
+import com.growth10Mindset.admin.service.BrandService;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.growth10Mindset.admin.entity.Brand;
-import com.growth10Mindset.admin.service.BrandService;
+import javax.validation.Valid;
+import java.io.IOException;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/brands")
@@ -61,12 +51,24 @@ public class BrandController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Brand> createBrand(@Valid @RequestBody Brand brand) {
+    public ResponseEntity<Brand> createBrand(@Valid @RequestBody Map<String, Object> brandDto) throws IOException {
+
+      Brand brand  = new Brand();
+
+      brand.setBrandName((String) brandDto.get("brandName"));
+
+      Set<Category> tempSet = new HashSet<>();
+      for(var cat : (ArrayList<?>)brandDto.get("categories")){
+          tempSet.add(new ObjectMapper().convertValue( cat,Category.class) );
+      }
+        brand.setCategories(tempSet);
+      if(brandDto.get("brandLogo") != null)
+       brand.setBrandLogo(Base64.getDecoder().decode(((String)brandDto.get("brandLogo")).split(",")[1]));
         if (Objects.nonNull(brandService.readBrandByName(brand.getBrandName()))) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(brand);
         }
         Brand createdBrand = brandService.createBrand(brand);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdBrand);
+        return ResponseEntity.status(HttpStatus.CREATED).body(brand);
     }
 
     @PutMapping("/{brandId}")

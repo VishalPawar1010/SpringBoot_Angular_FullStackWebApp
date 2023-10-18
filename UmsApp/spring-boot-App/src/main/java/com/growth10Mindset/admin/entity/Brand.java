@@ -1,13 +1,14 @@
 package com.growth10Mindset.admin.entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
-
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "brands")
@@ -26,7 +27,7 @@ public class Brand {
     private byte[] brandLogo;
     
     @ManyToMany
-    @JoinTable(name = "brand_categories", joinColumns = @JoinColumn(name = "brands_id"), inverseJoinColumns = @JoinColumn(name = "categories_id"))
+    @JoinTable(name = "brand_categories", joinColumns = @JoinColumn(name = "brand_id"), inverseJoinColumns = @JoinColumn(name = "categories_id"))
     @Fetch(FetchMode.JOIN)
     @NotEmpty(message = "At least one category is required")
     @Size(min = 1, message = "At least one category is required")
