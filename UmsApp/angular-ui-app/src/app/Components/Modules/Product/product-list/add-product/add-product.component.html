@@ -30,7 +30,7 @@
       <div class="form-group row">
         <label for="shortDescription" class="col-sm-3 col-form-label">Short Description:</label>
         <div class="col-sm-9">
-          <input id="shortDescription" type="text" name="shortDescription" required minlength="3" [(ngModel)]="newProductForm.shortDescription"
+          <input id="shortDescription" type="text" name="shortDescription" required minlength="3" [(ngModel)]="newProductForm.productName"
             #shortDescription="ngModel" class="form-control" pattern="^[A-Z][a-zA-Z]*$"  [ngClass]="{
               'is-valid': shortDescription.valid,
               'is-invalid': shortDescription.invalid
@@ -52,7 +52,7 @@
       <div class="form-group row">
         <label for="fullDescription" class="col-sm-3 col-form-label">Short Description:</label>
         <div class="col-sm-9">
-          <input id="fullDescription" type="text" name="fullDescription" required minlength="3" [(ngModel)]="newProductForm.fullDescription"
+          <input id="fullDescription" type="text" name="fullDescription" required minlength="3" [(ngModel)]="newProductForm.productName"
             #fullDescription="ngModel" class="form-control" pattern="^[A-Z][a-zA-Z]*$"  [ngClass]="{
               'is-valid': fullDescription.valid,
               'is-invalid': fullDescription.invalid
@@ -74,7 +74,7 @@
       <div class="form-group mt-3 row">
         <label for="brands" class="col-sm-3 col-form-label">Brands:</label>
         <div class="col-sm-9">
-          <select data-live-search="true" id="brandCategory" class="form-select selectpicker " name="brands" [(ngModel)]="brandID">
+          <select data-live-search="true" id="brandCategory" class="form-select selectpicker " required minlength="1" name="brands" [(ngModel)]="brandID">
             <option class="" *ngFor="let brand of getAllBrands" [value]="brand.id">{{ brand.id }} : {{ brand.brandName }}</option>
           </select>
         </div>

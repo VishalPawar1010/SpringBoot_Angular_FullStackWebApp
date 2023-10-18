@@ -44,8 +44,8 @@ export class AddProductComponent implements OnInit {
     this.productService.createProduct(product).subscribe(
       (res) => {
         this.message = 'Product created successfully';
-        this.newlyAddedProduct = res;
-        this.router.navigate(['products', this.newlyAddedProduct.id]);
+        // this.newlyAddedProduct = res;
+        this.router.navigate(['products']);
       },
       (error) => {
         this.errorMessage = 'Something went wrong or duplicate entry';
