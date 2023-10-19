@@ -31,6 +31,13 @@ import { RegisterComponent } from './Components/Security/register/register.compo
 
 import { BrandsListComponent } from './Components/Modules/Brand/brands-list/brands-list.component';
 import { AddProductComponent } from './Components/Modules/Product/product-list/add-product/add-product.component';
+import { UpdateProductComponent } from './Components/Modules/Product/product-list/update-product/update-product/update-product.component';
+import { NgWizardConfig, NgWizardModule, THEME } from '@kronscht/ng-wizard';
+
+const ngWizardConfig: NgWizardConfig = {
+  theme: THEME.default
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +57,8 @@ import { AddProductComponent } from './Components/Modules/Product/product-list/a
     BrandsListComponent,
     ProductListComponent,
     RegisterComponent,
-    AddProductComponent
+    AddProductComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +69,7 @@ import { AddProductComponent } from './Components/Modules/Product/product-list/a
     AppRoutingModule,
     NgbModule,
     BrowserAnimationsModule,
-    
+    NgWizardModule.forRoot(ngWizardConfig),
     ToastrModule.forRoot({
       positionClass:"toast-top-right",
       preventDuplicates:true,

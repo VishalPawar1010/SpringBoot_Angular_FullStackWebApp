@@ -26,13 +26,16 @@
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-              "node_modules/ngx-toastr/toastr.css" 
-
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/@kronscht/ng-wizard/themes/ng_wizard.css",
+              "node_modules/@kronscht/ng-wizard/themes/ng_wizard_theme_arrows.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/datatables.net/js/jquery.dataTables.min.js",
               "node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"
+              
+              
             ]
           },
           "configurations": {

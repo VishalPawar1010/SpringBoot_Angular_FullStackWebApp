@@ -1,0 +1,23 @@
+<div class="container py-5">
+    <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
+    
+        <ng-wizard-step [title]="'Step 1'" [description]="'Overview'"
+        [canEnter]="isValidTypeBoolean" [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+        <span>Overview</span>
+        </ng-wizard-step>
+        
+        <ng-wizard-step [title]="'Step 2'" [description]="'Details'">
+        <span>Step 2 content</span>
+        </ng-wizard-step>
+        
+        <ng-wizard-step [title]="'Step 3'" [description]="'Images'"
+        [canEnter]="isValidFunctionReturnsObservable.bind(this)" [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+        <span>Step 3 content</span>
+        </ng-wizard-step>
+    
+        <ng-wizard-step [title]="'Step 4'" [description]="'Shipping Details'">
+        <span>Step 4 content</span>
+        </ng-wizard-step>
+
+    </ng-wizard>
+</div>
