@@ -17,6 +17,7 @@ import { ProductListComponent } from './Components/Modules/Product/product-list/
 import { LoginComponent } from './Components/Security/login/login.component';
 import { ForgotPasswordComponent } from './Components/Security/forgot-password/forgot-password.component';
 import { AddProductComponent } from './Components/Modules/Product/product-list/add-product/add-product.component';
+import { UpdateProductComponent } from './Components/Modules/Product/product-list/update-product/update-product/update-product.component';
 
 
 const routes: Routes = [
@@ -89,6 +90,11 @@ const routes: Routes = [
     path: 'update-user',
     canActivate: [AuthenticateGuard],
     component: UpdateUserComponent,
+  },
+  {
+    path: 'update-product',
+    canActivate: [AuthenticateGuard],
+    component: UpdateProductComponent,
   },
 
   

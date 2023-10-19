@@ -111,6 +111,9 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   openUpdateProduct(ProductToBeUpdated: any) {
+
+    this.router.navigate(['update-product']);
+
     // const modalRef = this.modalService.open(UpdateProductComponent, {
     //   modalDialogClass: 'modal-lg',
     // });
