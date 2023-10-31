@@ -187,7 +187,7 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
   exportToExcel(){
     const timestamp = new Date().toISOString().replace(/[^0-9]/g, '-'); // Format: 'yyyyMMddHHmmss'
     // Define the file name
-    const fileName = `users_${timestamp}.xslx`;
+    const fileName = `users_${timestamp}.xlsx`;
     this.userService.exportUsersToExcel().subscribe(
       (data: Blob) => {
         const blob = new Blob([data], { type: 'application/octet-stream' });
