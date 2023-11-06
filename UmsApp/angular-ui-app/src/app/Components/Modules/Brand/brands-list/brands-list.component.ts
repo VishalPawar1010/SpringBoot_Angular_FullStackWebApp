@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, NavigationExtras, Router, RouterStateSnapshot } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataTableDirective } from 'angular-datatables';
@@ -13,6 +13,8 @@ import { Subject } from 'rxjs';
 import { AuthService } from 'src/app/services/SecurityServices/auth.service';
 import { BrandService } from 'src/app/services/ModuleServices/brand.service';
 import { Brand } from 'src/app/Models/brand';
+import { UpdateBrandComponent } from './update-brand/update-brand.component';
+import { Category } from 'src/app/Models/category';
 
 @Component({
   selector: 'app-brands-list',
@@ -32,6 +34,8 @@ export class BrandsListComponent implements OnInit, AfterViewInit, OnDestroy {
   dtTrigger: Subject<any> = new Subject();
   @ViewChild(DataTableDirective, { static: false })
   datatableElement!: DataTableDirective;
+  allCategories : Category[];
+  // data : Category[] ;
 
   defaultImage = {
     Brand: 'https://image.shutterstock.com/image-vector/twitter-x-new-logo-vcetor-260nw-2359795891.jpg',
@@ -47,6 +51,15 @@ export class BrandsListComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.brandService.getAllCategories().subscribe(
+      (res) => {
+        this.allCategories = res;
+        // this.data = this.allCategories;
+      },
+      (error) => {
+        console.log('error encountered while fetching data .....');
+      }
+    );
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
@@ -88,10 +101,10 @@ export class BrandsListComponent implements OnInit, AfterViewInit, OnDestroy {
       this.brands = data;
       console.log(this.brands);
       this.brands = data.map((Brand) => {
-        if (Brand.brandLogo)
+        this.base64Image =null;
+        if (Brand.brandLogo)          
           this.base64Image = 'data:image/png;base64,' + Brand.brandLogo;
-        else 
-          this.base64Image = this.defaultImage.Brand;
+                 
           // this.base64Image = 'data:image/png;base64,' + this.getImage;
           return { ...Brand, brandLogo: this.base64Image };
       });
@@ -107,32 +120,44 @@ export class BrandsListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   goToAddBrand() {
-    this.router.navigate(['add-brand']);
+    // const navigationExtras: NavigationExtras = {
+    //   state: {
+    //     data: this.allCategories
+    //   }
+    // };
+    this.router.navigate(['add-brand'],{state : {
+          data : this.allCategories
+        }});
+  
   }
 
-  viewBrand(Brand: Brand): void {
-    this.router.navigate(['Brand', { id: Brand.id }]);
-  }
 
-  openUpdateBrand(BrandToBeUpdated: any) {
-    // const modalRef = this.modalService.open(UpdateBrandComponent, {
-    //   modalDialogClass: 'modal-lg',
-    // });
-    // modalRef.componentInstance.props = { Brand: { ...BrandToBeUpdated } };
-    // modalRef.result.then((res) => {
-    //   if (!res) return;
 
-    //   // console.log('NEW Brand = ', res);
-    //   this.brandService.updateBrand(res.id, res).subscribe((updatedBrand) => {
-    //     const index = this.brands.findIndex((u) => u.id === updatedBrand.id);
-    //     if (index !== -1) {
-    //       this.brands[index].description = updatedBrand.description;
-    //       this.brands[index].BrandName = updatedBrand.BrandName;
+  openUpdateBrand(BrandToBeUpdated: Brand) {
+    
+    const modalRef = this.modalService.open(UpdateBrandComponent, {
+      modalDialogClass: 'modal-lg',
+
+    });
+    modalRef.componentInstance.props = { Brand: { ...BrandToBeUpdated } };
+    modalRef.result.then((res) => {
+      if (!res) return;
+
+      // console.log('NEW Brand = ', res);
+      this.brandService.createBrand(res).subscribe((updatedBrand) => {
+        const index = this.brands.findIndex((u) => u.id === updatedBrand.id);
+        if (index !== -1) {
+          console.log(res);
+          this.brands[index].brandLogo = res.brandLogo;
+          this.brands[index].brandName = res.brandName;
+          this.brands[index].categories = res.categories;
+        
           
-    //       console.log('Brand updated successfully');
-    //     }
-    //   });
-    // });
+                    
+          console.log('Brand updated successfully');
+        }
+      });
+    });
   }
 
   deleteBrand(Brand: Brand): void {

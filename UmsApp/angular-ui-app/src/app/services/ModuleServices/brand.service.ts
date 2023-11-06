@@ -29,27 +29,27 @@ export class BrandService {
     return this.httpClient.post<Brand>(`${this.baseUrl}/`, Brand);
   }
 
-  updateBrand(BrandId: number, Brand: Brand): Observable<Brand> {
-    return this.httpClient.put<Brand>(`${this.baseUrl}/${BrandId}`, Brand);
-  }
+  // updateBrand(BrandId: number, Brand: Brand): Observable<Brand> {
+  //   return this.httpClient.put<Brand>(`${this.baseUrl}/${BrandId}`, Brand);
+  // }
 
   deleteBrand(BrandId: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.baseUrl}/${BrandId}`);
   }
-  updateProfilePic(formData: FormData, id: number): Observable<any> {
-    return this.httpClient.post(
-      `${this.baseUrl}/updateImage/${id}`,
-      formData
-    );
-  }
-  deleteProfilePic(id: number): Observable<any> {
-    return this.httpClient.delete(`${this.baseUrl}/deleteImage/${id}`);
-  }
-  getImage(id : number): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}/viewImage/${id}`, {
-      responseType: 'blob',
-    });
-  }
+  // updateProfilePic(formData: FormData, id: number): Observable<any> {
+  //   return this.httpClient.post(
+  //     `${this.baseUrl}/updateImage/${id}`,
+  //     formData
+  //   );
+  // }
+  // deleteProfilePic(id: number): Observable<any> {
+  //   return this.httpClient.delete(`${this.baseUrl}/deleteImage/${id}`);
+  // }
+  // getImage(id : number): Observable<any> {
+  //   return this.httpClient.get(`${this.baseUrl}/viewImage/${id}`, {
+  //     responseType: 'blob',
+  //   });
+  // }
   getAllCategories(): Observable<any>{
     return this.CategoryService.getCategoriesList();
   }

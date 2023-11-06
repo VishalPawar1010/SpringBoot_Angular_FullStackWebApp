@@ -29,6 +29,7 @@ import { RequestInterceptor } from './services/SecurityServices/request.intercep
 import { AddUserComponent } from './Components/Modules/User/add-user/add-user.component';
 import { BrandsListComponent } from './Components/Modules/Brand/brands-list/brands-list.component';
 import { AddBrandComponent } from './Components/Modules/Brand/brands-list/add-brand/add-brand.component';
+import { UpdateBrandComponent } from './Components/Modules/Brand/brands-list/update-brand/update-brand.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { AddBrandComponent } from './Components/Modules/Brand/brands-list/add-br
     UpdateCategoryComponent,
     BrandsListComponent,
     ProductListComponent,
-    AddBrandComponent
+    AddBrandComponent,
+    UpdateBrandComponent
   ],
   imports: [
     BrowserModule,

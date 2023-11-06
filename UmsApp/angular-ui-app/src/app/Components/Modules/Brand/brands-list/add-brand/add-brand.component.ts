@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 import { Brand } from 'src/app/Models/brand';
 import { Category } from 'src/app/Models/category';
 import { BrandService } from 'src/app/services/ModuleServices/brand.service';
@@ -23,7 +24,7 @@ export class AddBrandComponent implements OnInit {
   selectedItem : number;
   deleteItemId : number;
 
-  constructor(private BrandService: BrandService, private router: Router) {}
+  constructor(private BrandService: BrandService, private router: Router,private route : ActivatedRoute) {}
 
   ngOnInit(): void {
     this.BrandService.getAllCategories().subscribe(
@@ -34,6 +35,7 @@ export class AddBrandComponent implements OnInit {
         console.log('error encountered while fetching data .....');
       }
     );
+ 
   }
 
   createBrand(Brand: Brand): void {

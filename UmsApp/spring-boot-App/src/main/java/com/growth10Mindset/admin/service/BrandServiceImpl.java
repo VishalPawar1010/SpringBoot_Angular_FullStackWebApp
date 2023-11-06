@@ -1,16 +1,12 @@
 package com.growth10Mindset.admin.service;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.growth10Mindset.admin.entity.Brand;
 import com.growth10Mindset.admin.repo.BrandRepository;
-import com.growth10Mindset.admin.util.ImageUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BrandServiceImpl implements BrandService {
@@ -21,14 +17,14 @@ public class BrandServiceImpl implements BrandService {
     public List<Brand> listBrands() {
 
         List<Brand> categories = brandrepository.findAll();
-        for (Brand brand : categories) {
-
-            byte[] image = brand.getBrandLogo();
-            if (image != null) {
-                byte[] decompressedData = ImageUtil.decompressImage(image);
-                brand.setBrandLogo(decompressedData);
-            }
-        }
+//        for (Brand brand : categories) {
+//
+//            byte[] image = brand.getBrandLogo();
+//            if (image != null) {
+//                byte[] decompressedData = ImageUtil.decompressImage(image);
+//                brand.setBrandLogo(decompressedData);
+//            }
+//        }
         return categories;
 
     }
@@ -47,11 +43,11 @@ public class BrandServiceImpl implements BrandService {
         return brandOptional.orElse(null);
     }
 
-    public void updateBrand(Integer brandID, Brand newBrand) {
-        Brand brand = brandrepository.findById(brandID).get();
-        brand.setBrandName(newBrand.getBrandName());
-        brandrepository.save(brand);
-    }
+//    public void updateBrand(Integer brandID, Brand newBrand) {
+//        Brand brand = brandrepository.findById(brandID).get();
+//        brand.setBrandName(newBrand.getBrandName());
+//        brandrepository.save(brand);
+//    }
 
     @Override
     public void deleteBrandById(Integer id) {
@@ -62,28 +58,28 @@ public class BrandServiceImpl implements BrandService {
         }
     }
 
-    @Override
-    public Brand updateBrandLogo(MultipartFile file, int id) throws IOException {
-        Optional<Brand> brand = brandrepository.findById(id);
-        brand.get().setBrandLogo(ImageUtil.compressImage(file.getBytes()));
-         return brandrepository.save(brand.get());
-    }
-    @Override
-    public byte[] viewBrandLogo(int id) {
-        Optional<Brand> brand = brandrepository.findById(id);
-
-        return ImageUtil.decompressImage(brand.get().getBrandLogo());
-    }
-
-    @Override
-    public void deleteBrandLogoById(int id) {
-        Optional<Brand> brand = brandrepository.findById(id);
-        if (brand.isPresent()) {
-            if (brand != null) {
-                Brand cat = brand.get();
-                cat.setBrandLogo(null);
-                brandrepository.save(cat);
-            }
-        }
-    }
+//    @Override
+//    public Brand updateBrandLogo(MultipartFile file, int id) throws IOException {
+//        Optional<Brand> brand = brandrepository.findById(id);
+//        brand.get().setBrandLogo(ImageUtil.compressImage(file.getBytes()));
+//         return brandrepository.save(brand.get());
+//    }
+//    @Override
+//    public byte[] viewBrandLogo(int id) {
+//        Optional<Brand> brand = brandrepository.findById(id);
+//
+//        return ImageUtil.decompressImage(brand.get().getBrandLogo());
+//    }
+//
+//    @Override
+//    public void deleteBrandLogoById(int id) {
+//        Optional<Brand> brand = brandrepository.findById(id);
+//        if (brand.isPresent()) {
+//            if (brand != null) {
+//                Brand cat = brand.get();
+//                cat.setBrandLogo(null);
+//                brandrepository.save(cat);
+//            }
+//        }
+//    }
 }
