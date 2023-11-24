@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {CdkStepperModule} from '@angular/cdk/stepper';
+
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
@@ -33,6 +35,10 @@ import { BrandsListComponent } from './Components/Modules/Brand/brands-list/bran
 import { AddProductComponent } from './Components/Modules/Product/product-list/add-product/add-product.component';
 import { UpdateProductComponent } from './Components/Modules/Product/product-list/update-product/update-product/update-product.component';
 import { NgWizardConfig, NgWizardModule, THEME } from '@kronscht/ng-wizard';
+import { StepperComponent } from './Components/Modules/Product/product-list/update-product/update-product/stepper/stepper.component';
+import { OverviewComponent } from './Components/Modules/Product/product-list/update-product/update-product/overview/overview.component';
+import { DescriptionComponent } from './Components/Modules/Product/product-list/update-product/update-product/description/description.component';
+import { FinishComponent } from './Components/Modules/Product/product-list/update-product/update-product/finish/finish.component';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default
@@ -58,13 +64,20 @@ const ngWizardConfig: NgWizardConfig = {
     ProductListComponent,
     RegisterComponent,
     AddProductComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    StepperComponent,
+    OverviewComponent,
+    DescriptionComponent,
+    FinishComponent,
+    
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    CdkStepperModule,
+    ReactiveFormsModule,
     DataTablesModule,
     AppRoutingModule,
     NgbModule,
@@ -76,6 +89,7 @@ const ngWizardConfig: NgWizardConfig = {
       timeOut:3000,
     })
   ],
+  exports:[CdkStepperModule],
   providers: [
     UserService,
     RolesService,

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { NgWizardConfig, NgWizardService, STEP_STATE, StepChangedArgs, StepValidationArgs, THEME } from '@kronscht/ng-wizard';
+import { CdkStepper, CdkStepperModule } from '@angular/cdk/stepper';
+import { Component, ViewChild } from '@angular/core';
 import { of } from 'rxjs';
+import { Product } from 'src/app/Models/product';
+import { ProductService } from 'src/app/services/ModuleServices/product.service';
 
 @Component({
   selector: 'app-update-product',
@@ -8,45 +10,34 @@ import { of } from 'rxjs';
   styleUrls: ['./update-product.component.css']
 })
 export class UpdateProductComponent {
+  title = 'stepper';
+  ProductId = 0;
+  updateProduct: Product = new Product(this.ProductId, '','','',null,null,null);
+  savingIsSuccessful = false ;
+  
+  constructor(
+    private productService : ProductService
+  ){}
 
-  constructor(private ngWizardService: NgWizardService){
-    
+  @ViewChild('appStepper') stepper: CdkStepper;
+
+  // Other properties and methods
+
+  saveOverviewAndNavigate() {
+    this.productService.updateProduct(this.ProductId, this.updateProduct).subscribe(
+      (response) => {
+        this.savingIsSuccessful = true;
+        this.stepper.next();
+      },
+      (error) => {
+        this.savingIsSuccessful = false;
+      }
+    );
+    // If saving is successful, navigate to the description section
+    if (this.savingIsSuccessful) {
+      this.stepper.next();
+    }
   }
- stepStates = {
-  normal: STEP_STATE.normal,
-  disabled: STEP_STATE.disabled,
-  error: STEP_STATE.error,
-  hidden: STEP_STATE.hidden
-};
-config: NgWizardConfig = {
-  selected: 0,
-  theme: THEME.arrows,
-  toolbarSettings: {
-    toolbarExtraButtons: [
-      { text: 'Finish', class: 'btn btn-info', event: () => { alert("Finished!!!"); } }
-    ],
-  }
-};
-showPreviousStep(event?: Event) {
-  this.ngWizardService.previous();
+
 }
-showNextStep(event?: Event) {
-  this.ngWizardService.next();
-}
-resetWizard(event?: Event) {
-  this.ngWizardService.reset();
-}
-setTheme(theme: THEME) {
-  this.ngWizardService.theme(theme);
-}
-stepChanged(args: StepChangedArgs) {
-  console.log(args.step);
-}
-isValidTypeBoolean: boolean = true;
-isValidFunctionReturnsBoolean(args: StepValidationArgs) {
-  return true;
-}
-isValidFunctionReturnsObservable(args: StepValidationArgs) {
-  return of(true);
-}
-}
+
