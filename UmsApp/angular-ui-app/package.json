@@ -15,6 +15,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.0.0",
+    "@angular/cdk": "^14.2.7",
     "@angular/common": "^14.0.0",
     "@angular/compiler": "^14.0.0",
     "@angular/core": "^14.0.0",
@@ -33,6 +34,7 @@
     "datatables.net": "^1.13.4",
     "datatables.net-bs5": "^1.13.4",
     "datatables.net-dt": "^1.13.4",
+    "ngx-bootstrap": "^10.0.0",
     "ngx-toastr": "^14.0.0",
     "rxjs": "~7.5.0",
     "sinon": "^15.1.0",
