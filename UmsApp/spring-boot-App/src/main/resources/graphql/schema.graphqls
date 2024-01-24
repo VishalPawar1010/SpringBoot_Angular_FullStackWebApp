@@ -1,0 +1,10 @@
+type Query{
+    getAllRoles:[Role]
+    getRoles(roleID:Int):Role
+
+}
+type Role{
+    id: ID!
+    name: String
+    description: String
+}
