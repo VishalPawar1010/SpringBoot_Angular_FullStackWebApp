@@ -67,7 +67,7 @@ const routes: Routes = [
   },
   {
     path: 'roles',
-    canActivate: [AuthenticateGuard],
+    // canActivate: [AuthenticateGuard],
     component: RolesListComponent,
   },
   {
