@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/SecurityServices/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  isLoggedIn = false;
+  isLoggedIn = true;
   loggedInUser: Users = {
     id: 0,
     email: '',

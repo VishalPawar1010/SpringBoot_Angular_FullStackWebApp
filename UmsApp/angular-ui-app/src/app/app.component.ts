@@ -6,7 +6,7 @@ import { AuthService } from './services/SecurityServices/auth.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  isLoggedIn = false;
+  isLoggedIn = true;
 
   constructor(
     private authService: AuthService,
