@@ -20,20 +20,21 @@ import { ForgotPasswordComponent } from './Components/Security/forgot-password/f
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: '/users',
-    pathMatch: 'full',
-  },
-  {
-    path: 'login',
-    canActivate: [AuthenticateGuard],
-    component: LoginComponent,
-  },
-  {
     path: 'user',
-    canActivate: [AuthenticateGuard],
+    // canActivate: [AuthenticateGuard],
     component: ViewUserComponent,
   },
+  {
+    path: '',
+    redirectTo: '/home-page',
+    pathMatch: 'full',
+  },
+  // {
+  //   path: 'login',
+  //   canActivate: [AuthenticateGuard],
+  //   component: LoginComponent,
+  // },
+  
   {
     path: 'category',
     canActivate: [AuthenticateGuard],
@@ -41,12 +42,12 @@ const routes: Routes = [
   },
   {
     path: 'home-page',
-    canActivate: [AuthenticateGuard],
+    // canActivate: [AuthenticateGuard],
     component: HomePageComponent,
   },
   {
     path: 'users',
-    canActivate: [AuthenticateGuard],
+    // canActivate: [AuthenticateGuard],
     component: UserListComponent,
   },
   {
