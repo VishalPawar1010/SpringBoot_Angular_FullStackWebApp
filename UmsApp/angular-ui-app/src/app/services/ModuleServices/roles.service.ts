@@ -7,8 +7,8 @@ import { Roles } from '../../Models/roles';
   providedIn: 'root',
 })
 export class RolesService {
-  private baseUrl = 'https://demo-61po.onrender.com/getRoles';
-  // private baseUrl = 'http://localhost:8080/api/roles';
+  private baseUrl = 'https://demo-61po.onrender.com/listRoles';
+  // private baseUrl = 'http://localhost:3000/listRoles';
 
   constructor(private httpClient: HttpClient) {}
 
