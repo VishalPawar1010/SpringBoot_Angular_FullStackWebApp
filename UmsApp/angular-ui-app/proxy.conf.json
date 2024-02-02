@@ -1,6 +1,6 @@
 {
     "/api/*": {
-      "target": "https://demo-61po.onrender.com/",
+      "target": "https://demo-61po.onrender.com",
       "secure": false,
       "logLevel": "debug"
     }
