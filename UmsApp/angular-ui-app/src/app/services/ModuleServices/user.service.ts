@@ -7,12 +7,13 @@ import { Users } from '../../Models/users';
   providedIn: 'root',
 })
 export class UserService {
-  private baseUrl = 'http://localhost:8080/api/users';
+  private baseUrl = 'https://demo-61po.onrender.com';
+  // private baseUrl = 'http://localhost:3000';
 
   constructor(private httpClient: HttpClient) {}
   getUserList(): Observable<Users[]> {
     return this.httpClient
-      .get<Users[]>(this.baseUrl)
+      .get<Users[]>(`${this.baseUrl}/listUsers`)
       .pipe(map((response) => response));
   }
 

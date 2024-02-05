@@ -37,7 +37,7 @@
         <th >Full Name</th>
         <!-- <th class="hide-on-mobile">Last Name</th> -->
         <th class="hide-on-mobile hide-on-tab">Gender</th>
-        <th class="hide-on-mobile">Roles</th>
+        <!-- <th class="hide-on-mobile">Roles</th> -->
         <th class="hide-on-mobile">isActive?</th>
         <th>Action?</th>
       </tr>
@@ -54,12 +54,12 @@
         <td class="hide-on-mobile">{{ tempUser.email }}</td>
         <td>{{ tempUser.firstName }} {{ tempUser.lastName }}</td>
         <td class="hide-on-mobile hide-on-tab">{{ tempUser.gender }}</td>
-        <td class="hide-on-mobile">
+        <!-- <td class="hide-on-mobile">
             <li *ngFor="let role of tempUser.roles">
               {{ role.name }}
               <span *ngIf="role !== tempUser.roles[tempUser.roles.length - 1]">, </span>
             </li>
-        </td>
+        </td> -->
         <td class="hide-on-mobile">
           <i *ngIf="tempUser.enabled == true"  class="fas fa-check-circle fa-lg" style="color: green"></i>
           <!-- <i  class="fas fa-check-circle fa-lg" style="color: grey"></i> -->
