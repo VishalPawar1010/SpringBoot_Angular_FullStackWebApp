@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Users } from '../../Models/users';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private baseUrl = 'https://demo-61po.onrender.com';
-  // private baseUrl = 'http://localhost:3000';
+  private baseUrl = environment.serverUrl;
+
 
   constructor(private httpClient: HttpClient) {}
   getUserList(): Observable<Users[]> {

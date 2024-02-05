@@ -1,9 +1,10 @@
 {
-  "name": "angular-ecommerce",
+  "name": "angular-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "prod": "ng build --configuration production",
     "server": "ts-node ./server/server.ts",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",

@@ -2,14 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Roles } from '../../Models/roles';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RolesService {
-  private baseUrl = 'https://demo-61po.onrender.com/listRoles';
-  // private baseUrl = 'http://localhost:3000/listRoles';
-
+  private baseUrl = environment.serverUrl;
   constructor(private httpClient: HttpClient) {}
 
   getRolesList(): Observable<Roles[]> {
