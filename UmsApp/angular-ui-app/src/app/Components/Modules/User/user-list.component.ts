@@ -141,7 +141,7 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
         updatedUser.photos = this.defaultImage[updatedUser.gender];
         if (index !== -1) {
           this.users[index] = updatedUser;
-          console.log('User updated successfully');
+          this.toaster.success("User is updated successfully! ", "Success");
         }
       });
     });
