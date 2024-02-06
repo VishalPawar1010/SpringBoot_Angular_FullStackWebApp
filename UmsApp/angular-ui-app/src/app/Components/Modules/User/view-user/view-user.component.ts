@@ -34,8 +34,11 @@ export class ViewUserComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('in view-user');
-    this.route.paramMap.subscribe((params) => {
-      const userId = +params.get('id');
+    this.route.params.subscribe((params) => {
+      console.log("Params==", params['id'] +" and id =")
+      const userId = params['id'];
+      console.log("userId==", userId)
+
       this.userService.getUserById(userId).subscribe(
         (res) => {
           this.userEmail = res.email;

@@ -3,7 +3,7 @@ const router = express.Router();
 const Role = require('../models/role.model');
 
 // Create a new role
-router.post('/role', async (req, res) => {
+router.post('/', async (req, res) => {
   const newRole = new Role(req.body);
   try {
     const savedRole = await newRole.save();
@@ -57,3 +57,5 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
   });
+
+  module.exports = router;

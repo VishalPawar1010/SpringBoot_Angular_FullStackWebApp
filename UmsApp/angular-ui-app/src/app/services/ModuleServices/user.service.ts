@@ -8,13 +8,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class UserService {
-  private baseUrl = environment.serverUrl;
-
+  private baseUrl = environment.serverUrl + '/users';
 
   constructor(private httpClient: HttpClient) {}
   getUserList(): Observable<Users[]> {
     return this.httpClient
-      .get<Users[]>(`${this.baseUrl}/listUsers`)
+      .get<Users[]>(`${this.baseUrl}`)
       .pipe(map((response) => response));
   }
 
@@ -26,8 +25,9 @@ export class UserService {
     return this.httpClient.get<Users>(`${this.baseUrl}/email/${email}`);
   }
 
-  createUser(users: Users): Observable<Users> {
-    return this.httpClient.post<Users>(this.baseUrl, users);
+  createUser(user: Users): Observable<Users> {
+    console.log('createUser === ', user)
+    return this.httpClient.post<Users>(this.baseUrl, user);
   }
   checkEmail(enteredEmail: any): Observable<boolean> {
     return this.httpClient.get<boolean>(
@@ -50,11 +50,13 @@ export class UserService {
     return this.httpClient.delete(`${this.baseUrl}/deleteImage/${email}`);
   }
 
-  updateUser(id: number, user: Users): Observable<Users> {
-    return this.httpClient.put<Users>(`${this.baseUrl}/${id}`, user);
+  updateUser(user: any): Observable<Users> {
+    console.log('user ID', user._id);
+    console.log('user ID');
+    return this.httpClient.put<Users>(`${this.baseUrl}/${user._id}`, user);
   }
 
-  deleteUser(id: number): Observable<void> {
+  deleteUser(id: any): Observable<void> {
     return this.httpClient.delete<void>(`${this.baseUrl}/${id}`);
   }
 

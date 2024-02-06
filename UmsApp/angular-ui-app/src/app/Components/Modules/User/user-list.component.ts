@@ -14,6 +14,7 @@ import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { UserService } from 'src/app/services/ModuleServices/user.service';
 import { AuthService } from 'src/app/services/SecurityServices/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-list',
@@ -45,7 +46,8 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
     private router: Router,
     private http: HttpClient,
     private modalService: NgbModal,
-    private authService: AuthService
+    private authService: AuthService,
+    private toaster: ToastrService
   ) {}
 
   ngOnInit() {
@@ -120,8 +122,9 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
   goToAddUser() {
     this.router.navigate(['add-user']);
   }
-  viewUser(user: Users): void {
-    this.router.navigate(['user', { id: user.id }]);
+  viewUser(user: any): void {
+    console.log("user-==",user._id)
+    this.router.navigate(['user', { id: user._id }]);
   }
 
   openUpdateUser(userToBeUpdated: any) {
@@ -133,7 +136,7 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
       if (!res) return;
 
       // console.log('NEW USER = ', res);
-      this.userService.updateUser(res.id, res).subscribe((updatedUser) => {
+      this.userService.updateUser(res).subscribe((updatedUser) => {
         const index = this.users.findIndex((u) => u.id === updatedUser.id);
         updatedUser.photos = this.defaultImage[updatedUser.gender];
         if (index !== -1) {
@@ -144,15 +147,19 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  deleteUser(user: Users): void {
+  deleteUser(user: any): void {
     const confirmed = window.confirm(
       'Are you sure you want to delete this user?'
     );
     if (confirmed) {
-      this.userService.deleteUser(user.id).subscribe(() => {
-        this.users = this.users.filter((u) => u.id !== user.id);
+      this.userService.deleteUser(user._id).subscribe(() => {
+        this.users = this.users.filter((u) => u.id !== user._id);
+        this.toaster.success("User is deleted successfully! ", "Success");
+
       });
     }
+    this.router.navigate(['home-page']);
+
   }
 
   // export data 
