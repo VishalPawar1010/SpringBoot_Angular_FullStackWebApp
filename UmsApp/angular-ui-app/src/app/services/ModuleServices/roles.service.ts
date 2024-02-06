@@ -12,7 +12,7 @@ export class RolesService {
   constructor(private httpClient: HttpClient) {}
 
   getRolesList(): Observable<Roles[]> {
-    return this.httpClient.get<Roles[]>(this.baseUrl)
+    return this.httpClient.get<Roles[]>(`${this.baseUrl}/listRoles`)
       ;
       // .pipe(map((response) => response._embedded.roles));
   }

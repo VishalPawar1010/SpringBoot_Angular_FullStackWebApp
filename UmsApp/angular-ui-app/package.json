@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "dev": "ng serve --configuration springBoot",
     "prod": "ng build --configuration production",
     "server": "ts-node ./server/server.ts",
     "build": "ng build",

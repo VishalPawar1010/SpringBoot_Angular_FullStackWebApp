@@ -12,12 +12,15 @@ const app = express()
 app.use(cors());
 app.use(express.json());
 
-// app.use("/role", roleRoute);
+const nodeUrl = `${process.env.PORT}`;
+const roleUrl= nodeUrl + "/nodeApi";
+
 
 
 let json={
   test: "Hello this is valid nodeJS"
 };
+
 
 app.post('/createRole', async (req, res) => {
   const newRole = new Role(req.body);
@@ -69,6 +72,6 @@ app.get('/node', (req, res) => {
   res.send(json)
 })
 
-app.listen(process.env.PORT, () => {
+app.listen(nodeUrl, () => {
   console.log(`Example app listening on port ${process.env.PORT}`)
 })
