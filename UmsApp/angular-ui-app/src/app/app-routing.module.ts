@@ -72,7 +72,7 @@ const routes: Routes = [
   },
   {
     path: 'add-user',
-    canActivate: [AuthenticateGuard],
+    // canActivate: [AuthenticateGuard],
     component: AddUserComponent,
   },
   {
