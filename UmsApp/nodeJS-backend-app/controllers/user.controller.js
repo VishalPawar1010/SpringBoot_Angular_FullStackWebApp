@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/user.model");
-// const generateToken = require("../config/generateToken");
+const generateToken = require("../middlewares/generateToken");
 
 //@description     Get or Search all users
 //@route           GET /api/users?search=
@@ -74,7 +74,10 @@ const createUser = asyncHandler(async (req, res) => {
   });
 
   if (user) {
-    res.status(201).json(user);
+    res.status(201).json(
+        {user,       
+        token: generateToken(user._id)}
+    );
   } else {
     res.status(400);
     throw new Error("User not found");
@@ -84,25 +87,19 @@ const createUser = asyncHandler(async (req, res) => {
 //@description     Auth the user
 //@route           POST /api/users/login
 //@access          Public
-// const authUser = asyncHandler(async (req, res) => {
-//   const { email, password } = req.body;
+const authUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
 
-//   const user = await User.findOne({ email });
+  const user = await User.findOne({ email });
 
-//   if (user && (await user.matchPassword(password))) {
-//     res.json({
-//       _id: user._id,
-//       firstName: user.firstName,
-//       email: user.email,
-//       isAdmin: user.isAdmin,
-//       gender: user.gender,
-//       token: generateToken(user._id),
-//     });
-//   } else {
-//     res.status(401);
-//     throw new Error("Invalid Email or Password");
-//   }
-// });
+  if (user && (await user.matchPassword(password))) {
+    res.json({user,       
+        token: generateToken(user._id)});
+  } else {
+    res.status(401);
+    throw new Error("Invalid Email or Password");
+  }
+});
 
 
 const updateUser = asyncHandler(
@@ -130,4 +127,4 @@ const updateUser = asyncHandler(
     }
     });
 
-module.exports = { getAllUsers, createUser, updateUser, deleteUser, getUserById };
+module.exports = { getAllUsers, createUser, updateUser, deleteUser, getUserById, authUser };

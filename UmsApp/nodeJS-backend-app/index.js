@@ -6,6 +6,8 @@ const Role = require('./models/role.model');
 const User = require('./models/user.model');
 const userRoutes = require('./routes/user.routes');
 const roleRoutes = require('./routes/role.routes');
+const { notFound, errorHandler } = require("./middlewares/error");
+
 
 dotenv.config();
 connectDB();
@@ -19,6 +21,7 @@ const PORT = process.env.PORT || 3000 ;
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/roles", roleRoutes);
+
 
 let json={
   test: "Hello this is valid nodeJS"
@@ -47,7 +50,11 @@ app.get('/listRoles', async (req, res) => {
 
 app.get('/api/node', (req, res) => {
   res.send(json)
-})
+});
+
+// Error Handling middlewares
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${process.env.PORT}`)
