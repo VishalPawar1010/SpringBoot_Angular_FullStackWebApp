@@ -29,11 +29,11 @@ const routes: Routes = [
     redirectTo: '/home-page',
     pathMatch: 'full',
   },
-  // {
-  //   path: 'login',
-  //   canActivate: [AuthenticateGuard],
-  //   component: LoginComponent,
-  // },
+  {
+    path: 'login',
+    canActivate: [AuthenticateGuard],
+    component: LoginComponent,
+  },
   
   {
     path: 'category',
@@ -42,12 +42,12 @@ const routes: Routes = [
   },
   {
     path: 'home-page',
-    // canActivate: [AuthenticateGuard],
+    canActivate: [AuthenticateGuard],
     component: HomePageComponent,
   },
   {
     path: 'users',
-    // canActivate: [AuthenticateGuard],
+    canActivate: [AuthenticateGuard],
     component: UserListComponent,
   },
   {
@@ -82,7 +82,7 @@ const routes: Routes = [
   },
   {
     path: 'update-user',
-    canActivate: [AuthenticateGuard],
+    // canActivate: [AuthenticateGuard],
     component: UpdateUserComponent,
   },
 

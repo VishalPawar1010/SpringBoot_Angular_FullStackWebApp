@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/SecurityServices/auth.service';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-login',
@@ -27,7 +29,8 @@ export class LoginComponent implements OnInit {
  
 
   login() {
-    let url = '/api/login';
+    let url = environment.serverUrl + '/users/login';
+    // let url = '/api/users/login';
     this.http
       .post<any>(url, {
         email: this.model.username,

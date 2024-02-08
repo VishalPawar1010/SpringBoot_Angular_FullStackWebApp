@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Role = require('./role.model');
 const bcrypt = require("bcryptjs");
 
 
@@ -21,7 +20,6 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
      if (!this.isModified) {
        next();
      }
-   
      const salt = await bcrypt.genSalt(10);
      this.password = await bcrypt.hash(this.password, salt);
    });

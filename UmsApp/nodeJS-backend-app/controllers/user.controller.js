@@ -1,10 +1,18 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/user.model");
-const generateToken = require("../middlewares/generateToken");
+const {generateToken, expireToken} = require("../middlewares/auth");
 
-//@description     Get or Search all users
-//@route           GET /api/users?search=
-//@access          Public
+const authUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+  if (user && (await user.matchPassword(password))) {
+    res.json({user,token: generateToken(user._id)});
+  } else {
+    res.status(401);
+    throw new Error("Invalid Email or Password");
+  }
+});
+
 const getAllUsers = asyncHandler(
     async (req, res) => {
         try {
@@ -14,20 +22,6 @@ const getAllUsers = asyncHandler(
           res.status(500).json({ error: err.message });
         }
       });
-    
-//     async (req, res) => {
-//   const keyword = req.query.search
-//     ? {
-//         $or: [
-//           { firstName: { $regex: req.query.search, $options: "i" } },
-//           { email: { $regex: req.query.search, $options: "i" } },
-//         ],
-//       }
-//     : {};
-
-//   const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
-//   res.send(users);
-// });
 
 const getUserById = asyncHandler(
     async (req, res) => {
@@ -39,10 +33,6 @@ const getUserById = asyncHandler(
         }
       });
 
-
-//@description     Register new user
-//@route           POST /api/users/
-//@access          Public
 const createUser = asyncHandler(async (req, res) => {
   const { firstName,
     lastName,
@@ -70,9 +60,7 @@ const createUser = asyncHandler(async (req, res) => {
     password,
     gender,
     enabled
-
   });
-
   if (user) {
     res.status(201).json(
         {user,       
@@ -83,24 +71,6 @@ const createUser = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 });
-
-//@description     Auth the user
-//@route           POST /api/users/login
-//@access          Public
-const authUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
-
-  const user = await User.findOne({ email });
-
-  if (user && (await user.matchPassword(password))) {
-    res.json({user,       
-        token: generateToken(user._id)});
-  } else {
-    res.status(401);
-    throw new Error("Invalid Email or Password");
-  }
-});
-
 
 const updateUser = asyncHandler(
     async (req, res) => {
