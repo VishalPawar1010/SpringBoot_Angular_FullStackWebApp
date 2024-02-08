@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
  
 
   login() {
-    let url = environment.serverUrl + '/users/login';
+    let url = environment.serverUrl + '/login';
     // let url = '/api/users/login';
     this.http
       .post<any>(url, {
@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
         next: (res) => {
           this.token = res.token;
           localStorage.setItem('token', this.token);
-          localStorage.setItem('loggedInUserEmail', this.model.username);
+          localStorage.setItem('loggedInUserEmail', res.user.username);
+          localStorage.setItem('loggedInUserId', res.user._id);
           this.authService.setLoginStatus(true);
           this.router.navigate(['home-page']);
         },

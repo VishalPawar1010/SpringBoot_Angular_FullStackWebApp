@@ -21,7 +21,7 @@ import { ForgotPasswordComponent } from './Components/Security/forgot-password/f
 const routes: Routes = [
   {
     path: 'user',
-    // canActivate: [AuthenticateGuard],
+    canActivate: [AuthenticateGuard],
     component: ViewUserComponent,
   },
   {
@@ -72,7 +72,7 @@ const routes: Routes = [
   },
   {
     path: 'add-user',
-    // canActivate: [AuthenticateGuard],
+    canActivate: [AuthenticateGuard],
     component: AddUserComponent,
   },
   {
@@ -82,7 +82,7 @@ const routes: Routes = [
   },
   {
     path: 'update-user',
-    // canActivate: [AuthenticateGuard],
+    canActivate: [AuthenticateGuard],
     component: UpdateUserComponent,
   },
 

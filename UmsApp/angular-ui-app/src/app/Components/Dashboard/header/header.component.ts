@@ -11,8 +11,8 @@ import { AuthService } from 'src/app/services/SecurityServices/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  isLoggedIn = true;
-  loggedInUser: Users = {
+  isLoggedIn = false;
+  loggedInUser:any= {
     id: 0,
     email: '',
     password: '',
@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
     gender: '',
     photos: null,
     enabled: false,
-    roles: []
+    roles: ''
   };
 
   constructor(
@@ -31,15 +31,15 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
-    this.isLoggedIn = !!loggedInUserEmail;
+    const loggedInUserId = localStorage.getItem('loggedInUserId');
+    this.isLoggedIn = !!loggedInUserId;
 
     this.authService.isLoggedIn.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
     });
 
-    this.userService.getUserByEmail(loggedInUserEmail).subscribe((res) => {
-      this.loggedInUser.id = res.id;
+    this.userService.getUserById(loggedInUserId).subscribe((res) => {
+      this.loggedInUser.id = res._id;
       this.loggedInUser.firstName = res.firstName;
       this.loggedInUser.lastName = res.lastName;
     })

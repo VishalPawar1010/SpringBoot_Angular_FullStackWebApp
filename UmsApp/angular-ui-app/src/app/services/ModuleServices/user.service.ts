@@ -17,7 +17,7 @@ export class UserService {
       .pipe(map((response) => response));
   }
 
-  getUserById(id: number): Observable<Users> {
+  getUserById(id: any): Observable<any> {
     return this.httpClient.get<Users>(`${this.baseUrl}/${id}`);
   }
   getUserByEmail(email: string): Observable<Users> {

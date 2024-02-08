@@ -2,12 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   isLoggedIn = new BehaviorSubject<boolean>(false);
+
   private broadcastChannel: BroadcastChannel;
   constructor(private http: HttpClient, private router: Router) {
     this.broadcastChannel = new BroadcastChannel('auth_channel');
@@ -18,9 +20,10 @@ export class AuthService {
       }
     });
   }
-
+  
   logout() {
-    this.http.post('/api/logout', {}).subscribe(
+    let url = environment.serverUrl + '/logout';
+    this.http.post(url, {}).subscribe(
       () => {
         localStorage.removeItem('token');
         this.setLoginStatus(false);

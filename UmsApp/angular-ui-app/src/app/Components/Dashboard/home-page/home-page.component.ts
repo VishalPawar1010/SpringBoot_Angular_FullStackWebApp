@@ -14,7 +14,6 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
     this.nodeService.getDataFromNodeApi().subscribe(data => {
-      console.log('data node in component= ',data)
       this.dataFromApi = data.test;
     });
   }
