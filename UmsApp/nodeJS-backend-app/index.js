@@ -5,7 +5,7 @@ const cors = require('cors');
 const User = require('./models/user.model');
 const userRoutes = require('./routes/user.routes');
 const { notFound, errorHandler } = require("./middlewares/error");
-const {authUser, logoutUser} = require("./controllers/user.controller");
+const {authUser} = require("./controllers/user.controller");
 const {expireToken} = require('./middlewares/auth')
 
 // startup required services
