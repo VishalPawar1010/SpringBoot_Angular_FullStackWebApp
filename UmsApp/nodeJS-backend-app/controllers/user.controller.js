@@ -1,8 +1,9 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/user.model");
-const {generateToken, expireToken} = require("../middlewares/auth");
+const {generateToken} = require("../middlewares/auth");
 
 const authUser = asyncHandler(async (req, res) => {
+  console.log("================", req.body.email);
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   if (user && (await user.matchPassword(password))) {

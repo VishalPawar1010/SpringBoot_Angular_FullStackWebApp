@@ -12,13 +12,17 @@ const generateToken = (id) => {
 
 const verifyToken = asyncHandler(async (req, res, next) => {
   let token;
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith("Bearer")
-  ) {
+
+  if ((req.cookies['token'] || req.headers.authorization && req.headers.authorization.startsWith("Bearer")) || req.token) {
     try {
-      token = req.headers.authorization.split(" ")[1];
+      console.log("in try ==================");
+      // token = req.headers.authorization.split(" ")[1] || req.token || 
+      token = req.cookies['token'];
+      console.log("in try ================== token", token );
+
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      console.log("decoded ==================", decoded);
+
       if (blacklist.has(decoded.iat)) {
         return res.status(401).json({ message: 'Token revoked' });
       }
