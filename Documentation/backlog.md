@@ -5,3 +5,13 @@
 5. Server side rendering
 6. modularity in code
 7. Define priorities for learnings
+8. List of functionalities and features added in details
+
+Jira Dashboard - Version Control optimization
+1. Delete / merge necessary branches
+2. Update issues
+
+UI
+1. create / register user
+2. Beutify UI
+3. 
