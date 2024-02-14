@@ -13,5 +13,6 @@ Jira Dashboard - Version Control optimization
 
 UI
 1. create / register user
-2. Beutify UI
-3. 
+2. Beutify UI or use themes like primeNG
+3. Data table and its alternatives
+4. UI component modularization
