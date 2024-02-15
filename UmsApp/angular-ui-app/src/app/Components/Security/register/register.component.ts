@@ -24,7 +24,7 @@ console.log(this.profileForm);
 }
 googleRegister(){
 this.userService.googleLogin().subscribe((res)=>{
-
+console.log(res);
 });
 }
 }
