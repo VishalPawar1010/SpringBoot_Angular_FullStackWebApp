@@ -54,7 +54,7 @@ o2router.get('/auth/google/callback',
   passport.authenticate('google'),
       (req, res) => {
         res.cookie('token', req.user.token);     
-        res.redirect('/api/users'); // Adjust redirect URL
+        res.redirect('/login'); // Adjust redirect URL
       }
   );
 

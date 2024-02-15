@@ -1,0 +1,78 @@
+/* .error-message{
+    color: red;
+}
+
+.container {
+    min-height: 100vh;
+    justify-content: center;
+} */
+  
+/* Add background image to the container */
+
+.register-container {
+    background-image: url('https://picsum.photos/1080/608');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh; /* Ensure the background covers the entire viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Style the register form */
+  .register-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    background-color: white; 
+    /* Add a semi-transparent white background to the form */
+    border-radius: 30px;
+    box-shadow: 0 0 60px rgba(19, 18, 18, 5);
+  }
+  
+  /* Style the register card */
+  .register-card {
+    text-align: center;
+  }
+  
+  /* Center the form elements */
+  .register-form .form-label,
+  .register-form .form-control,
+  .register-form .btn {
+    display: block;
+    margin: 10px auto;
+  }
+  
+  /* Style the error message */
+  .error-message {
+    color: red;
+    text-align: center;
+  }
+ 
+  span.buttonText {
+    display: inline-block;
+    vertical-align: middle;    
+    font-size: 42px;
+    font-weight: bold;
+    /* Use the Roboto font that is loaded in the <head> */
+    font-family: 'Roboto', sans-serif;
+  }
+ 
+  .google-button{   
+    padding: 5px 15px;
+    border: 2px solid #e2e2e2;
+    border-radius: 100%;
+    background-color: transparent;
+    color: #e2e2e2;
+    font-weight: bold;
+    cursor: pointer;    
+    transition: background-color 0.3s ease, color 0.3s ease; /* Set the desired border thickness */
+    
+
+  }
+
+.google-button:hover {
+    background-color: #e2e2e2;
+    color: #fff;
+  }

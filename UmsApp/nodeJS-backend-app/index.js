@@ -29,8 +29,9 @@ app.use(session({
 const PORT = process.env.PORT || 3000 ;
 
 // Routes
-app.use("/api/users",userRoutes);
 app.use("",o2router);
+app.use("/api/users",userRoutes);
+
 
 let json={test: "Hello this is valid nodeJS"};
 app.get('/api/node', (req, res) => {res.send(json)});

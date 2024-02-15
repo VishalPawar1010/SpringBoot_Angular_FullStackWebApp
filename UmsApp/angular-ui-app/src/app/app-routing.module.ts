@@ -16,6 +16,7 @@ import { BrandsListComponent } from './Components/Modules/Brand/brands-list/bran
 import { ProductListComponent } from './Components/Modules/Product/product-list/product-list.component';
 import { LoginComponent } from './Components/Security/login/login.component';
 import { ForgotPasswordComponent } from './Components/Security/forgot-password/forgot-password.component';
+import { RegisterComponent } from './Components/Security/register/register.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
     path: 'user',
     canActivate: [AuthenticateGuard],
     component: ViewUserComponent,
+  },
+  {
+    path: 'register',    
+    component: RegisterComponent,
   },
   {
     path: '',
