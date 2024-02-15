@@ -1,4 +1,4 @@
-Learning and skill building objectives 
+Learning and skill building objectives by building Practice project
 
 Code Quality and system design
 1. Design patterns and architecture

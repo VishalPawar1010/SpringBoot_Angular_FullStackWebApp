@@ -12,7 +12,8 @@ Jira Dashboard - Version Control optimization
 2. Update issues
 
 UI
-1. create / register user
-2. Beutify UI or use themes like primeNG
-3. Data table and its alternatives
-4. UI component modularization
+1. Write Readable and modular, easy to start code
+2. create / register user
+3. Beutify UI or use themes like primeNG
+4. Data table and its alternatives
+5. UI component modularization
