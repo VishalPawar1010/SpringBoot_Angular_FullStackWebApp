@@ -87,9 +87,7 @@ export class UserService {
       password:""
     });
   }
-  googleLogin(){
-    return this.httpClient.get(`http://localhost:3000/auth/google`);
-  }
+  
 }
 interface GetResponse {
   _embedded: {

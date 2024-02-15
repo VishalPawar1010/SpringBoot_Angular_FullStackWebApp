@@ -29,6 +29,7 @@ import { UserService } from './services/ModuleServices/user.service';
 import { RequestInterceptor } from './services/SecurityServices/request.interceptor';
 import { AddUserComponent } from './Components/Modules/User/add-user/add-user.component';
 import { RegisterComponent } from './Components/Security/register/register.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,6 @@ import { RegisterComponent } from './Components/Security/register/register.compo
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-
     FormsModule,
     DataTablesModule,
     AppRoutingModule,
