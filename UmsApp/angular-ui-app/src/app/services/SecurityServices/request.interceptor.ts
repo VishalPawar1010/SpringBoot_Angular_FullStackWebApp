@@ -9,16 +9,18 @@ import {
 import { Observable, catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService,private cookieService : CookieService) {}
 
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    let token = localStorage.getItem('token');
+    let token = this.cookieService.get('token');
     if (token) {
       request = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${token}`),
@@ -32,7 +34,7 @@ export class RequestInterceptor implements HttpInterceptor {
         console.log(" MESSAGE == ", response );
 
         if (response.error.status === 500 && response.error.message == 'JWT token has expired') {
-          localStorage.clear();
+          this.cookieService.deleteAll();
           this.authService.setLoginStatus(false);
           this.router.navigate(['/login']);
           

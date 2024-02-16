@@ -54,7 +54,8 @@ o2router.get('/auth/google/callback',
   passport.authenticate('google'),
       (req, res) => {
         res.cookie('token', req.user.token);     
-        res.redirect('/login'); // Adjust redirect URL
+        const frontendURL = 'http://localhost:4200/';
+        res.redirect(frontendURL); // Adjust redirect URL
       }
   );
 
