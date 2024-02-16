@@ -26,7 +26,7 @@ export class AuthService {
     let url = environment.serverUrl + '/logout';
     this.http.post(url, {}).subscribe(
       () => {
-        // localStorage.removeItem('token');
+        localStorage.removeItem('token');
         this.cookieService.delete('token');
         this.setLoginStatus(false);
         this.router.navigate(['/login']);

@@ -11,7 +11,6 @@ const generateToken = (id) => {
 
 const verifyToken = asyncHandler(async (req, res, next) => {
   let token;
-  console.log(req);
   if(req.headers.authorization && req.headers.authorization.startsWith("Bearer") || req.token){
     try {     
       token = req.headers.authorization.split(" ")[1] || req.token ;

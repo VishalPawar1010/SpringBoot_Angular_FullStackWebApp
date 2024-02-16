@@ -20,7 +20,7 @@ export class RequestInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    let token = this.cookieService.get('token');
+    let token = this.cookieService.get('token') || localStorage.getItem('token');
     if (token) {
       request = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${token}`),

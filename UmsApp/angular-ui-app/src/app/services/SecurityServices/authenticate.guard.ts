@@ -24,7 +24,7 @@ export class AuthenticateGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    let token = this.cookieService.get('token');
+    let token = this.cookieService.get('token') || localStorage.getItem('token');
     if (token) this.authService.setLoginStatus(true);
     else this.authService.setLoginStatus(false);
 
