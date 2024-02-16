@@ -8,8 +8,8 @@ const userSchema = new mongoose.Schema({
      password: { type: "String", required: true },
      firstName: { type: "String", required: true },
      lastName: { type: "String", required: true },
-     gender: { type: "String", required: true },
-     enabled: { type: "Boolean", required: true },
+     gender: { type: "String", required: false, default: 'male' },
+     enabled: { type: "Boolean", required: false, default:true },
 });
 
 userSchema.methods.matchPassword = async function (enteredPassword) {
