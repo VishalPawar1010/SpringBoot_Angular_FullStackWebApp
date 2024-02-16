@@ -34,7 +34,7 @@
     "datatables.net": "^1.13.4",
     "datatables.net-bs5": "^1.13.4",
     "datatables.net-dt": "^1.13.4",
-    "ngx-cookie-service": "^17.1.0",
+    "ngx-cookie-service": "^14.0.0",
     "ngx-toastr": "^14.0.0",
     "rxjs": "~7.5.0",
     "sinon": "^15.1.0",
