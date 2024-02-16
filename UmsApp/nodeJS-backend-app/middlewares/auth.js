@@ -6,22 +6,17 @@ const blacklist = new Set(); // Set to store revoked tokens
 const generateToken = (id) => {
   const token = jwt.sign({ id }, process.env.JWT_SECRET, {expiresIn: "1h"});
   const decoded = jwt.verify(token, process.env.JWT_SECRET); // Verify and decode
-  console.log(`Default algorithm used: ${decoded.jti} == `,decoded ); 
   return token;
 };
 
 const verifyToken = asyncHandler(async (req, res, next) => {
   let token;
-
-  if ((req.cookies['token'] || req.headers.authorization && req.headers.authorization.startsWith("Bearer")) || req.token) {
-    try {
-      console.log("in try ==================");
-      // token = req.headers.authorization.split(" ")[1] || req.token || 
-      token = req.cookies['token'];
-      console.log("in try ================== token", token );
+  console.log(req);
+  if(req.headers.authorization && req.headers.authorization.startsWith("Bearer") || req.token){
+    try {     
+      token = req.headers.authorization.split(" ")[1] || req.token ;
 
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      console.log("decoded ==================", decoded);
 
       if (blacklist.has(decoded.iat)) {
         return res.status(401).json({ message: 'Token revoked' });

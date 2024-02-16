@@ -11,7 +11,7 @@ const {authUser} = require("./controllers/user.controller");
 const {expireToken} = require('./middlewares/auth')
 const session = require('express-session');
 
-// startup required services
+// startup required services to set context
 dotenv.config();
 connectDB();
 const app = express()
@@ -25,7 +25,6 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
-
 const PORT = process.env.PORT || 3000 ;
 
 // Routes

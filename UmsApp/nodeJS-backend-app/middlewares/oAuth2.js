@@ -7,7 +7,6 @@ const {generateToken} = require('./auth');
 const dotenv = require("dotenv");
 
 dotenv.config();
-
 passport.use(passport.session());
 
 passport.use(new GoogleStrategy({
