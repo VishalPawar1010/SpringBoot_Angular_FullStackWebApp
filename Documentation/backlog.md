@@ -17,3 +17,4 @@ UI
 3. Beutify UI or use themes like primeNG
 4. Data table and its alternatives
 5. UI component modularization
+6. Add tailwind CSS
