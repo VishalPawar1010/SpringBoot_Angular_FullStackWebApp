@@ -19,7 +19,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
          
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": ["src/favicon.ico", "src/assets", "src/_redirects"],
             "styles": [
               "node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css",
               "node_modules/datatables.net-dt/css/jquery.dataTables.css",
