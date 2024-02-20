@@ -59,8 +59,8 @@ o2router.get('/auth/google/callback',
         res.cookie('token',req.user.token,{
           httpOnly:true,
           maxAge:3600000*5,
-          secure:true,
-          sameSite:'none'
+          secure:true
+          // sameSite:'none'
           // domain: '.netlify.app'
        }) 
         // res.setHeader('token', req.user.token);  
