@@ -54,7 +54,7 @@ o2router.get('/auth/google/callback',
       (req, res) => {
         console.log('node TOKE ========',req.user.token);
         res.cookie('token', req.user.token);     
-        const frontendURL = 'http://localhost:4200/';
+        const frontendURL = '/';
         res.redirect(frontendURL); // Adjust redirect URL
       }
   );
