@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from 'src/app/services/SecurityServices/auth.service';
 import { environment } from 'src/environments/environment';
 
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
     private http: HttpClient,
     private authService: AuthService,
     private renderer: Renderer2, 
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private cookieService : CookieService
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +40,12 @@ export class LoginComponent implements OnInit {
       })
       .subscribe({
         next: (res) => {
-          this.token = res.token;
+          console.log('================= in login');
+
+          // this.token = res.token;
+          this.token = this.cookieService.get('token') || res.token;
+          console.log('================= after token');
+
           console.log(this.token);
           localStorage.setItem('token', this.token);
           localStorage.setItem('loggedInUserEmail', res.user.username);
