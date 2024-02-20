@@ -20,6 +20,10 @@ export class RequestInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    console.log('================= in interceptor');
+      console.log('================= in cookieService= ',this.cookieService.get('token'));
+      console.log('================= in localStorage = ', localStorage.getItem('token'));
+
     let token = this.cookieService.get('token') || localStorage.getItem('token');
     if (token) {
       request = request.clone({
