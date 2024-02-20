@@ -12,7 +12,7 @@ passport.use(passport.session());
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: 'https://demo-61po.onrender.com/auth/google/callback',
+    callbackURL: 'http://localhost:3000/auth/google/callback',
     passReqToCallback: true // Pass req object to callback for user-specific logic
   }, async (req, accessToken, refreshToken, profile, done) => {
     try {
@@ -54,7 +54,7 @@ o2router.get('/auth/google/callback',
       (req, res) => {
         console.log('node TOKE ========',req.user.token);
         res.cookie('token', req.user.token);     
-        const frontendURL = '/';
+        const frontendURL = 'https://node-angular.netlify.app/';
         res.redirect(frontendURL); // Adjust redirect URL
       }
   );
