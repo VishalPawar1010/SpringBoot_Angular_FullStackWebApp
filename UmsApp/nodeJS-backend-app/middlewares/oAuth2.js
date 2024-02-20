@@ -60,8 +60,8 @@ o2router.get('/auth/google/callback',
           httpOnly:true,
           maxAge:3600000*5,
           secure:true,
-          sameSite:'none',
-          domain: '.netlify.app'
+          sameSite:'none'
+          // domain: '.netlify.app'
        }) 
         // res.setHeader('token', req.user.token);  
         const frontendURL = 'https://node-angular.netlify.app/';
