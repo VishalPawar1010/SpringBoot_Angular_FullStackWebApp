@@ -6,8 +6,11 @@ const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   if (user && (await user.matchPassword(password))) {
-    let token =  generateToken(user._id);     
-    res.json({user, token});
+    let token =  generateToken(user._id);  
+    res.setHeader('Access-Control-Expose-Headers', 'Token');
+    res.setHeader('token', token);
+    // res.cookie('token', token);
+    res.json({user}); 
   } else {
     res.status(401);
     throw new Error("Invalid Email or Password");
@@ -92,6 +95,7 @@ const updateUser = asyncHandler(
     try {
       const deletedUser = await User.findByIdAndDelete(req.params.id);
       if (!deletedUser) return res.status(404).json({ error: 'User not found' });
+      
       res.json({ message: 'User deleted successfully' });
     } catch (err) {
       res.status(500).json({ error: err.message });

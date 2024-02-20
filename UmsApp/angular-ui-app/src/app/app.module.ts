@@ -29,6 +29,7 @@ import { UserService } from './services/ModuleServices/user.service';
 import { RequestInterceptor } from './services/SecurityServices/request.interceptor';
 import { AddUserComponent } from './Components/Modules/User/add-user/add-user.component';
 import { RegisterComponent } from './Components/Security/register/register.component';
+import { ResponseInterceptor } from './services/SecurityServices/response.interceptor';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,16 @@ import { RegisterComponent } from './Components/Security/register/register.compo
   providers: [
     UserService,
     RolesService,
-    { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
