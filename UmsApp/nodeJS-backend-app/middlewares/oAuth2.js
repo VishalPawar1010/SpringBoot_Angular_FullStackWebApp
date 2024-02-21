@@ -52,6 +52,7 @@ o2router.get('/auth/google', passport.authenticate('google', { scope: ['profile'
 o2router.get('/auth/google/callback',
   passport.authenticate('google'),
       (req, res) => {
+        // TODO : does not redirect to prod server UMS-43
         res.cookie('token', req.user.token);     
         const frontendURL = 'http://localhost:4200/';
         res.redirect(frontendURL); // Adjust redirect URL
