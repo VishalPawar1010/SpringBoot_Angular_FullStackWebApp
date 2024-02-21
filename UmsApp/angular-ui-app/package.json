@@ -1,9 +1,11 @@
 {
-  "name": "angular-ecommerce",
+  "name": "angular-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o --proxy-config ./src/proxy.conf.json",
+    "start": "ng serve",
+    "dev": "ng serve --configuration springBoot",
+    "prod": "ng build --configuration production",
     "server": "ts-node ./server/server.ts",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
@@ -32,7 +34,7 @@
     "datatables.net": "^1.13.4",
     "datatables.net-bs5": "^1.13.4",
     "datatables.net-dt": "^1.13.4",
-    
+    "ngx-cookie-service": "^14.0.0",
     "ngx-toastr": "^14.0.0",
     "rxjs": "~7.5.0",
     "sinon": "^15.1.0",

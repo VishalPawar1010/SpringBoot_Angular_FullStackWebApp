@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Users } from 'src/app/Models/users';
 import { Roles } from 'src/app/Models/roles';
 import { UserService } from 'src/app/services/ModuleServices/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-user',
@@ -23,7 +24,8 @@ export class AddUserComponent implements OnInit {
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toaster: ToastrService
   ) {}
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
@@ -39,10 +41,12 @@ export class AddUserComponent implements OnInit {
     console.log('REQUEST for new user = ', users);
     this.userService.createUser(users).subscribe(
       (res) => {
+        console.log('new User = ', res)
         this.message = 'User created successfully';
-        this.newlyAddedUser = res;
+        this.toaster.success("User is created successfully! ", "Success");
 
-        this.router.navigate(['user', this.newlyAddedUser.id]);
+        this.newlyAddedUser = res;
+        this.router.navigate(['user', { id: this.newlyAddedUser._id }]);
       },
       (error) => {
         this.errorMessage = 'Something went wrong or duplicate entry';

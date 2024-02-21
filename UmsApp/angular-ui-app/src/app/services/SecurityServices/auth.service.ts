@@ -1,15 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   isLoggedIn = new BehaviorSubject<boolean>(false);
+
   private broadcastChannel: BroadcastChannel;
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private cookieService : CookieService) {
     this.broadcastChannel = new BroadcastChannel('auth_channel');
 
     this.broadcastChannel.addEventListener('message', (event) => {
@@ -18,11 +21,13 @@ export class AuthService {
       }
     });
   }
-
+  
   logout() {
-    this.http.post('/api/logout', {}).subscribe(
+    let url = environment.serverUrl + '/logout';
+    this.http.post(url, {}).subscribe(
       () => {
         localStorage.removeItem('token');
+        this.cookieService.delete('token');
         this.setLoginStatus(false);
         this.router.navigate(['/login']);
         this.broadcastChannel.postMessage('logout');

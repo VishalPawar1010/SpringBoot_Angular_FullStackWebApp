@@ -2,21 +2,22 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Users } from '../../Models/users';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private baseUrl = 'http://localhost:8080/api/users';
+  private baseUrl = environment.serverUrl + '/users';
 
   constructor(private httpClient: HttpClient) {}
   getUserList(): Observable<Users[]> {
     return this.httpClient
-      .get<Users[]>(this.baseUrl)
+      .get<Users[]>(`${this.baseUrl}`)
       .pipe(map((response) => response));
   }
 
-  getUserById(id: number): Observable<Users> {
+  getUserById(id: any): Observable<any> {
     return this.httpClient.get<Users>(`${this.baseUrl}/${id}`);
   }
   getUserByEmail(email: string): Observable<Users> {
@@ -24,8 +25,9 @@ export class UserService {
     return this.httpClient.get<Users>(`${this.baseUrl}/email/${email}`);
   }
 
-  createUser(users: Users): Observable<Users> {
-    return this.httpClient.post<Users>(this.baseUrl, users);
+  createUser(user: Users): Observable<Users> {
+    console.log('createUser === ', user)
+    return this.httpClient.post<Users>(this.baseUrl, user);
   }
   checkEmail(enteredEmail: any): Observable<boolean> {
     return this.httpClient.get<boolean>(
@@ -48,11 +50,13 @@ export class UserService {
     return this.httpClient.delete(`${this.baseUrl}/deleteImage/${email}`);
   }
 
-  updateUser(id: number, user: Users): Observable<Users> {
-    return this.httpClient.put<Users>(`${this.baseUrl}/${id}`, user);
+  updateUser(user: any): Observable<Users> {
+    console.log('user ID', user._id);
+    console.log('user ID');
+    return this.httpClient.put<Users>(`${this.baseUrl}/${user._id}`, user);
   }
 
-  deleteUser(id: number): Observable<void> {
+  deleteUser(id: any): Observable<void> {
     return this.httpClient.delete<void>(`${this.baseUrl}/${id}`);
   }
 
@@ -83,6 +87,7 @@ export class UserService {
       password:""
     });
   }
+  
 }
 interface GetResponse {
   _embedded: {

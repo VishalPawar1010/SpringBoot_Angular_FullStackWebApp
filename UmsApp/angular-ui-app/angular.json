@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-ecommerce": {
+    "angular-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,13 +13,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-ecommerce",
+            "outputPath": "dist/angular-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
          
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": ["src/favicon.ico", "src/assets", "src/_redirects"],
             "styles": [
               "node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css",
               "node_modules/datatables.net-dt/css/jquery.dataTables.css",
@@ -52,7 +52,28 @@
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "with": "src/environments/environment.nodeJS.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "springBoot": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.springBoot.ts"
                 }
               ],
               "outputHashing": "all"
@@ -66,16 +87,16 @@
               "namedChunks": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-ecommerce:build:production"
+              "browserTarget": "angular-app:build:production"
             },
             "development": {
-              "browserTarget": "angular-ecommerce:build:development"
+              "browserTarget": "angular-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +104,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-ecommerce:build"
+            "browserTarget": "angular-app:build"
           }
         },
         "test": {

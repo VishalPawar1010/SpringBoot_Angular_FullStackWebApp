@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +28,8 @@ import { RolesService } from './services/ModuleServices/roles.service';
 import { UserService } from './services/ModuleServices/user.service';
 import { RequestInterceptor } from './services/SecurityServices/request.interceptor';
 import { AddUserComponent } from './Components/Modules/User/add-user/add-user.component';
+import { RegisterComponent } from './Components/Security/register/register.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,12 +47,13 @@ import { AddUserComponent } from './Components/Modules/User/add-user/add-user.co
     AddCategoryComponent,
     UpdateCategoryComponent,
     BrandsListComponent,
-    ProductListComponent
+    ProductListComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-
+    ReactiveFormsModule,
     FormsModule,
     DataTablesModule,
     AppRoutingModule,
