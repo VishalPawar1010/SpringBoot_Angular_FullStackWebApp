@@ -34,7 +34,7 @@ public class SecurityConfig {
 
 		http.authorizeRequests()
 		
-		.antMatchers("/api/login","/api/logout","/api/users/forgotpassword","/api/users/updatepassword/**","/api/users/verify_otp/**").permitAll()
+		.antMatchers("/api/login","/api/logout","/api/users/forgotpassword","/api/users/updatepassword/**","/api/users/verify_otp/**","/graphql/**").permitAll()
 		.antMatchers("/api/roles").hasAnyAuthority("SuperAdmin","Admin")
 		.antMatchers("/api/**").hasAuthority("SuperAdmin")
 		.antMatchers("/home").authenticated()
