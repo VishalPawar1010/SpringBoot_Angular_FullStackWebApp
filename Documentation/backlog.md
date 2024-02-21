@@ -17,3 +17,8 @@ UI
 3. Beutify UI or use themes like primeNG
 4. Data table and its alternatives
 5. UI component modularization
+6. Explore tailwind CSS
+7. Add login with test user for new user
+8. Add register user button
+9. 
+

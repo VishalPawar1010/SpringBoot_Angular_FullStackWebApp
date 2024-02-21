@@ -1,4 +1,4 @@
-Learning and skill building objectives by building Practice project
+Learning and skill building objectives by developing Practice project
 
 Code Quality and system design
 1. Design patterns and architecture
@@ -26,7 +26,7 @@ Soft Skill attributes
 5. Project management ability
 6. security
 
-Interview
+Client interaction
 1. agile mng process
 2. productivity and responsiveness
 3. teamwork
