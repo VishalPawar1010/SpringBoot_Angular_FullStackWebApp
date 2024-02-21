@@ -1,4 +1,4 @@
-# SpringBoot_Angular_FullStackWebApp
+# SpringBoot/NodeJs_Angular_FullStackWebApp
  - Project: eCommerce EMS (Employee Management System)
 
 1. Pre-requisites for local environment setup
