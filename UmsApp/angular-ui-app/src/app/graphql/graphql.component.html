@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-sm navbar-dark">
+  <div class="container-fluid  justify-content-center">
+    <ul class="navbar-nav">
+
+    </ul>
+  </div>
+</nav>
+<div class="mt-3 container container-fluid table-responsive" >
+
+  <!-- datatable *ngIf="dtOptions && users" [dtOptions]="dtOptions" -->
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped"
+    style="background-color: white; border-collapse: collapse">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th class="hide-on-mobile">name</th>
+        <th >termId</th>
+        <th class="hide-on-mobile hide-on-tab">courseId</th>
+        <th class="hide-on-mobile">__typename?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tempUser of searchForCourseOfferings">
+        <td class="hide-on-mobile">{{ tempUser.id }}</td>
+        <td>{{ tempUser.name }}</td>
+        <td class="hide-on-mobile hide-on-tab">{{ tempUser.termId }}</td>
+        <td class="hide-on-mobile"  >{{ tempUser.courseId }}</td>
+        <td class="hide-on-mobile"  >{{ tempUser.__typename }} </td>
+       
+      </tr>
+    </tbody>
+  </table>
+</div>

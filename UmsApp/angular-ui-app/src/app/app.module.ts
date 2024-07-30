@@ -29,6 +29,9 @@ import { UserService } from './services/ModuleServices/user.service';
 import { RequestInterceptor } from './services/SecurityServices/request.interceptor';
 import { AddUserComponent } from './Components/Modules/User/add-user/add-user.component';
 import { RegisterComponent } from './Components/Security/register/register.component';
+import { GraphQLModule } from './graphql.module';
+import { GraphQLComponent } from './graphql/graphql.component';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +51,8 @@ import { RegisterComponent } from './Components/Security/register/register.compo
     UpdateCategoryComponent,
     BrandsListComponent,
     ProductListComponent,
-    RegisterComponent
+    RegisterComponent,
+    GraphQLComponent
   ],
   imports: [
     BrowserModule,
@@ -59,12 +63,15 @@ import { RegisterComponent } from './Components/Security/register/register.compo
     AppRoutingModule,
     NgbModule,
     BrowserAnimationsModule,
+    GraphQLModule,
     
     ToastrModule.forRoot({
       positionClass:"toast-top-right",
       preventDuplicates:true,
       timeOut:3000,
-    })
+    }),
+    
+    GraphQLModule
   ],
   providers: [
     UserService,

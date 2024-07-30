@@ -17,13 +17,19 @@ import { ProductListComponent } from './Components/Modules/Product/product-list/
 import { LoginComponent } from './Components/Security/login/login.component';
 import { ForgotPasswordComponent } from './Components/Security/forgot-password/forgot-password.component';
 import { RegisterComponent } from './Components/Security/register/register.component';
+import { GraphQLComponent } from './graphql/graphql.component';
 
 
 const routes: Routes = [
   {
     path: 'user',
-    canActivate: [AuthenticateGuard],
+    // canActivate: [AuthenticateGuard],
     component: ViewUserComponent,
+  },
+  {
+    path: 'graphql',
+    // canActivate: [AuthenticateGuard],
+    component: GraphQLComponent,
   },
   {
     path: 'register',    
@@ -36,7 +42,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    canActivate: [AuthenticateGuard],
+    // canActivate: [AuthenticateGuard],
     component: LoginComponent,
   },
   
@@ -52,7 +58,7 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    canActivate: [AuthenticateGuard],
+    // canActivate: [AuthenticateGuard],
     component: UserListComponent,
   },
   {

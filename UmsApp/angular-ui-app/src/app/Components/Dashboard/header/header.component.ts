@@ -55,6 +55,9 @@ export class HeaderComponent implements OnInit {
   goToUsers(): void {
     this.router.navigate(['users']);
   }
+  goToCourseOfferings(): void {
+    this.router.navigate(['graphql']);
+  }
   goToRoles(): void {
     this.router.navigate(['roles']);
   }

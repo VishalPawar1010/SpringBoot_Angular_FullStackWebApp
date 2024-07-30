@@ -23,7 +23,7 @@ export class RequestInterceptor implements HttpInterceptor {
     let token = this.cookieService.get('token') || localStorage.getItem('token');
     if (token) {
       request = request.clone({
-        headers: request.headers.set('Authorization', `Bearer ${token}`),
+        // headers: request.headers.set('Authorization', `Bearer ${token}`),
       });
     }
     return next.handle(request).pipe(
