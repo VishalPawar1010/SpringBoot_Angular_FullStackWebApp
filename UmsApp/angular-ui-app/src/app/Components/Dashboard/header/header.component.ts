@@ -55,6 +55,9 @@ export class HeaderComponent implements OnInit {
   goToUsers(): void {
     this.router.navigate(['users']);
   }
+  goToWebSocket(): void {
+    this.router.navigate(['websocket']);
+  }
   goToRoles(): void {
     this.router.navigate(['roles']);
   }

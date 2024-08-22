@@ -17,6 +17,7 @@ import { ProductListComponent } from './Components/Modules/Product/product-list/
 import { LoginComponent } from './Components/Security/login/login.component';
 import { ForgotPasswordComponent } from './Components/Security/forgot-password/forgot-password.component';
 import { RegisterComponent } from './Components/Security/register/register.component';
+import { WebsocketComponent } from './Components/Modules/websocket/websocket.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,11 @@ const routes: Routes = [
     path: 'user',
     canActivate: [AuthenticateGuard],
     component: ViewUserComponent,
+  },
+  {
+    path: 'websocket',
+    canActivate: [AuthenticateGuard],
+    component: WebsocketComponent,
   },
   {
     path: 'register',    
